@@ -1,0 +1,83 @@
+{
+  "project_info": {
+    "project_number": "259179567140",
+    "firebase_url": "https://smartcommerce-1555856817595.firebaseio.com",
+    "project_id": "smartcommerce-1555856817595",
+    "storage_bucket": "smartcommerce-1555856817595.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:259179567140:android:d3c5e46f08a2fd355620b1",
+        "android_client_info": {
+          "package_name": "com.smartcommercebd.delivery"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "259179567140-5gbm8j1586su31h5j4ln9neq0ujsdc3b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC9rxLDkRtsFKRQT22QPsKAL9SEuugxql4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "259179567140-5gbm8j1586su31h5j4ln9neq0ujsdc3b.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "259179567140-6e28bjhucocg1cc7n0fln5pulh9d5k00.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.saneno.user"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:259179567140:android:3c1e4744adbc46665620b1",
+        "android_client_info": {
+          "package_name": "com.saneno.user"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "259179567140-5gbm8j1586su31h5j4ln9neq0ujsdc3b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC9rxLDkRtsFKRQT22QPsKAL9SEuugxql4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "259179567140-5gbm8j1586su31h5j4ln9neq0ujsdc3b.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "259179567140-6e28bjhucocg1cc7n0fln5pulh9d5k00.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.saneno.user"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
