@@ -68,19 +68,19 @@ class _CartWidgetState extends State<CartWidget> {
             style: Theme.of(context).textTheme.display1,
           ),
           actions: <Widget>[
-            Container(
-                width: 30,
-                height: 30,
-                margin: EdgeInsets.only(top: 12.5, bottom: 12.5, right: 20),
-                child: InkWell(
-                  borderRadius: BorderRadius.circular(300),
-                  onTap: () {
-                    Navigator.of(context).pushNamed('/Tabs', arguments: 1);
-                  },
-                  child: CircleAvatar(
-                    backgroundImage: CachedNetworkImageProvider(appUser.avatar),
-                  ),
-                )),
+//            Container(
+//                width: 30,
+//                height: 30,
+//                margin: EdgeInsets.only(top: 12.5, bottom: 12.5, right: 20),
+//                child: InkWell(
+//                  borderRadius: BorderRadius.circular(300),
+//                  onTap: () {
+//                    Navigator.of(context).pushNamed('/Tabs', arguments: 1);
+//                  },
+//                  child: CircleAvatar(
+//                    backgroundImage: CachedNetworkImageProvider(appUser.avatar),
+//                  ),
+//                )),
           ],
         ),
         body: Stack(
@@ -205,7 +205,7 @@ class _CartWidgetState extends State<CartWidget> {
                               style: Theme.of(context).textTheme.body2,
                             ),
                           ),
-                          Text('\$ ${price}',
+                          Text('SAR ${price}',
                               style: Theme.of(context).textTheme.subhead),
                         ],
                       ),
@@ -250,7 +250,7 @@ class _CartWidgetState extends State<CartWidget> {
                           Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 20),
                             child: Text(
-                              '\$${price}',
+                              'SAR ${price}',
                               style: Theme.of(context).textTheme.display1.merge(
                                   TextStyle(
                                       color: Theme.of(context).primaryColor)),

@@ -28,8 +28,8 @@ class RouteGenerator {
 
     switch (settings.name) {
       case '/':
-        return MaterialPageRoute(builder: (_) => SplashScreen());
-  //      return MaterialPageRoute(builder: (_) => DeliverySelect());
+       return MaterialPageRoute(builder: (_) => SplashScreen());
+     // return MaterialPageRoute(builder: (_) => DeliverySelect());
       case '/Onboard':
         return MaterialPageRoute(builder: (_) => OnBoardingWidget());
       case '/DeliverySelection':

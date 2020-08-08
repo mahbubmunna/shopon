@@ -63,24 +63,24 @@ class _AccountWidgetState extends State<AccountWidget> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                   ),
                 ),
-                SizedBox(
-                    width: 55,
-                    height: 55,
-                    child: InkWell(
-                      borderRadius: BorderRadius.circular(300),
-                      onTap: () {
-                        AwesomeDialog(
-                                context: context,
-                                dialogType: DialogType.INFO,
-                                body: Text(
-                                    'Please use website to update profile picture'))
-                            .show();
-                      },
-                      child: CircleAvatar(
-                        backgroundImage:
-                            CachedNetworkImageProvider(appUser.avatar),
-                      ),
-                    )),
+//                SizedBox(
+//                    width: 55,
+//                    height: 55,
+//                    child: InkWell(
+//                      borderRadius: BorderRadius.circular(300),
+//                      onTap: () {
+//                        AwesomeDialog(
+//                                context: context,
+//                                dialogType: DialogType.INFO,
+//                                body: Text(
+//                                    'Please use website to update profile picture'))
+//                            .show();
+//                      },
+//                      child: CircleAvatar(
+//                        backgroundImage:
+//                            CachedNetworkImageProvider(appUser.avatar),
+//                      ),
+//                    )),
               ],
             ),
           ),
@@ -371,7 +371,7 @@ class _AccountWidgetState extends State<AccountWidget> {
                     style: Theme.of(context).textTheme.body1,
                   ),
                   trailing: Text(
-                    "Dhaka",
+                    "Saudi Arabia",
                     style: TextStyle(color: Theme.of(context).focusColor),
                   ),
                 ),
@@ -383,7 +383,7 @@ class _AccountWidgetState extends State<AccountWidget> {
                     style: Theme.of(context).textTheme.body1,
                   ),
                   trailing: Text(
-                    appUser.city,
+                    "Jeddah",
                     style: TextStyle(color: Theme.of(context).focusColor),
                   ),
                 ),

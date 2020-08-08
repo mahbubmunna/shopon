@@ -16,6 +16,8 @@ class DeliverySelect extends StatefulWidget {
 
 class _DeliverySelectState extends State<DeliverySelect> {
   Completer<GoogleMapController> _controller = Completer();
+  Geolocator geoLocator = Geolocator()..forceAndroidLocationManager;
+  String _currentAddress;
   Position _position;
   Widget _child;
   String _result = 'Not added';
@@ -26,17 +28,53 @@ class _DeliverySelectState extends State<DeliverySelect> {
     _controller.complete(controller);
   }
 
+
+  void setCurrentPosition(Position _currentPosition) async {
+    try {
+      List<Placemark> p =  await geoLocator.placemarkFromCoordinates(
+          _currentPosition.latitude, _currentPosition.longitude);
+
+      Placemark place = p[0];
+
+        _currentAddress =
+        "${place.name}, ${place.locality}, ${place.administrativeArea}, ${place.postalCode}, ${place.country}";
+
+      _result = _currentAddress;
+
+        setState(() {
+        });
+
+    } catch (e) {
+      print(e);
+    }
+  }
+
   void getCurrentLocation() async{
     Position res = await Geolocator().getCurrentPosition();
+
     setState(() {
       _position = res;
+      Marker _marker = Marker
+        (markerId: MarkerId('currentLocation'),
+          position: LatLng(_position.latitude, _position.longitude),
+          infoWindow: InfoWindow(title: 'home',)
+      );
+
+      final Map<String, Marker> _markers = {};
+      _markers['currentLocation'] = _marker;
+
       _child = GoogleMap(
         onMapCreated: _onMapCreated,
         initialCameraPosition: CameraPosition(
             target:  LatLng(_position.latitude, _position.longitude),
-            zoom: 12
+            zoom: 15
         ),
-      );    });
+        markers: _markers.values.toSet(),
+      );
+      setCurrentPosition(_position);
+    });
+
+
   }
 
   @override
@@ -47,7 +85,8 @@ class _DeliverySelectState extends State<DeliverySelect> {
   }
 
   void goToAddAddressScreen() async {
-    _result = await Navigator.push(context, PageTransition(type: PageTransitionType.rightToLeft, child: AddAddress()));
+    String _manualValue = await Navigator.push(context, PageTransition(type: PageTransitionType.rightToLeft, child: AddAddress()));
+    if (_manualValue != null) _result = _manualValue;
     setState(() {
 
     });
@@ -114,4 +153,6 @@ class _DeliverySelectState extends State<DeliverySelect> {
       ),
     );
   }
+
+
 }

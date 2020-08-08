@@ -123,40 +123,40 @@ class _TabsWidgetState extends State<TabsWidget> {
           new ShoppingCartButtonWidget(
               iconColor: Theme.of(context).hintColor,
               labelColor: Theme.of(context).accentColor),
-          Container(
-              width: 30,
-              height: 30,
-              margin: EdgeInsets.only(top: 12.5, bottom: 12.5, right: 20),
-              child: InkWell(
-                  borderRadius: BorderRadius.circular(300),
-                  onTap: () {
-                    Navigator.of(context).pushNamed('/Tabs', arguments: 4);
-                  },
-                  child: CircleAvatar(
-                    backgroundImage: CachedNetworkImageProvider(appUser.avatar),
-                  )
-//                FutureBuilder(
-//                  future: UserRepository.getUser(),
-//                  builder: (
-//                      BuildContext context,
-//                      AsyncSnapshot<UserResponse> snapshot) {
-//                    if (snapshot.hasData) {
-//                      if(snapshot.data.error.length > 0 && snapshot.data.error != null) {
-//                        print(snapshot.data.error);
-//                      }
-//                      _user = snapshot.data.user;
-//                      return CircleAvatar(
-//                        backgroundImage: NetworkImage(_user.avatar),
-//                      );
-//                    } else if (snapshot.hasError) return Text(
-//                      snapshot.data.error
-//                    );
-//                    else return CircleAvatar(
-//                        backgroundImage: NetworkImage(appUser.avatar),
-//                      );
+//          Container(
+//              width: 30,
+//              height: 30,
+//              margin: EdgeInsets.only(top: 12.5, bottom: 12.5, right: 20),
+//              child: InkWell(
+//                  borderRadius: BorderRadius.circular(300),
+//                  onTap: () {
+//                    Navigator.of(context).pushNamed('/Tabs', arguments: 4);
 //                  },
-//                ),
-                  )),
+//                  child: CircleAvatar(
+//                    backgroundImage: CachedNetworkImageProvider(appUser.avatar),
+//                  )
+////                FutureBuilder(
+////                  future: UserRepository.getUser(),
+////                  builder: (
+////                      BuildContext context,
+////                      AsyncSnapshot<UserResponse> snapshot) {
+////                    if (snapshot.hasData) {
+////                      if(snapshot.data.error.length > 0 && snapshot.data.error != null) {
+////                        print(snapshot.data.error);
+////                      }
+////                      _user = snapshot.data.user;
+////                      return CircleAvatar(
+////                        backgroundImage: NetworkImage(_user.avatar),
+////                      );
+////                    } else if (snapshot.hasError) return Text(
+////                      snapshot.data.error
+////                    );
+////                    else return CircleAvatar(
+////                        backgroundImage: NetworkImage(appUser.avatar),
+////                      );
+////                  },
+////                ),
+//                  )),
         ],
       ),
       body: widget.currentPage,
