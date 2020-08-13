@@ -20,8 +20,8 @@ import 'package:flutter/painting.dart';
 
 // ignore: must_be_immutable
 class TabsWidget extends StatefulWidget {
-  int currentTab = 2;
-  int selectedTab = 2;
+  int currentTab = 0;
+  int selectedTab = 0;
   String currentTitle = 'Home';
   final User user;
   Widget currentPage = HomeWidget();
@@ -56,14 +56,6 @@ class _TabsWidgetState extends State<TabsWidget> {
       widget.selectedTab = tabItem;
       switch (tabItem) {
         case 0:
-          widget.currentTitle = 'Notifications';
-          widget.currentPage = NotificationsWidget();
-          break;
-        case 1:
-          widget.currentTitle = 'Favorites';
-          widget.currentPage = FavoritesWidget();
-          break;
-        case 2:
           widget.currentTitle = 'Home';
           widget.currentPage = MultiProvider(
             providers: [
@@ -77,15 +69,22 @@ class _TabsWidgetState extends State<TabsWidget> {
             ],
             child: HomeWidget(),
           );
-          ;
           break;
-        case 3:
-          widget.currentTitle = 'Messages';
-          widget.currentPage = MessagesWidget();
+        case 1:
+          widget.currentTitle = 'Favorites';
+          widget.currentPage = FavoritesWidget();
           break;
-        case 4:
+        case 2:
           widget.currentTitle = 'Account';
           widget.currentPage = AccountWidget();
+          break;
+//        case 3:
+//          widget.currentTitle = 'Messages';
+//          widget.currentPage = MessagesWidget();
+//          break;
+        case 3:
+          widget.currentTitle = 'Notifications';
+          widget.currentPage = NotificationsWidget();
           break;
         /*case 5:
           widget.selectedTab = 3;
@@ -214,14 +213,6 @@ class _TabsWidgetState extends State<TabsWidget> {
         // this will be set when a new tab is tapped
         items: [
           BottomNavigationBarItem(
-            icon: Icon(UiIcons.bell),
-            title: new Container(height: 0.0),
-          ),
-          BottomNavigationBarItem(
-            icon: new Icon(UiIcons.heart),
-            title: new Container(height: 0.0),
-          ),
-          BottomNavigationBarItem(
               title: new Container(height: 5.0),
               icon: Container(
                 width: 45,
@@ -246,11 +237,19 @@ class _TabsWidgetState extends State<TabsWidget> {
                     color: Theme.of(context).primaryColor),
               )),
           BottomNavigationBarItem(
-            icon: new Icon(UiIcons.chat),
+            icon: new Icon(UiIcons.heart),
+            title: new Container(height: 0.0),
+          ),
+//          BottomNavigationBarItem(
+//            icon: new Icon(UiIcons.chat),
+//            title: new Container(height: 0.0),
+//          ),
+          BottomNavigationBarItem(
+            icon: Icon(UiIcons.user_1),
             title: new Container(height: 0.0),
           ),
           BottomNavigationBarItem(
-            icon: Icon(UiIcons.user_1),
+            icon: Icon(UiIcons.bell),
             title: new Container(height: 0.0),
           ),
         ],

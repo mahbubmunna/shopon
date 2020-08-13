@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:awesome_dialog/awesome_dialog.dart';
@@ -50,7 +51,7 @@ class _ProductWidgetState extends State<ProductWidget>
   @override
   void initState() {
     _tabController =
-        TabController(length: 3, initialIndex: _tabIndex, vsync: this);
+        TabController(length: 2, initialIndex: _tabIndex, vsync: this);
     _tabController.addListener(_handleTabSelection);
 
     if (widget.product.photos != null) {
@@ -101,24 +102,10 @@ class _ProductWidgetState extends State<ProductWidget>
           ],
         ),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Expanded(
-              child: FlatButton(
-                  onPressed: () {
-                    setState(() {
-                      addProductToFavorites();
-                    });
-                  },
-                  padding: EdgeInsets.symmetric(vertical: 14),
-                  color: Theme.of(context).accentColor,
-                  shape: StadiumBorder(),
-                  child: Icon(
-                    UiIcons.heart,
-                    color: Theme.of(context).primaryColor,
-                  )),
-            ),
-            SizedBox(width: 10),
-            FlatButton(
+            MaterialButton(
+              elevation: 16,
               onPressed: () {
                 setState(() {
                   print("Cart operation start");
@@ -342,22 +329,22 @@ class _ProductWidgetState extends State<ProductWidget>
                       ),
                     ),
                   ),
-                  Tab(
-                    child: Container(
-                      padding: EdgeInsets.symmetric(horizontal: 5),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(50),
-                          border: Border.all(
-                              color: Theme.of(context)
-                                  .accentColor
-                                  .withOpacity(0.2),
-                              width: 1)),
-                      child: Align(
-                        alignment: Alignment.center,
-                        child: Text("Review"),
-                      ),
-                    ),
-                  ),
+//                  Tab(
+//                    child: Container(
+//                      padding: EdgeInsets.symmetric(horizontal: 5),
+//                      decoration: BoxDecoration(
+//                          borderRadius: BorderRadius.circular(50),
+//                          border: Border.all(
+//                              color: Theme.of(context)
+//                                  .accentColor
+//                                  .withOpacity(0.2),
+//                              width: 1)),
+//                      child: Align(
+//                        alignment: Alignment.center,
+//                        child: Text("Review"),
+//                      ),
+//                    ),
+//                  ),
                 ]),
             Offstage(
               offstage: 0 != _tabIndex,
@@ -411,23 +398,6 @@ class _ProductWidgetState extends State<ProductWidget>
     );
   }
 
-  void addProductToFavorites() {
-    Map favoriteData = {'product_id': int.parse(widget.product.id)};
-    var response =
-        FavoritesRepository.postDataToCart(favoriteData).catchError((error) {
-      AwesomeDialog(
-              context: context,
-              dialogType: DialogType.ERROR,
-              body: Text(Common.handleError(error)))
-          .show();
-    });
-    print(response.then((value) => print(value)));
-    AwesomeDialog(
-            context: context,
-            dialogType: DialogType.SUCCES,
-            body: Text('successfully added to favorites'))
-        .show();
-  }
 
   void addProductToCart(CartProvider provider, quantity, id) async {
     //print("Imageeeeeeeeeeeeeeeee   ${widget.product.thumbnail_img}");
@@ -469,6 +439,10 @@ class _ProductWidgetState extends State<ProductWidget>
             dialogType: DialogType.SUCCES,
             body: Text('successfully added to cart'))
         .show();
+
+    Timer(Duration(seconds: 3), () {
+      Navigator.pop(context);
+    });
 
     //   print(response.then((value) => print(value)));
   }

@@ -2,6 +2,7 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:provider/provider.dart';
 import 'package:smartcommercebd/config/ui_icons.dart';
+import 'package:smartcommercebd/generated/l10n.dart';
 import 'package:smartcommercebd/src/FlutterProvider/ProfileProvider/ProfileProvider.dart';
 import 'package:smartcommercebd/src/screens/splash.dart';
 import 'package:smartcommercebd/src/widgets/ProfileSettingsDialog.dart';
@@ -108,7 +109,7 @@ class _AccountWidgetState extends State<AccountWidget> {
                       children: <Widget>[
                         Icon(UiIcons.heart),
                         Text(
-                          'Wish List',
+                          S.of(context).wishList,
                           style: Theme.of(context).textTheme.body1,
                         )
                       ],
@@ -125,7 +126,7 @@ class _AccountWidgetState extends State<AccountWidget> {
                       children: <Widget>[
                         Icon(UiIcons.favorites),
                         Text(
-                          'Following',
+                          S.of(context).following,
                           style: Theme.of(context).textTheme.body1,
                         )
                       ],
@@ -142,7 +143,7 @@ class _AccountWidgetState extends State<AccountWidget> {
                       children: <Widget>[
                         Icon(UiIcons.chat_1),
                         Text(
-                          'Messages',
+                          S.of(context).messages,
                           style: Theme.of(context).textTheme.body1,
                         )
                       ],
@@ -281,7 +282,7 @@ class _AccountWidgetState extends State<AccountWidget> {
                 ListTile(
                   leading: Icon(UiIcons.user_1),
                   title: Text(
-                    'Profile Settings',
+                    S.of(context).profileSettings,
                     style: Theme.of(context).textTheme.body2,
                   ),
                   trailing: ButtonTheme(
@@ -300,7 +301,7 @@ class _AccountWidgetState extends State<AccountWidget> {
                   onTap: () {},
                   dense: true,
                   title: Text(
-                    'Full name',
+                    S.of(context).fullName,
                     style: Theme.of(context).textTheme.body1,
                   ),
                   trailing: Text(
@@ -312,7 +313,7 @@ class _AccountWidgetState extends State<AccountWidget> {
                   onTap: () {},
                   dense: true,
                   title: Text(
-                    'Email',
+                    S.of(context).email,
                     style: Theme.of(context).textTheme.body1,
                   ),
                   trailing: Text(
@@ -367,7 +368,7 @@ class _AccountWidgetState extends State<AccountWidget> {
                   onTap: () {},
                   dense: true,
                   title: Text(
-                    'Address',
+                    S.of(context).address,
                     style: Theme.of(context).textTheme.body1,
                   ),
                   trailing: Text(
@@ -379,7 +380,7 @@ class _AccountWidgetState extends State<AccountWidget> {
                   onTap: () {},
                   dense: true,
                   title: Text(
-                    'City',
+                    S.of(context).city,
                     style: Theme.of(context).textTheme.body1,
                   ),
                   trailing: Text(
@@ -433,7 +434,7 @@ class _AccountWidgetState extends State<AccountWidget> {
                 ListTile(
                   leading: Icon(UiIcons.settings_1),
                   title: Text(
-                    'Account Settings',
+                    S.of(context).accountSettings,
                     style: Theme.of(context).textTheme.body2,
                   ),
                 ),
@@ -470,13 +471,13 @@ class _AccountWidgetState extends State<AccountWidget> {
                       ),
                       SizedBox(width: 10),
                       Text(
-                        'Languages',
+                        S.of(context).languages,
                         style: Theme.of(context).textTheme.body1,
                       ),
                     ],
                   ),
                   trailing: Text(
-                    'English',
+                    S.of(context).english,
                     style: TextStyle(color: Theme.of(context).focusColor),
                   ),
                 ),
@@ -494,7 +495,7 @@ class _AccountWidgetState extends State<AccountWidget> {
                       ),
                       SizedBox(width: 10),
                       Text(
-                        'Help & Support',
+                        S.of(context).helpSupport,
                         style: Theme.of(context).textTheme.body1,
                       ),
                     ],

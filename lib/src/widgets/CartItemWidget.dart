@@ -107,7 +107,7 @@ class _CartItemWidgetState extends State<CartItemWidget> {
                     ),
                   ),
                   SizedBox(width: 8),
-                  Column(
+                  Row(
 //                    mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[

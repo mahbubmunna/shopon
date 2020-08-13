@@ -4,6 +4,7 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:smartcommercebd/config/ui_icons.dart';
+import 'package:smartcommercebd/generated/l10n.dart';
 import 'package:smartcommercebd/src/FlutterProvider/BestSellingProvider.dart';
 import 'package:smartcommercebd/src/FlutterProvider/BrandProvider/BrandsProvider.dart';
 import 'package:smartcommercebd/src/FlutterProvider/CategoryProvider/CategoryProvider.dart';
@@ -156,7 +157,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
               color: Theme.of(context).hintColor,
             ),
             title: Text(
-              'Brands',
+              S.of(context).brands,
               style: Theme.of(context).textTheme.display1,
             ),
           ),
@@ -218,7 +219,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                   baseColor: Colors.red,
                                                   highlightColor: Colors.yellow,
                                                   child: Text(
-                                                    'Shimmer',
+                                                    S.of(context).shimmer,
                                                     textAlign: TextAlign.center,
                                                     style: TextStyle(
                                                       fontSize: 40.0,
@@ -310,7 +311,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                   // The title of the product
                                                   Expanded(
                                                     child: Text(
-                                                      '${provider.brands_product[index].sales == null ? "0" : provider.brands_product[index].sales} Sales',
+                                                      '${provider.brands_product[index].sales == null ? "0" : provider.brands_product[index].sales} ${S.of(context).sales}',
                                                       style: Theme.of(context)
                                                           .textTheme
                                                           .body1,
@@ -325,7 +326,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
 //                                                    size: 18,
 //                                                  ),
                                                   Text(
-                                                    'SAR '+
+                                                    S.of(context).sar+
                                                     provider
                                                         .brands_product[index]
                                                         .price
@@ -363,7 +364,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                             child: CircularProgressIndicator(),
                           )
                     : Center(
-                        child: Text("Empty"),
+                        child: Text(S.of(context).empty),
                       );
               }),
             ))
@@ -414,7 +415,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                     baseColor: Colors.red,
                                     highlightColor: Colors.yellow,
                                     child: Text(
-                                      'Shimmer',
+                                      S.of(context).shimmer,
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                         fontSize: 40.0,
@@ -492,7 +493,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                   // The title of the product
                                   Expanded(
                                     child: Text(
-                                      '${provider.flash_list[index].sales == null ? "0" : provider.flash_list[index].sales} Sales',
+                                      '${provider.flash_list[index].sales == null ? "0" : provider.flash_list[index].sales} ${S.of(context).sales}',
                                       style: Theme.of(context).textTheme.body1,
                                       overflow: TextOverflow.fade,
                                       softWrap: false,
@@ -561,7 +562,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
               color: Theme.of(context).hintColor,
             ),
             title: Text(
-              'Best Sell',
+              S.of(context).bestSell,
               style: Theme.of(context).textTheme.display1,
             ),
             // trailing: Text('End in $_timer'),
@@ -608,7 +609,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                           baseColor: Colors.red,
                                           highlightColor: Colors.yellow,
                                           child: Text(
-                                            'Shimmer',
+                                            S.of(context).shimmer,
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
                                               fontSize: 40.0,
@@ -691,7 +692,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                           // The title of the product
                                           Expanded(
                                             child: Text(
-                                              '${bestSell.data[index].sales == null ? "0" : bestSell.data[index].sales} Sales',
+                                              '${bestSell.data[index].sales == null ? "0" : bestSell.data[index].sales} ${S.of(context).sales}',
                                               style: Theme.of(context)
                                                   .textTheme
                                                   .body1,
@@ -705,7 +706,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
 //                                            size: 18,
 //                                          ),
                                           Text(
-                                            'SAR '+bestSell.data[index].price
+                                            S.of(context).sar+bestSell.data[index].price
                                                 .toString(),
                                             style: TextStyle(fontWeight: FontWeight.bold),
                                           )
@@ -781,7 +782,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
               color: Theme.of(context).hintColor,
             ),
             title: Text(
-              'Category',
+              S.of(context).category,
               style: Theme.of(context).textTheme.display1,
             ),
           ),

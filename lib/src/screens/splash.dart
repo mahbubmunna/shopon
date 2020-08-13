@@ -31,7 +31,7 @@ getUser(BuildContext context) async {
 
       Navigator.of(context).pushNamedAndRemoveUntil(
           '/Tabs', ModalRoute.withName('/'),
-          arguments: 2);
+          arguments: 0);
     }).catchError((error) {
       /*return AwesomeDialog(
               context: context,

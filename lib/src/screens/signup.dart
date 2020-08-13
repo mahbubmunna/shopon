@@ -89,7 +89,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
             border: Border.all(width: 1.0, color: const Color(0xffe4dcd1)),
           ),
           child: Center(
-            child: Text('Welcome to Sunbulah', textScaleFactor: 1.7,
+            child: Text('Welcome to Sunbulahome', textScaleFactor: 1.7,
               style: TextStyle(
                   fontWeight: FontWeight.bold,
                   color: Colors.white

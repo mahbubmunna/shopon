@@ -1,4 +1,5 @@
 import 'package:provider/provider.dart';
+import 'package:smartcommercebd/generated/l10n.dart';
 import 'package:smartcommercebd/src/FlutterProvider/BrandProvider/BrandsProvider.dart';
 import 'package:smartcommercebd/src/models/brand.dart';
 import 'package:smartcommercebd/src/models/route_argument.dart';
@@ -31,7 +32,7 @@ class _BrandsWidgetState extends State<BrandsWidget> {
           backgroundColor: Colors.transparent,
           elevation: 0,
           title: Text(
-            'Brands',
+            S.of(context).brands,
             style: Theme.of(context).textTheme.display1,
           ),
           actions: <Widget>[

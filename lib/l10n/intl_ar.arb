@@ -1,8 +1,6 @@
 {
-  "home": "Home",
   "brands": "Brands",
   "shimmer": "Shimmer",
-  "sales": "Sales",
   "sar": "SAR",
   "empty": "Empty",
   "bestSell": "Best Sell",
@@ -25,6 +23,7 @@
   "phone": "Phone",
   "add": "ADD",
   "usersReviews": "Users Reviews",
+  "home": "Home",
   "products": "Products",
   "reviews": "Reviews",
   "checkout": "Checkout",

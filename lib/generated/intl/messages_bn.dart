@@ -21,6 +21,39 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
-    "home" : MessageLookupByLibrary.simpleMessage("হোম")
+    "accountSettings" : MessageLookupByLibrary.simpleMessage("Account Settings"),
+    "add" : MessageLookupByLibrary.simpleMessage("ADD"),
+    "addNewAddress" : MessageLookupByLibrary.simpleMessage("ADD NEW ADDRESS"),
+    "address" : MessageLookupByLibrary.simpleMessage("Address"),
+    "area" : MessageLookupByLibrary.simpleMessage("Area"),
+    "bestSell" : MessageLookupByLibrary.simpleMessage("Best Sell"),
+    "brands" : MessageLookupByLibrary.simpleMessage("Brands"),
+    "cart" : MessageLookupByLibrary.simpleMessage("Cart"),
+    "category" : MessageLookupByLibrary.simpleMessage("Category"),
+    "checkout" : MessageLookupByLibrary.simpleMessage("Checkout"),
+    "city" : MessageLookupByLibrary.simpleMessage("City"),
+    "email" : MessageLookupByLibrary.simpleMessage("Email"),
+    "empty" : MessageLookupByLibrary.simpleMessage("Empty"),
+    "english" : MessageLookupByLibrary.simpleMessage("English"),
+    "following" : MessageLookupByLibrary.simpleMessage("Following"),
+    "fullName" : MessageLookupByLibrary.simpleMessage("Full name"),
+    "helpSupport" : MessageLookupByLibrary.simpleMessage("Help & Support"),
+    "home" : MessageLookupByLibrary.simpleMessage("হোম"),
+    "languages" : MessageLookupByLibrary.simpleMessage("Languages"),
+    "messages" : MessageLookupByLibrary.simpleMessage("Messages"),
+    "phone" : MessageLookupByLibrary.simpleMessage("Phone"),
+    "pleaseSelectCity" : MessageLookupByLibrary.simpleMessage("Please select city"),
+    "products" : MessageLookupByLibrary.simpleMessage("Products"),
+    "profileSettings" : MessageLookupByLibrary.simpleMessage("Profile Settings"),
+    "reviews" : MessageLookupByLibrary.simpleMessage("Reviews"),
+    "sar" : MessageLookupByLibrary.simpleMessage("SAR"),
+    "shimmer" : MessageLookupByLibrary.simpleMessage("Shimmer"),
+    "shoppingCart" : MessageLookupByLibrary.simpleMessage("Shopping Cart"),
+    "subtotal" : MessageLookupByLibrary.simpleMessage("Subtotal"),
+    "usersReviews" : MessageLookupByLibrary.simpleMessage("Users Reviews"),
+    "verifyYourQuantityAndClickCheckout" : MessageLookupByLibrary.simpleMessage("Verify your quantity and click checkout"),
+    "welcome" : MessageLookupByLibrary.simpleMessage("Welcome,"),
+    "whereDoYouWantYourDelivery" : MessageLookupByLibrary.simpleMessage("Where do you want your delivery?"),
+    "wishList" : MessageLookupByLibrary.simpleMessage("Wish List")
   };
 }

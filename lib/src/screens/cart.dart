@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:provider/provider.dart';
 import 'package:smartcommercebd/config/ui_icons.dart';
+import 'package:smartcommercebd/generated/l10n.dart';
 import 'package:smartcommercebd/src/FlutterProvider/CartProvider/CartProvider.dart';
 import 'package:smartcommercebd/src/models/Cart.dart';
 import 'package:smartcommercebd/src/models/product.dart';
@@ -64,7 +65,7 @@ class _CartWidgetState extends State<CartWidget> {
           backgroundColor: Colors.transparent,
           elevation: 0,
           title: Text(
-            'Cart',
+            S.of(context).cart,
             style: Theme.of(context).textTheme.display1,
           ),
           actions: <Widget>[
@@ -105,13 +106,13 @@ class _CartWidgetState extends State<CartWidget> {
                           color: Theme.of(context).hintColor,
                         ),
                         title: Text(
-                          'Shopping Cart',
+                          S.of(context).shoppingCart,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           style: Theme.of(context).textTheme.display1,
                         ),
                         subtitle: Text(
-                          'Verify your quantity and click checkout',
+                          S.of(context).verifyYourQuantityAndClickCheckout,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           style: Theme.of(context).textTheme.caption,
@@ -201,11 +202,11 @@ class _CartWidgetState extends State<CartWidget> {
                         children: <Widget>[
                           Expanded(
                             child: Text(
-                              'Subtotal',
+                              S.of(context).subtotal,
                               style: Theme.of(context).textTheme.body2,
                             ),
                           ),
-                          Text('SAR ${price}',
+                          Text('${S.of(context).sar} ${price}',
                               style: Theme.of(context).textTheme.subhead),
                         ],
                       ),
@@ -240,7 +241,7 @@ class _CartWidgetState extends State<CartWidget> {
                               color: Theme.of(context).accentColor,
                               shape: StadiumBorder(),
                               child: Text(
-                                'Checkout',
+                                S.of(context).checkout,
                                 textAlign: TextAlign.start,
                                 style: TextStyle(
                                     color: Theme.of(context).primaryColor),

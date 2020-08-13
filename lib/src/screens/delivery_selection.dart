@@ -5,6 +5,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:smartcommercebd/generated/l10n.dart';
 import 'package:smartcommercebd/src/screens/add_address.dart';
 import 'package:smartcommercebd/src/screens/splash.dart';
 import 'package:smartcommercebd/config/app_config.dart' as config;
@@ -114,8 +115,8 @@ class _DeliverySelectState extends State<DeliverySelect> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Center(child: Text('Hello,' + ' ${appUser.name}', textScaleFactor: 1.5, style: TextStyle(fontWeight: FontWeight.bold),)),
-                Center(child: Text('Where do you want your delivery?', textScaleFactor: 1.2,)),
+                Center(child: Text(S.of(context).welcome + ' ${appUser.name}', textScaleFactor: 1.5, style: TextStyle(fontWeight: FontWeight.bold),)),
+                Center(child: Text(S.of(context).whereDoYouWantYourDelivery, textScaleFactor: 1.2,)),
                 SizedBox(height: 5,),
                 Padding(
                   padding: const EdgeInsets.only(left: 10),

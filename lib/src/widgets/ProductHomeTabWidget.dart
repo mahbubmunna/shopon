@@ -1,5 +1,7 @@
+import 'dart:async';
 import 'dart:convert';
 
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
@@ -12,9 +14,11 @@ import 'package:smartcommercebd/src/models/RelatedProduct.dart';
 import 'package:smartcommercebd/src/models/product.dart';
 import 'package:smartcommercebd/src/models/product_color.dart';
 import 'package:smartcommercebd/src/models/product_size.dart';
+import 'package:smartcommercebd/src/repositories/favorites_repository.dart';
 import 'package:smartcommercebd/src/screens/messages.dart';
 import 'package:smartcommercebd/src/screens/product.dart';
 import 'package:smartcommercebd/src/utils/common_utils.dart';
+import 'package:smartcommercebd/src/utils/helper.dart';
 import 'package:smartcommercebd/src/widgets/FlashSalesCarouselWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:smartcommercebd/config/app_config.dart' as config;
@@ -78,24 +82,19 @@ class productHomeTabWidgetState extends State<ProductHomeTabWidget> {
                   style: Theme.of(context).textTheme.display2,
                 ),
               ),
-              Chip(
-                padding: EdgeInsets.all(0),
-                label: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Text(widget.product.rate.toString(),
-                        style: Theme.of(context).textTheme.body2.merge(
-                            TextStyle(color: Theme.of(context).primaryColor))),
-                    Icon(
-                      Icons.star_border,
-                      color: Theme.of(context).primaryColor,
-                      size: 16,
-                    ),
-                  ],
-                ),
-                backgroundColor: Theme.of(context).accentColor.withOpacity(0.9),
-                shape: StadiumBorder(),
-              ),
+              FlatButton(
+                  onPressed: () {
+                    setState(() {
+                      addProductToFavorites();
+                    });
+                  },
+                  padding: EdgeInsets.symmetric(vertical: 14),
+                  color: Theme.of(context).accentColor,
+                  shape: StadiumBorder(),
+                  child: Icon(
+                    UiIcons.heart,
+                    color: Theme.of(context).primaryColor,
+                  )),
             ],
           ),
         ),
@@ -221,6 +220,31 @@ class productHomeTabWidgetState extends State<ProductHomeTabWidget> {
             heroTag: 'product_related_products', productsList: widget._productsList.flashSalesList),*/
       ],
     );
+  }
+
+  void addProductToFavorites() {
+    Map favoriteData = {'product_id': int.parse(widget.product.id)};
+    var response =
+    FavoritesRepository.postDataToCart(favoriteData).catchError((error) {
+      AwesomeDialog(
+          context: context,
+          dialogType: DialogType.ERROR,
+          body: Text(Common.handleError(error)))
+          .show();
+      Timer(Duration(seconds: 3), () {
+        Navigator.pop(context);
+      });
+
+    });
+    print(response.then((value) => print(value)));
+    AwesomeDialog(
+        context: context,
+        dialogType: DialogType.SUCCES,
+        body: Text('successfully added to favorites'))
+        .show();
+    Timer(Duration(seconds: 3), () {
+      Navigator.pop(context);
+    });
   }
 
   Future<String> statConvercation(

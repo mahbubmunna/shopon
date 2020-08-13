@@ -157,7 +157,7 @@ class _MyAppState extends State<MyApp> {
         ),
       ],
       child: MaterialApp(
-        title: 'Saneno',
+        title: 'Sunbulahome',
         initialRoute: '/',
         onGenerateRoute: RouteGenerator.generateRoute,
         debugShowCheckedModeBanner: false,

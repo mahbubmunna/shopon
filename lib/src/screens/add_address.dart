@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smartcommercebd/generated/l10n.dart';
 
 class AddAddress extends StatefulWidget {
   @override
@@ -27,7 +28,7 @@ class _AddAddressState extends State<AddAddress> {
       appBar: AppBar(
         leading: IconButton(icon: Icon(Icons.keyboard_backspace), onPressed: () {Navigator.pop(context);},),
         centerTitle: true,
-        title: Text('ADD NEW ADDRESS'),
+        title: Text(S.of(context).addNewAddress),
       ),
       body: ListView(
         padding: EdgeInsets.symmetric(horizontal: 10),
@@ -36,7 +37,7 @@ class _AddAddressState extends State<AddAddress> {
           TextField(
             controller: _addressTextController,
             decoration: InputDecoration(
-              labelText: 'Address',
+              labelText: S.of(context).address,
               labelStyle: TextStyle(
                 color: Theme.of(context).accentColor
               ),
@@ -53,10 +54,10 @@ class _AddAddressState extends State<AddAddress> {
             builder: (FormFieldState<String> state) {
               return InputDecorator(
                 decoration: InputDecoration(
-                    labelText: 'City',
+                    labelText: S.of(context).city,
                     labelStyle: TextStyle(color: Theme.of(context).accentColor),
                     errorStyle: TextStyle(color: Colors.redAccent, fontSize: 16.0),
-                    hintText: 'Please select city',
+                    hintText: S.of(context).pleaseSelectCity,
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
                 isEmpty: _currentSelectedValue == '',
                 child: DropdownButtonHideUnderline(
@@ -84,7 +85,7 @@ class _AddAddressState extends State<AddAddress> {
           TextField(
             controller: _areaTextController,
             decoration: InputDecoration(
-              labelText: 'Area',
+              labelText: S.of(context).area,
               labelStyle: TextStyle(
                 color: Theme.of(context).accentColor
               ),
@@ -101,7 +102,7 @@ class _AddAddressState extends State<AddAddress> {
             controller: _phoneTextController,
             keyboardType: TextInputType.number,
             decoration: InputDecoration(
-              labelText: 'Phone',
+              labelText: S.of(context).phone,
               labelStyle: TextStyle(
                 color: Theme.of(context).accentColor
               ),
@@ -122,7 +123,7 @@ class _AddAddressState extends State<AddAddress> {
                   color: Theme.of(context).accentColor,
                   minWidth: 120,
                   height: 40,
-                  child: Text('ADD', textScaleFactor: 1.5, style: TextStyle(color: Colors.white),),
+                  child: Text(S.of(context).add, textScaleFactor: 1.5, style: TextStyle(color: Colors.white),),
                   shape: StadiumBorder(),
                   onPressed: () {
                     if (_areaTextController.text != null && _addressTextController.text != null) {
