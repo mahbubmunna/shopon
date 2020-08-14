@@ -134,7 +134,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
 //          flashSales(),
 
           // Heading (Recommended for you)
-          Categotys(),
+//          Categotys(),
           // Heading (Brands)
           Brands(context, brand_provider)
         ],
