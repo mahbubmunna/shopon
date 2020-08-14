@@ -105,7 +105,8 @@ class _ProductWidgetState extends State<ProductWidget>
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             MaterialButton(
-              elevation: 16,
+              height: 40,
+              minWidth: 150,
               onPressed: () {
                 setState(() {
                   print("Cart operation start");
@@ -114,49 +115,50 @@ class _ProductWidgetState extends State<ProductWidget>
               },
               color: Theme.of(context).accentColor,
               shape: StadiumBorder(),
-              child: Container(
-                width: 240,
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Expanded(
-                      child: Text(
-                        'Add to Cart',
-                        textAlign: TextAlign.start,
-                        style: TextStyle(color: Theme.of(context).primaryColor),
-                      ),
-                    ),
-                    IconButton(
-                      onPressed: () {
-                        setState(() {
-                          if (_quantity > 1) --_quantity;
-                        });
-                      },
-                      iconSize: 30,
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 5, vertical: 10),
-                      icon: Icon(Icons.remove_circle_outline),
-                      color: Theme.of(context).primaryColor,
-                    ),
-                    Text(_quantity.toString(),
-                        style: Theme.of(context).textTheme.subhead.merge(
-                            TextStyle(color: Theme.of(context).primaryColor))),
-                    IconButton(
-                      onPressed: () {
-                        setState(() {
-                          ++_quantity;
-                        });
-                      },
-                      iconSize: 30,
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 5, vertical: 10),
-                      icon: Icon(Icons.add_circle_outline),
-                      color: Theme.of(context).primaryColor,
-                    )
-                  ],
-                ),
+              child: Row(
+                children: <Widget>[
+                  Text(
+                    'Add to Cart',
+                    textAlign: TextAlign.start,
+                    style: TextStyle(color: Theme.of(context).primaryColor),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  IconButton(
+                    onPressed: () {
+                      setState(() {
+                        if (_quantity > 1) --_quantity;
+                      });
+                    },
+                    iconSize: 30,
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 5, vertical: 10),
+                    icon: Icon(Icons.remove_circle_outline),
+                    color: Theme.of(context).accentColor,
+                  ),
+                  Text(_quantity.toString(),
+                      style: Theme.of(context).textTheme.subhead.merge(
+                          TextStyle(color: Theme.of(context).accentColor))),
+                  IconButton(
+                    onPressed: () {
+                      setState(() {
+                        ++_quantity;
+                      });
+                    },
+                    iconSize: 30,
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 5, vertical: 10),
+                    icon: Icon(Icons.add_circle_outline,),
+                    color: Theme.of(context).accentColor,
+                  )
+                ],
               ),
             ),
           ],
@@ -434,13 +436,12 @@ class _ProductWidgetState extends State<ProductWidget>
     await SharedPrefProvider.addCart(CommonUtils.cart_list);
 
     AwesomeDialog(
-            btnOkOnPress: () {},
             context: context,
             dialogType: DialogType.SUCCES,
             body: Text('successfully added to cart'))
         .show();
 
-    Timer(Duration(seconds: 3), () {
+    Timer(Duration(seconds: 4), () {
       Navigator.pop(context);
     });
 
