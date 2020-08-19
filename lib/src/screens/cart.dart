@@ -7,7 +7,9 @@ import 'package:smartcommercebd/generated/l10n.dart';
 import 'package:smartcommercebd/src/FlutterProvider/CartProvider/CartProvider.dart';
 import 'package:smartcommercebd/src/models/Cart.dart';
 import 'package:smartcommercebd/src/models/product.dart';
+import 'package:smartcommercebd/src/models/route_argument.dart';
 import 'package:smartcommercebd/src/screens/ShippingAddress.dart';
+import 'package:smartcommercebd/src/screens/checkout.dart';
 import 'package:smartcommercebd/src/screens/splash.dart';
 import 'package:smartcommercebd/src/utils/common_utils.dart';
 import 'package:smartcommercebd/src/utils/helper.dart';
@@ -53,6 +55,10 @@ class _CartWidgetState extends State<CartWidget> {
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<CartProvider>(context);
+    double _productVat = price * .15;
+    double _shippingCost = price < 50 ? 10 : 0;
+    double _shippingVat = price < 50 ? 1.5 : 0;
+    double _totalPrice = price + _productVat + _shippingCost + _shippingVat;
 
     return Scaffold(
         appBar: AppBar(
@@ -84,7 +90,7 @@ class _CartWidgetState extends State<CartWidget> {
 //                )),
           ],
         ),
-        body: Stack(
+        body: price > 0 ? Stack(
           fit: StackFit.expand,
           children: <Widget>[
             Container(
@@ -179,7 +185,7 @@ class _CartWidgetState extends State<CartWidget> {
             Positioned(
               bottom: 0,
               child: Container(
-                height: 170,
+                height: 200,
                 padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
                 decoration: BoxDecoration(
                     color: Theme.of(context).primaryColor,
@@ -206,23 +212,47 @@ class _CartWidgetState extends State<CartWidget> {
                               style: Theme.of(context).textTheme.body2,
                             ),
                           ),
-                          Text('${S.of(context).sar} ${price}',
+                          Text('${S.of(context).sar} ${price.toStringAsFixed(2)}',
                               style: Theme.of(context).textTheme.subhead),
                         ],
                       ),
                       SizedBox(height: 5),
-                      /*   Row(
+                      Row(
                         children: <Widget>[
                           Expanded(
                             child: Text(
-                              'TAX (20%)',
+                              S.of(context).vat15,
                               style: Theme.of(context).textTheme.body2,
                             ),
                           ),
-                          Text('\$13.23',
+                          Text('${S.of(context).sar} ${_productVat.toStringAsFixed(2)}',
                               style: Theme.of(context).textTheme.subhead),
                         ],
-                      ),*/
+                      ),
+                      Row(
+                        children: <Widget>[
+                          Expanded(
+                            child: Text(
+                              S.of(context).shippingCost,
+                              style: Theme.of(context).textTheme.body2,
+                            ),
+                          ),
+                          Text('${S.of(context).sar} ${_shippingCost.toStringAsFixed(2)}',
+                              style: Theme.of(context).textTheme.subhead),
+                        ],
+                      ),
+                      Row(
+                        children: <Widget>[
+                          Expanded(
+                            child: Text(
+                              S.of(context).shippingVat15,
+                              style: Theme.of(context).textTheme.body2,
+                            ),
+                          ),
+                          Text('${S.of(context).sar} ${_shippingVat.toStringAsFixed(2)}',
+                              style: Theme.of(context).textTheme.subhead),
+                        ],
+                      ),
                       SizedBox(height: 10),
                       Stack(
                         fit: StackFit.loose,
@@ -232,10 +262,12 @@ class _CartWidgetState extends State<CartWidget> {
                             width: MediaQuery.of(context).size.width - 40,
                             child: FlatButton(
                               onPressed: () {
-                                Navigator.of(context).push(
-                                    new MaterialPageRoute(
-                                        builder: (context) =>
-                                            ShippingAddress()));
+                                Navigator.of(context).pushNamed('/Checkout',
+                                    arguments: RouteArgument(
+                                        argumentsList: [
+                                          _totalPrice
+                                        ]));
+
                               },
                               padding: EdgeInsets.symmetric(vertical: 14),
                               color: Theme.of(context).accentColor,
@@ -251,7 +283,7 @@ class _CartWidgetState extends State<CartWidget> {
                           Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 20),
                             child: Text(
-                              'SAR ${price}',
+                              'SAR ${(_totalPrice).toStringAsFixed(2)}',
                               style: Theme.of(context).textTheme.display1.merge(
                                   TextStyle(
                                       color: Theme.of(context).primaryColor)),
@@ -266,6 +298,15 @@ class _CartWidgetState extends State<CartWidget> {
               ),
             )
           ],
+        ) : Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Icon(Icons.remove_shopping_cart),
+              Text('No Items in the cart')
+            ],
+          ),
         ) /*FutureBuilder(
         future: provider.getAllCarts(),
         builder: (BuildContext context, AsyncSnapshot<Carts> snapshot) {

@@ -8,6 +8,7 @@ import 'package:smartcommercebd/src/screens/brands.dart';
 import 'package:smartcommercebd/src/screens/cart.dart';
 import 'package:smartcommercebd/src/screens/category.dart';
 import 'package:smartcommercebd/src/screens/ShippingAddress.dart';
+import 'package:smartcommercebd/src/screens/checkout.dart';
 import 'package:smartcommercebd/src/screens/delivery_selection.dart';
 import 'package:smartcommercebd/src/screens/forgot_password.dart';
 import 'package:smartcommercebd/src/screens/help.dart';
@@ -66,7 +67,11 @@ class RouteGenerator {
             builder: (_) =>
                 CategoryWidget(routeArgument: args as RouteArgument));
 
-      //    case '/Product':
+      case '/Checkout':
+        return MaterialPageRoute(builder: (_) => CheckoutWidget(routeArgument: args as RouteArgument,));
+
+
+    //    case '/Product':
       //   return MaterialPageRoute(
       // builder: (_) =>
       //    ProductWidget(routeArgument: args as RouteArgument));

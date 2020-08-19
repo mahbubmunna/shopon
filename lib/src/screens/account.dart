@@ -85,74 +85,74 @@ class _AccountWidgetState extends State<AccountWidget> {
               ],
             ),
           ),
-          Container(
-            margin: EdgeInsets.symmetric(horizontal: 20),
-            decoration: BoxDecoration(
-              color: Theme.of(context).primaryColor,
-              borderRadius: BorderRadius.circular(6),
-              boxShadow: [
-                BoxShadow(
-                    color: Theme.of(context).hintColor.withOpacity(0.15),
-                    offset: Offset(0, 3),
-                    blurRadius: 10)
-              ],
-            ),
-            child: Row(
-              children: <Widget>[
-                Expanded(
-                  child: FlatButton(
-                    padding: EdgeInsets.symmetric(vertical: 15, horizontal: 10),
-                    onPressed: () {
-                      Navigator.of(context).pushNamed('/Tabs', arguments: 1);
-                    },
-                    child: Column(
-                      children: <Widget>[
-                        Icon(UiIcons.heart),
-                        Text(
-                          S.of(context).wishList,
-                          style: Theme.of(context).textTheme.body1,
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: FlatButton(
-                    padding: EdgeInsets.symmetric(vertical: 15, horizontal: 10),
-                    onPressed: () {
-                      //Navigator.of(context).pushNamed('/Tabs', arguments: 0);
-                    },
-                    child: Column(
-                      children: <Widget>[
-                        Icon(UiIcons.favorites),
-                        Text(
-                          S.of(context).following,
-                          style: Theme.of(context).textTheme.body1,
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: FlatButton(
-                    padding: EdgeInsets.symmetric(vertical: 15, horizontal: 10),
-                    onPressed: () {
-                      Navigator.of(context).pushNamed('/Tabs', arguments: 3);
-                    },
-                    child: Column(
-                      children: <Widget>[
-                        Icon(UiIcons.chat_1),
-                        Text(
-                          S.of(context).messages,
-                          style: Theme.of(context).textTheme.body1,
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
+//          Container(
+//            margin: EdgeInsets.symmetric(horizontal: 20),
+//            decoration: BoxDecoration(
+//              color: Theme.of(context).primaryColor,
+//              borderRadius: BorderRadius.circular(6),
+//              boxShadow: [
+//                BoxShadow(
+//                    color: Theme.of(context).hintColor.withOpacity(0.15),
+//                    offset: Offset(0, 3),
+//                    blurRadius: 10)
+//              ],
+//            ),
+//            child: Row(
+//              children: <Widget>[
+//                Expanded(
+//                  child: FlatButton(
+//                    padding: EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+//                    onPressed: () {
+//                      Navigator.of(context).pushNamed('/Tabs', arguments: 1);
+//                    },
+//                    child: Column(
+//                      children: <Widget>[
+//                        Icon(UiIcons.heart),
+//                        Text(
+//                          S.of(context).wishList,
+//                          style: Theme.of(context).textTheme.body1,
+//                        )
+//                      ],
+//                    ),
+//                  ),
+//                ),
+//                Expanded(
+//                  child: FlatButton(
+//                    padding: EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+//                    onPressed: () {
+//                      //Navigator.of(context).pushNamed('/Tabs', arguments: 0);
+//                    },
+//                    child: Column(
+//                      children: <Widget>[
+//                        Icon(UiIcons.favorites),
+//                        Text(
+//                          S.of(context).following,
+//                          style: Theme.of(context).textTheme.body1,
+//                        )
+//                      ],
+//                    ),
+//                  ),
+//                ),
+//                Expanded(
+//                  child: FlatButton(
+//                    padding: EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+//                    onPressed: () {
+//                      Navigator.of(context).pushNamed('/Tabs', arguments: 3);
+//                    },
+//                    child: Column(
+//                      children: <Widget>[
+//                        Icon(UiIcons.chat_1),
+//                        Text(
+//                          S.of(context).messages,
+//                          style: Theme.of(context).textTheme.body1,
+//                        )
+//                      ],
+//                    ),
+//                  ),
+//                ),
+//              ],
+//            ),
+//          ),
           /*  Container(
             margin: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
             decoration: BoxDecoration(

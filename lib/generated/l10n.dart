@@ -382,6 +382,46 @@ class S {
       args: [],
     );
   }
+
+  /// `VAT (15%)`
+  String get vat15 {
+    return Intl.message(
+      'VAT (15%)',
+      name: 'vat15',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `SHIPPING COST`
+  String get shippingCost {
+    return Intl.message(
+      'SHIPPING COST',
+      name: 'shippingCost',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `SHIPPING VAT (15%)`
+  String get shippingVat15 {
+    return Intl.message(
+      'SHIPPING VAT (15%)',
+      name: 'shippingVat15',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `left`
+  String get left {
+    return Intl.message(
+      'left',
+      name: 'left',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

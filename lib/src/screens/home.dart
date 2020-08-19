@@ -311,7 +311,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                   // The title of the product
                                                   Expanded(
                                                     child: Text(
-                                                      '${provider.brands_product[index].sales == null ? "0" : provider.brands_product[index].sales} ${S.of(context).sales}',
+                                                      '${provider.brands_product[index].available == null ? "0" : provider.brands_product[index].available} ${S.of(context).left}',
                                                       style: Theme.of(context)
                                                           .textTheme
                                                           .body1,
@@ -692,7 +692,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                           // The title of the product
                                           Expanded(
                                             child: Text(
-                                              '${bestSell.data[index].sales == null ? "0" : bestSell.data[index].sales} ${S.of(context).sales}',
+                                              '${bestSell.data[index].available == null ? "0" : bestSell.data[index].available} ${S.of(context).left}',
                                               style: Theme.of(context)
                                                   .textTheme
                                                   .body1,
