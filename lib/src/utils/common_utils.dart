@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:smartcommercebd/src/models/Cart.dart';
 import 'package:smartcommercebd/src/models/product.dart';
@@ -74,4 +76,10 @@ class CommonUtils {
       ),
     );
   }
+}
+
+closeAwesomeDialog(BuildContext context) {
+  Timer(Duration(seconds: 3), () {
+    Navigator.pop(context);
+  });
 }

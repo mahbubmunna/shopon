@@ -29,8 +29,8 @@ class UserProvider {
     }*/
   }
 
-  static Future<UserResponse> postUserUpdatedData(Map updatedData) async {
-    var token = await SharedPrefProvider.getString('access_token');
+  static Future<UserResponse> postUserUpdatedData(Map<String, dynamic> updatedData) async {
+    var token = await SharedPrefProvider.getString(token_key);
     _dio.options.headers = {
       'Content-type': '${Headers.formUrlEncodedContentType}',
       'Accept': 'application/json',

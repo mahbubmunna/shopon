@@ -1,11 +1,15 @@
 import 'dart:async';
 
+import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:smartcommercebd/generated/l10n.dart';
+import 'package:smartcommercebd/src/configs/strings.dart';
+import 'package:smartcommercebd/src/repositories/user_repository.dart';
 import 'package:smartcommercebd/src/screens/add_address.dart';
 import 'package:smartcommercebd/src/screens/splash.dart';
 import 'package:smartcommercebd/config/app_config.dart' as config;
@@ -18,10 +22,9 @@ class DeliverySelect extends StatefulWidget {
 class _DeliverySelectState extends State<DeliverySelect> {
   Completer<GoogleMapController> _controller = Completer();
   Geolocator geoLocator = Geolocator()..forceAndroidLocationManager;
-  String _currentAddress;
   Position _position;
   Widget _child;
-  String _result = 'Not added';
+  String _completeAddress = 'Not added';
 
   //static const LatLng _center = const LatLng(45.521563, -122.677433);
 
@@ -37,13 +40,13 @@ class _DeliverySelectState extends State<DeliverySelect> {
 
       Placemark place = p[0];
 
-        _currentAddress =
-        "${place.name}, ${place.locality}, ${place.administrativeArea}, ${place.postalCode}, ${place.country}";
+        appUser.address = place.name;
+        appUser.city = place.administrativeArea;
+        appUser.postalCode = place.postalCode;
+        appUser.country = place.country;
+        appUser.area = place.locality;
 
-      _result = _currentAddress;
-
-        setState(() {
-        });
+      allAddressInOneLine();
 
     } catch (e) {
       print(e);
@@ -86,23 +89,39 @@ class _DeliverySelectState extends State<DeliverySelect> {
   }
 
   void goToAddAddressScreen() async {
-    String _manualValue = await Navigator.push(context, PageTransition(type: PageTransitionType.rightToLeft, child: AddAddress()));
-    if (_manualValue != null) _result = _manualValue;
-    setState(() {
-
-    });
+//    String _manualValue = await Navigator.push(context, PageTransition(type: PageTransitionType.rightToLeft, child: AddAddress()));
+//    if (_manualValue != null) _result = _manualValue;
+    await Navigator.push(context, PageTransition(type: PageTransitionType.rightToLeft, child: AddAddress()));
+    allAddressInOneLine();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: MaterialButton(
-        onPressed: () {Navigator.of(context).pushNamedAndRemoveUntil(
-            '/Tabs', ModalRoute.withName('/'),
-            arguments: 2);},
+        onPressed: () async{
+          try {
+            await UserRepository.postUser(appUser.toMap()).then((response) {
+              appUser = response.user;
+            });
+          } catch (error){
+            print(error);
+          }
+          AwesomeDialog(
+              context: context,
+              dialogType: DialogType.SUCCES,
+              body: Text('Location Saved')
+          ).show();
+          await Future.delayed(Duration(seconds: 3), () {
+            Navigator.of(context).pushNamedAndRemoveUntil(
+                '/Tabs', ModalRoute.withName('/'),
+                arguments: 0);
+          });
+          },
         shape: StadiumBorder(),
         color: Theme.of(context).accentColor,
         minWidth: 80,
-        child: Text('Home', textScaleFactor: 1.5, style: TextStyle(color: Colors.white),),
+        child: Text('Save Location', textScaleFactor: 1.5, style: TextStyle(color: Colors.white),),
       ),
       body: Column(
         children: <Widget>[
@@ -144,7 +163,7 @@ class _DeliverySelectState extends State<DeliverySelect> {
                     SizedBox(width: 10,),
                     Icon(Icons.location_on, color: config.Colors().mainColor(.7), size: 15,),
                     SizedBox(width: 5,),
-                    Flexible(child: Text(_result, textScaleFactor: 1.1,))
+                    Flexible(child: Text(_completeAddress, textScaleFactor: 1.1,))
                   ],
                 )
               ],
@@ -153,6 +172,13 @@ class _DeliverySelectState extends State<DeliverySelect> {
         ],
       ),
     );
+  }
+
+  void allAddressInOneLine() {
+    _completeAddress = appUser.address+ ", " + appUser.area + ", " + appUser.city + ", " + appUser.postalCode + ", " + appUser.country;
+    setState(() {
+
+    });
   }
 
 

@@ -19,7 +19,7 @@ class DrawerWidget extends StatelessWidget {
         children: <Widget>[
           GestureDetector(
             onTap: () {
-              Navigator.of(context).pushNamed('/Tabs', arguments: 4);
+              Navigator.of(context).pushNamed('/Tabs', arguments: 2);
             },
             child: UserAccountsDrawerHeader(
               decoration: BoxDecoration(
@@ -42,7 +42,7 @@ class DrawerWidget extends StatelessWidget {
           ),
           ListTile(
             onTap: () {
-              Navigator.of(context).pushNamed('/Tabs', arguments: 2);
+              Navigator.of(context).pushNamed('/Tabs', arguments: 0);
             },
             leading: Icon(
               UiIcons.home,
@@ -55,7 +55,7 @@ class DrawerWidget extends StatelessWidget {
           ),
           ListTile(
             onTap: () {
-              Navigator.of(context).pushNamed('/Tabs', arguments: 0);
+              Navigator.of(context).pushNamed('/Tabs', arguments: 3);
             },
             leading: Icon(
               UiIcons.bell,

@@ -92,6 +92,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.1"
+  country_code_picker:
+    dependency: "direct main"
+    description:
+      name: country_code_picker
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.4.0"
   crypto:
     dependency: transitive
     description:
@@ -280,6 +287,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  fluttertoast:
+    dependency: transitive
+    description:
+      name: fluttertoast
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "6.0.1"
   geolocator:
     dependency: "direct main"
     description:
@@ -399,6 +413,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.3.0"
+  otp_screen:
+    dependency: "direct main"
+    description:
+      name: otp_screen
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.3"
   page_transition:
     dependency: "direct main"
     description:

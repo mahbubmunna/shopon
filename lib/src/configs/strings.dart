@@ -7,6 +7,7 @@ const forgot_password_url = "https://smartcommercebd.com/password/reset";*/
 
 const base_url = "http://157.175.91.49/";
 const api_base_url = "http://157.175.91.49/apii/";
+const otp_base_url = "http://157.175.91.49/api/";
 const notification_base_url = "http://157.175.91.49/api/";
 const public_path_url = "http://157.175.91.49/";
 const forgot_password_url = "http://157.175.91.49/password/reset";

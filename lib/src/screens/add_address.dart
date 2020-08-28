@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smartcommercebd/generated/l10n.dart';
+import 'package:smartcommercebd/src/screens/splash.dart';
 
 class AddAddress extends StatefulWidget {
   @override
@@ -9,7 +10,7 @@ class AddAddress extends StatefulWidget {
 class _AddAddressState extends State<AddAddress> {
   TextEditingController _addressTextController;
   TextEditingController _areaTextController;
-  TextEditingController _phoneTextController;
+  TextEditingController _postalCodeController;
   var _cities = ['Jeddah'];
   var _currentSelectedValue = "Jeddah";
   String _completeAddress = '';
@@ -18,7 +19,7 @@ class _AddAddressState extends State<AddAddress> {
   void initState() {
     _addressTextController = TextEditingController();
     _areaTextController = TextEditingController();
-    _phoneTextController = TextEditingController();
+    _postalCodeController = TextEditingController();
     super.initState();
   }
 
@@ -99,10 +100,10 @@ class _AddAddressState extends State<AddAddress> {
           ),
           SizedBox(height: 10,),
           TextField(
-            controller: _phoneTextController,
+            controller: _postalCodeController,
             keyboardType: TextInputType.number,
             decoration: InputDecoration(
-              labelText: S.of(context).phone,
+              labelText: S.of(context).postalCode,
               labelStyle: TextStyle(
                 color: Theme.of(context).accentColor
               ),
@@ -130,11 +131,17 @@ class _AddAddressState extends State<AddAddress> {
                       _completeAddress = _addressTextController.text+', '
                           +_currentSelectedValue+', '
                           +_areaTextController.text+', '
-                          +_phoneTextController.text+', '
-                          +'Saudi Arabia';
+                          +_postalCodeController.text+', '
+                          +S.of(context).saudiArabia;
+
+                      appUser.address = _addressTextController.text;
+                      appUser.area = _areaTextController.text;
+                      appUser.city = _currentSelectedValue;
+                      appUser.postalCode = _postalCodeController.text;
+
                     }
                     print(_completeAddress);
-                    Navigator.pop(context, _completeAddress);
+                    Navigator.pop(context);
                   },
                 )
               ],

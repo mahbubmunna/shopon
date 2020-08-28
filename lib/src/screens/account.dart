@@ -372,7 +372,19 @@ class _AccountWidgetState extends State<AccountWidget> {
                     style: Theme.of(context).textTheme.body1,
                   ),
                   trailing: Text(
-                    "Saudi Arabia",
+                    appUser.address,
+                    style: TextStyle(color: Theme.of(context).focusColor),
+                  ),
+                ),
+                ListTile(
+                  onTap: () {},
+                  dense: true,
+                  title: Text(
+                    S.of(context).area,
+                    style: Theme.of(context).textTheme.body1,
+                  ),
+                  trailing: Text(
+                    appUser.area,
                     style: TextStyle(color: Theme.of(context).focusColor),
                   ),
                 ),
@@ -384,7 +396,7 @@ class _AccountWidgetState extends State<AccountWidget> {
                     style: Theme.of(context).textTheme.body1,
                   ),
                   trailing: Text(
-                    "Jeddah",
+                    appUser.country,
                     style: TextStyle(color: Theme.of(context).focusColor),
                   ),
                 ),

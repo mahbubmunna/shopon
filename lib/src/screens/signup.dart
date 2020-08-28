@@ -1,6 +1,5 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:device_info/device_info.dart';
-import 'package:page_transition/page_transition.dart';
 import 'package:smartcommercebd/config/ui_icons.dart';
 import 'package:smartcommercebd/src/configs/strings.dart';
 import 'package:smartcommercebd/src/providers/shared_pref_provider.dart';
@@ -19,6 +18,9 @@ import 'dart:io' show Platform;
 import '../utils/common_utils.dart';
 
 class SignUpWidget extends StatefulWidget {
+  String mobileNumber;
+  SignUpWidget({this.mobileNumber});
+
   @override
   _SignUpWidgetState createState() => _SignUpWidgetState();
 }
@@ -458,7 +460,9 @@ class _SignUpWidgetState extends State<SignUpWidget> {
       'user_type': 'customer',
       'device_id': device_type=='android' ? device_info.id : 'ios',
       "device_type": device_type,
-      "device_token": token
+      "device_token": token,
+      "phone": widget.mobileNumber
+
     };
 
     print(registrationInfo);

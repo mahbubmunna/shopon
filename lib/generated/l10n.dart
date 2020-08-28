@@ -422,6 +422,56 @@ class S {
       args: [],
     );
   }
+
+  /// `Register`
+  String get register {
+    return Intl.message(
+      'Register',
+      name: 'register',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Welcome to Sunbulahome`
+  String get welcomeToSunbulahome {
+    return Intl.message(
+      'Welcome to Sunbulahome',
+      name: 'welcomeToSunbulahome',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Top Selling`
+  String get topSelling {
+    return Intl.message(
+      'Top Selling',
+      name: 'topSelling',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Saudi Arabia`
+  String get saudiArabia {
+    return Intl.message(
+      'Saudi Arabia',
+      name: 'saudiArabia',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Postal code`
+  String get postalCode {
+    return Intl.message(
+      'Postal code',
+      name: 'postalCode',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

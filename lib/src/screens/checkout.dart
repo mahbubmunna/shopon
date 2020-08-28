@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smartcommercebd/config/ui_icons.dart';
+import 'package:smartcommercebd/generated/l10n.dart';
 import 'package:smartcommercebd/src/models/route_argument.dart';
 import 'package:smartcommercebd/src/screens/splash.dart';
 import 'package:smartcommercebd/src/widgets/ShoppingCartButtonWidget.dart';
@@ -230,7 +231,7 @@ class _CheckoutWidgetState extends State<CheckoutWidget>
                 ),
               ),
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 40),
             SizedBox(
               width: 320,
               child: FlatButton(
@@ -248,7 +249,7 @@ class _CheckoutWidgetState extends State<CheckoutWidget>
                       Align(
                         alignment: Alignment(0, 0),
                         child: Image.asset(
-                          'assets/img/cash_on_delivery.png',
+                          'assets/img/pay_on_delivery.png',
                           height: 28,
                         ),
                       ),
@@ -323,11 +324,11 @@ class _CheckoutWidgetState extends State<CheckoutWidget>
                     onTap: () {},
                     dense: true,
                     title: Text(
-                      'City',
+                      'Area',
                       style: Theme.of(context).textTheme.body1,
                     ),
                     trailing: Text(
-                      appUser.city,
+                      appUser.area,
                       style: TextStyle(color: Theme.of(context).focusColor),
                     ),
                   ),
@@ -335,7 +336,7 @@ class _CheckoutWidgetState extends State<CheckoutWidget>
                     onTap: () {},
                     dense: true,
                     title: Text(
-                      'Country',
+                      'City',
                       style: Theme.of(context).textTheme.body1,
                     ),
                     trailing: Text(
@@ -343,6 +344,7 @@ class _CheckoutWidgetState extends State<CheckoutWidget>
                       style: TextStyle(color: Theme.of(context).focusColor),
                     ),
                   ),
+
 //                ListTile(
 //                  onTap: () {},
 //                  dense: true,
@@ -386,7 +388,7 @@ class _CheckoutWidgetState extends State<CheckoutWidget>
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Text(
-                    '\$${widget.orderPrice}',
+                    '${S.of(context).sar} ${(widget.orderPrice).toStringAsFixed(2)}',
                     style: Theme.of(context).textTheme.display1.merge(TextStyle(color: Theme.of(context).primaryColor)),
                   ),
                 )

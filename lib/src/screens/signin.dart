@@ -9,15 +9,12 @@ import 'package:smartcommercebd/src/models/user.dart';
 import 'package:smartcommercebd/src/providers/shared_pref_provider.dart';
 import 'package:smartcommercebd/src/repositories/token_repository.dart';
 import 'package:smartcommercebd/src/repositories/user_repository.dart';
+import 'package:smartcommercebd/src/screens/signup_phone.dart';
 import 'package:smartcommercebd/src/screens/splash.dart';
 import 'package:smartcommercebd/src/utils/common_utils.dart';
 import 'package:smartcommercebd/src/widgets/SocialMediaWidget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:webview_flutter/webview_flutter.dart';
-
-import 'signup.dart';
-import 'signup.dart';
 
 class SignInWidget extends StatefulWidget {
   @override
@@ -57,7 +54,7 @@ class _SignInWidgetState extends State<SignInWidget> {
           onPressed: () {Navigator.push(context,
               PageTransition(
                   type: PageTransitionType.downToUp,
-                  child: SignUpWidget()));},
+                  child: PhoneNumberScreen()));},
           child: Container(
             height: 75,
             child: Column(

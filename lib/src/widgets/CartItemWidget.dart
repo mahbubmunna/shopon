@@ -20,6 +20,7 @@ class CartItemWidget extends StatefulWidget {
   countCallBack onChanged;
   int index;
 
+
   CartItemWidget(
       {Key key,
       this.product,

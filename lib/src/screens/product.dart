@@ -441,9 +441,7 @@ class _ProductWidgetState extends State<ProductWidget>
             body: Text('successfully added to cart'))
         .show();
 
-    Timer(Duration(seconds: 4), () {
-      Navigator.pop(context);
-    });
+    closeAwesomeDialog(context);
 
     //   print(response.then((value) => print(value)));
   }

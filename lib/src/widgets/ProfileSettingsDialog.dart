@@ -58,14 +58,14 @@ class _ProfileSettingsDialogState extends State<ProfileSettingsDialog> {
                             widget.onChanged();
                           }),
                         ),
-//                        new TextFormField(
-//                          style: TextStyle(color: Theme.of(context).hintColor),
-//                          keyboardType: TextInputType.emailAddress,
-//                          decoration: getInputDecoration(hintText: 'johndo@gmail.com', labelText: 'Email Address'),
-//                          initialValue: widget.user.email,
-//                          validator: (input) => !input.contains('@') ? 'Not a valid email' : null,
-//                          onSaved: (input) => widget.user.email = input,
-//                        ),
+                        new TextFormField(
+                          style: TextStyle(color: Theme.of(context).hintColor),
+                          keyboardType: TextInputType.emailAddress,
+                          decoration: getInputDecoration(hintText: 'johndo@gmail.com', labelText: 'Email Address'),
+                          initialValue: widget.user.email,
+                          validator: (input) => !input.contains('@') ? 'Not a valid email' : null,
+                          onSaved: (input) => widget.user.email = input,
+                        ),
 //                        FormField<String>(
 //                          builder: (FormFieldState<String> state) {
 //                            return DropdownButtonFormField<String>(
