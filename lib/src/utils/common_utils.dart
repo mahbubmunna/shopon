@@ -17,7 +17,7 @@ class CommonUtils {
 
   static showProgressBar() {
     return Column(
-      children: <Widget>[SizedBox(height: 10), CircularProgressIndicator(), SizedBox(height: 10,)],
+      children: <Widget>[CircularProgressIndicator(), SizedBox(height: 10,)],
     );
   }
 

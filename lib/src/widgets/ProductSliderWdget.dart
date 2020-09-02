@@ -79,13 +79,11 @@ class _ProductSliderWidgetState extends State<ProductSliderWidget> {
             mainAxisAlignment: MainAxisAlignment.end,
             children: widget.data.map((slide) {
               return Container(
-                width: 20.0,
-                height: 3.0,
+                width: 8.0,
+                height: 8.0,
                 margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(8),
-                    ),
+                    shape: BoxShape.circle,
                     color: _current == widget.data.indexOf(slide)
                         ? Theme.of(context).hintColor
                         : Theme.of(context).hintColor.withOpacity(0.3)),

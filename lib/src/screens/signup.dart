@@ -1,11 +1,13 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:device_info/device_info.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:smartcommercebd/config/ui_icons.dart';
 import 'package:smartcommercebd/src/configs/strings.dart';
 import 'package:smartcommercebd/src/providers/shared_pref_provider.dart';
 import 'package:smartcommercebd/src/repositories/registration_repository.dart';
 import 'package:smartcommercebd/src/repositories/token_repository.dart';
 import 'package:smartcommercebd/src/repositories/user_repository.dart';
+import 'package:smartcommercebd/src/screens/signin.dart';
 import 'package:smartcommercebd/src/screens/splash.dart';
 import 'package:smartcommercebd/src/utils/common_utils.dart';
 import 'package:smartcommercebd/src/utils/helper.dart';
@@ -43,7 +45,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
     });
 
     return Scaffold(
-      body: registerPageBody(),
+      body: newLoginPageBody(),
       bottomNavigationBar: registerPageBottom(),
     );
   }
@@ -53,28 +55,101 @@ class _SignUpWidgetState extends State<SignUpWidget> {
         color: Colors.transparent,
         elevation: 0,
         child: FlatButton(
-          onPressed: () {Navigator.pop(context);},
+          onPressed: () {
+            PageTransition(
+                type: PageTransitionType.downToUp,
+                child: SignInWidget());
+          },
           child: Container(
-            height: 75,
+            height: 30,
             child: Column(
               children: <Widget>[
-                Icon(Icons.expand_more),
                 Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                        topLeft: const Radius.circular(40.0),
-                        topRight: const Radius.circular(40.0),
-                      ),
-                      color: const Color(0xffbe9f71),
-                    ),
-                    height: 50,
-                    width: 300,
-                    child: Center(child: Text('Sign In', textScaleFactor: 1.5, style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),))
+                    child: Center(child: Text('Already have an account, Sign In', style: TextStyle(fontWeight: FontWeight.bold),))
                 ),
               ],
             ),
           ),
         )
+    );
+  }
+
+  newLoginPageBody() {
+    return ListView(
+      children: [
+        Container(
+          height: 160,
+            child: Align(
+                alignment: Alignment.center,
+                child: Image.asset('assets/img/registration.png'))),
+        Padding(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            children: [
+              Center(child: Text('Account Registration', textScaleFactor: 1.7,
+                style: TextStyle(fontWeight: FontWeight.bold),),),
+              SizedBox(height: 10,),
+              TextField(
+                controller: _usernameController,
+                decoration: InputDecoration(
+                  labelText: 'Name',
+                  hintText: 'Type your name',
+                  hintStyle: Theme.of(context).textTheme.body1.merge(
+                    TextStyle(color: Theme.of(context).accentColor),
+                  ),
+                  suffixIcon: Icon(Icons.person, color: Colors.black,),
+                ),
+              ),
+              SizedBox(height: 10,),
+              TextField(
+                controller: _emailController,
+                decoration: InputDecoration(
+                  labelText: 'Email Address',
+                  hintText: 'Type your email address',
+                  hintStyle: Theme.of(context).textTheme.body1.merge(
+                    TextStyle(color: Theme.of(context).accentColor),
+                  ),
+                  suffixIcon: Icon(Icons.email, color: Colors.black,),
+                ),
+              ),
+              SizedBox(height: 10,),
+              TextField(
+                controller: _passwordController,
+                obscureText: true,
+                decoration: InputDecoration(
+                  labelText: 'Password',
+                  suffixIcon: Icon(Icons.lock, color: Colors.black,),
+                  hintText: 'Type your password',
+                  hintStyle: Theme.of(context).textTheme.body1.merge(
+                    TextStyle(color: Theme.of(context).accentColor),
+                  ),
+                ),
+              ),
+              SizedBox(height: 10,),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  _isLoading ?
+                  CommonUtils.showProgressBar() :
+                  MaterialButton(
+                    elevation: 0,
+                    minWidth: 160,
+                    height: 40,
+                    color: Color(0xffF46665),
+                    onPressed: () {
+                      FocusScope.of(context).unfocus();
+                      _register();
+                      print('Registration tapped');
+                    },
+                    child: Text('Registration', textScaleFactor: 1.2,),
+                  )
+                ],
+              ),
+            ],
+          ),
+        ),
+        Image.asset('assets/img/login_registration_bottom.png')
+      ],
     );
   }
 

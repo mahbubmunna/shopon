@@ -50,6 +50,30 @@ class _HomeSliderWidgetState extends State<HomeSliderWidget> {
   }
 
   _buildSliders(SliderResponse data) {
+    List<Widget> _images = data.results.map((slide) {
+      print("Slide  ${slide.description}");
+      return Builder(
+        builder: (BuildContext context) {
+          return Container(
+            margin:
+            const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+            height: 200,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: CachedNetworkImageProvider('$public_path_url${slide.image}'),
+                  fit: BoxFit.cover),
+              borderRadius: BorderRadius.circular(6),
+              boxShadow: [
+                BoxShadow(
+                    color: Theme.of(context).hintColor.withOpacity(0.2),
+                    offset: Offset(0, 4),
+                    blurRadius: 9)
+              ],
+            ),
+          );
+        },
+      );
+    }).toList();
 
     data.results.map((element) {
       print("Slider   ${element.image}");
@@ -69,30 +93,7 @@ class _HomeSliderWidgetState extends State<HomeSliderWidget> {
               _current = index;
             });
           },
-          items: data.results.map((slide) {
-            print("Slide  ${slide.description}");
-            return Builder(
-              builder: (BuildContext context) {
-                return Container(
-                  margin:
-                      const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-                  height: 200,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: CachedNetworkImageProvider('$public_path_url${slide.image}'),
-                        fit: BoxFit.cover),
-                    borderRadius: BorderRadius.circular(6),
-                    boxShadow: [
-                      BoxShadow(
-                          color: Theme.of(context).hintColor.withOpacity(0.2),
-                          offset: Offset(0, 4),
-                          blurRadius: 9)
-                    ],
-                  ),
-                );
-              },
-            );
-          }).toList(),
+          items: _images
         ),
         Positioned(
           bottom: 25,
@@ -102,13 +103,11 @@ class _HomeSliderWidgetState extends State<HomeSliderWidget> {
             mainAxisAlignment: MainAxisAlignment.end,
             children: data.results.map((prefix0.Slider slide) {
               return Container(
-                width: 20.0,
-                height: 3.0,
+                width: 8.0,
+                height: 8.0,
                 margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(8),
-                    ),
+                    shape: BoxShape.circle,
                     color: _current == data.results.indexOf(slide)
                         ? Theme.of(context).hintColor
                         : Theme.of(context).hintColor.withOpacity(0.3)),

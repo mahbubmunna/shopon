@@ -20,8 +20,28 @@ class _PhoneNumberScreenState extends State<PhoneNumberScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: registerPageBody(),
-      bottomNavigationBar: registerPageBottom(),
+      body: newRegisterPageBody(),
+      bottomNavigationBar: newBottomBody(),
+    );
+  }
+
+  newBottomBody() {
+    return BottomAppBar(
+        color: Colors.transparent,
+        elevation: 0,
+        child: FlatButton(
+          onPressed: () {Navigator.pop(context);},
+          child: Container(
+            height: 30,
+            child: Column(
+              children: <Widget>[
+                Container(
+                    child: Center(child: Text('Already have an account, Sign In', style: TextStyle(fontWeight: FontWeight.bold),))
+                ),
+              ],
+            ),
+          ),
+        )
     );
   }
 
@@ -52,6 +72,63 @@ class _PhoneNumberScreenState extends State<PhoneNumberScreen> {
             ),
           ),
         )
+    );
+  }
+
+  newRegisterPageBody() {
+    final List<String> countryFilter = ['SA'];
+    return ListView(
+      children: [
+        Image.asset('assets/img/login.png', height: 200, width: 100,),
+        Padding(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            children: [
+              Center(child: Text('Account Registration', textScaleFactor: 1.7,
+                style: TextStyle(fontWeight: FontWeight.bold),),),
+              SizedBox(height: 10,),
+              TextField(
+                controller: _phoneController,
+                keyboardType: TextInputType.number,
+                decoration: InputDecoration(
+                  prefixIcon: Padding(
+                    padding: const EdgeInsets.only(left:8.0),
+                    child: CountryCodePicker(
+                      textStyle: TextStyle(color: Colors.black),
+                      countryFilter: countryFilter,
+                    ),
+                  ),
+                  labelText: 'Mobile Number',
+                  labelStyle: TextStyle(
+                      color: Colors.black
+                  ),
+                ),
+              ),
+              SizedBox(height: 10,),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  _isLoading ?
+                  CommonUtils.showProgressBar() :
+                  MaterialButton(
+                    elevation: 0,
+                    minWidth: 160,
+                    height: 40,
+                    color: Color(0xffF46665),
+                    onPressed: () {
+                      FocusScope.of(context).unfocus();
+                      print('Otp Tapped'); _register();
+                    },
+                    child: Text('Send OTP', textScaleFactor: 1.2, ),
+                  )
+                ],
+              ),
+            ],
+          ),
+        ),
+        SizedBox(height: 10,),
+        Image.asset('assets/img/login_registration_bottom.png')
+      ],
     );
   }
 

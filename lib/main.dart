@@ -221,6 +221,9 @@ class _MyAppState extends State<MyApp> {
           accentColor: config.Colors().mainColor(1),
           focusColor: config.Colors().accentColor(1),
           hintColor: config.Colors().secondColor(1),
+          inputDecorationTheme: InputDecorationTheme(border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(12))),
+          focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(12))),
+          labelStyle: TextStyle(color: Colors.black), suffixStyle: TextStyle(color: Colors.black)),
           textTheme: TextTheme(
             button: TextStyle(color: Colors.white),
             headline: TextStyle(

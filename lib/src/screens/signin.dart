@@ -41,196 +41,103 @@ class _SignInWidgetState extends State<SignInWidget> {
 
     return Scaffold(
       backgroundColor: Colors.white,
-      body: loginPageBody(),
-      bottomNavigationBar: loginPageBottom(),
+      body: newLoginPageBody(),
+      bottomNavigationBar: newBottomBody(),
     );
   }
 
-  loginPageBottom() {
-    return BottomAppBar(
-        color: Colors.transparent,
-        elevation: 0,
-        child: FlatButton(
-          onPressed: () {Navigator.push(context,
-              PageTransition(
-                  type: PageTransitionType.downToUp,
-                  child: PhoneNumberScreen()));},
-          child: Container(
-            height: 75,
-            child: Column(
-              children: <Widget>[
-                Icon(Icons.expand_less),
-                Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                        topLeft: const Radius.circular(40.0),
-                        topRight: const Radius.circular(40.0),
-                      ),
-                      color: const Color(0xffbe9f71),
-                    ),
-                    height: 50,
-                    width: 300,
-                    child: Center(child: Text('SignUp', textScaleFactor: 1.5, style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),))
-                ),
-              ],
-            ),
-          ),
-        )
-    );
-  }
+  // loginPageBottom() {
+  //   return BottomAppBar(
+  //       color: Colors.transparent,
+  //       elevation: 0,
+  //       child: FlatButton(
+  //         onPressed: () {Navigator.push(context,
+  //             PageTransition(
+  //                 type: PageTransitionType.downToUp,
+  //                 child: PhoneNumberScreen()));},
+  //         child: Container(
+  //           height: 75,
+  //           child: Column(
+  //             children: <Widget>[
+  //               Icon(Icons.expand_less),
+  //               Container(
+  //                   decoration: BoxDecoration(
+  //                     borderRadius: BorderRadius.only(
+  //                       topLeft: const Radius.circular(40.0),
+  //                       topRight: const Radius.circular(40.0),
+  //                     ),
+  //                     color: const Color(0xffbe9f71),
+  //                   ),
+  //                   height: 50,
+  //                   width: 300,
+  //                   child: Center(child: Text('SignUp', textScaleFactor: 1.5, style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),))
+  //               ),
+  //             ],
+  //           ),
+  //         ),
+  //       )
+  //   );
+  // }
 
-  loginPageBody() {
+  newLoginPageBody() {
     return ListView(
-      children: <Widget>[
-        SizedBox(height: 60,),
-        Container(
-          margin: EdgeInsets.symmetric(horizontal: 20),
-          height: 48.0,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(18.0),
-            color: const Color(0xffbe9f71),
-            border: Border.all(width: 1.0, color: const Color(0xffe4dcd1)),
-          ),
-          child: Center(
-            child: Text('Welcome to Sunbulahome', textScaleFactor: 1.7,
-              style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white
-              ),),
-          ),
-        ),
-        SizedBox(height: 60,),
-        Container(
-          margin: EdgeInsets.symmetric(horizontal: 30),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(26.0),
-            color: const Color(0xffe4dcd1),
-            border: Border.all(width: 1.0, color: const Color(0xffe4dcd1)),
-            boxShadow: [
-              BoxShadow(
-                color: const Color(0xffbe9f71),
-                offset: Offset(0, 3),
-                blurRadius: 6,
-              ),
-            ],
-          ),
+      children: [
+        Image.asset('assets/img/login.png', height: 200, width: 100,),
+        Padding(
+          padding: const EdgeInsets.all(20),
           child: Column(
-            children: <Widget>[
-              Center(
-                child: Container(
-                  width: 300.0,
-                  height: 110.0,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(51.0),
-                    image: DecorationImage(
-                      image: const AssetImage('assets/launcher/icon.png'),
-                      fit: BoxFit.fill,
-                    ),
+            children: [
+              Center(child: Text('Account Login', textScaleFactor: 1.7,
+                  style: TextStyle(fontWeight: FontWeight.bold),),),
+              SizedBox(height: 10,),
+              TextField(
+                controller: _emailController,
+                decoration: InputDecoration(
+                  labelText: 'Username',
+                  errorText:
+                  _emailValid ? 'Not an email address' : null,
+                  hintText: 'Type your email address',
+                  hintStyle: Theme.of(context).textTheme.body1.merge(
+                    TextStyle(color: Theme.of(context).accentColor),
+                  ),
+                    suffixIcon: Icon(Icons.person, color: Colors.black,),
+                ),
+              ),
+              SizedBox(height: 10,),
+              TextField(
+                controller: _passwordController,
+                obscureText: true,
+                decoration: InputDecoration(
+                    labelText: 'Password',
+                    suffixIcon: Icon(Icons.lock, color: Colors.black,),
+                  errorText:
+                  _passwordValid ? 'At least 6 character' : null,
+                  hintText: 'Type your password',
+                  hintStyle: Theme.of(context).textTheme.body1.merge(
+                    TextStyle(color: Theme.of(context).accentColor),
                   ),
                 ),
               ),
-              Container(
-                color: Colors.white,
-                child: Column(
-                  children: <Widget>[
-                    SizedBox(height: 20,),
-                    Container(
-                      margin: EdgeInsets.symmetric(horizontal: 10),
-                      child: TextField(
-                        controller: _emailController,
-                        keyboardType: TextInputType.emailAddress,
-                        decoration: InputDecoration(
-                          prefixIcon: Icon(Icons.email, color: Color(0xffbe9f71),),
-                          labelText: 'Email',
-                          labelStyle: TextStyle(
-                            color: Colors.black
-                          ),
-                          errorText:
-                          _emailValid ? 'Not an email address' : null,
-                          hintText: 'Type your email address',
-                          hintStyle: Theme.of(context).textTheme.body1.merge(
-                            TextStyle(color: Theme.of(context).accentColor),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Color(0xffbe9f71), width: 2.0),
-                              borderRadius: BorderRadius.all(Radius.circular(32))
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Color(0xff707070), width: 2.0),
-                              borderRadius: BorderRadius.all(Radius.circular(32))
-                          ),
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 10,),
-                    Container(
-                      margin: EdgeInsets.symmetric(horizontal: 10),
-                      child: TextField(
-                        controller: _passwordController,
-                        obscureText: !_showPassword,
-                        style: TextStyle(color: Theme.of(context).accentColor),
-                        keyboardType: TextInputType.text,
-                        decoration: InputDecoration(
-                          prefixIcon: Icon(Icons.lock, color: Color(0xffbe9f71),),
-                          labelText: 'Password',
-                          labelStyle: TextStyle(
-                              color: Colors.black
-                          ),
-                          suffixIcon: IconButton(
-                            onPressed: () {
-                              setState(() {
-                                _showPassword = !_showPassword;
-                              });
-                            },
-                            color:
-                            Theme.of(context).accentColor.withOpacity(0.4),
-                            icon: Icon(_showPassword
-                                ? Icons.visibility_off
-                                : Icons.visibility),
-                          ),
-                          errorText:
-                          _passwordValid ? 'At least 6 character' : null,
-                          hintText: 'Type your password please',
-                          hintStyle: Theme.of(context).textTheme.body1.merge(
-                            TextStyle(color: Theme.of(context).accentColor),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Color(0xffbe9f71), width: 2.0),
-                              borderRadius: BorderRadius.all(Radius.circular(32))
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Color(0xff707070), width: 2.0),
-                              borderRadius: BorderRadius.all(Radius.circular(32))
-                          ),
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 10,),
-                    FlatButton(
-                      textColor: Color(0xff1d1d1d),
-                      onPressed: () {
-                        print('forgot tapped');
-                        Navigator.of(context).pushNamed('/ForgotPassword');
-                        },
-                      child: Text(
-                          'Forgot password? Click here'
-                      ),
-                    ),
-                    SizedBox(height: 10,)
-                  ],
-                ),
-              ),
-              _isLoading
-                  ? CommonUtils.showProgressBar()
-                  : Container(
-                padding: EdgeInsets.symmetric(vertical: 10),
-                child: MaterialButton(
-                    textColor: Colors.white,
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                    height: 40,
+              SizedBox(height: 10,),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  FlatButton(
+                    onPressed: () {
+                      print('forgot tapped');
+                      Navigator.of(context).pushNamed('/ForgotPassword');
+                    },
+                    child: Text('Forgot Password'),
+                  ),
+                  SizedBox(width: 20,),
+                  _isLoading ?
+                  CommonUtils.showProgressBar() :
+                  MaterialButton(
+                    elevation: 0,
                     minWidth: 160,
-                    color: const Color(0xffbe9f71),
-                    onPressed: (){
+                    height: 40,
+                    color: Color(0xffF46665),
+                    onPressed: () {
                       FocusScope.of(context).unfocus();
                       print('Login tapped');
                       !_emailController.text.contains('@')
@@ -242,190 +149,391 @@ class _SignInWidgetState extends State<SignInWidget> {
                       setState(() {
                         if (!_emailValid && !_passwordValid) _login();
                       });
-                      },
-                    child: Text('Login', textScaleFactor: 1.3,)
-                ),
-              )
+                    },
+                    child: Text('Login', textScaleFactor: 1.2,),
+                  )
+                ],
+              ),
             ],
           ),
         ),
+        Image.asset('assets/img/login_registration_bottom.png')
       ],
     );
   }
 
-  previousLoginPage() {
-    return SingleChildScrollView(
-      child: Column(
-        children: <Widget>[
-          Stack(
-            children: <Widget>[
-              Container(
-                width: double.infinity,
-                padding: EdgeInsets.symmetric(vertical: 30, horizontal: 20),
-                margin: EdgeInsets.symmetric(vertical: 65, horizontal: 50),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: Theme.of(context).primaryColor.withOpacity(0.6),
-                ),
-              ),
-              Container(
-                width: double.infinity,
-                padding: EdgeInsets.symmetric(vertical: 30, horizontal: 30),
-                margin: EdgeInsets.symmetric(vertical: 85, horizontal: 20),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: Theme.of(context).primaryColor,
-                    boxShadow: [
-                      BoxShadow(
-                          color: Theme.of(context).hintColor.withOpacity(0.2),
-                          offset: Offset(0, 10),
-                          blurRadius: 20)
-                    ]),
-                child: Column(
-                  children: <Widget>[
-                    SizedBox(height: 25),
-                    Text('Sign In',
-                        style: Theme.of(context).textTheme.display3),
-                    SizedBox(height: 20),
-                    new TextField(
-                      controller: _emailController,
-                      style: TextStyle(color: Theme.of(context).accentColor),
-                      keyboardType: TextInputType.emailAddress,
-                      decoration: new InputDecoration(
-                        errorText:
-                        _emailValid ? 'Not an email address' : null,
-                        hintText: 'Email Address',
-                        hintStyle: Theme.of(context).textTheme.body1.merge(
-                          TextStyle(color: Theme.of(context).accentColor),
-                        ),
-                        enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
-                                color: Theme.of(context)
-                                    .accentColor
-                                    .withOpacity(0.2))),
-                        focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
-                                color: Theme.of(context).accentColor)),
-                        prefixIcon: Icon(
-                          UiIcons.envelope,
-                          color: Theme.of(context).accentColor,
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 20),
-                    new TextField(
-                      controller: _passwordController,
-                      style: TextStyle(color: Theme.of(context).accentColor),
-                      keyboardType: TextInputType.text,
-                      obscureText: !_showPassword,
-                      decoration: new InputDecoration(
-                        errorText:
-                        _passwordValid ? 'At least 6 character' : null,
-                        hintText: 'Password',
-                        hintStyle: Theme.of(context).textTheme.body1.merge(
-                          TextStyle(color: Theme.of(context).accentColor),
-                        ),
-                        enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
-                                color: Theme.of(context)
-                                    .accentColor
-                                    .withOpacity(0.2))),
-                        focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
-                                color: Theme.of(context).accentColor)),
-                        prefixIcon: Icon(
-                          UiIcons.padlock_1,
-                          color: Theme.of(context).accentColor,
-                        ),
-                        suffixIcon: IconButton(
-                          onPressed: () {
-                            setState(() {
-                              _showPassword = !_showPassword;
-                            });
-                          },
-                          color:
-                          Theme.of(context).accentColor.withOpacity(0.4),
-                          icon: Icon(_showPassword
-                              ? Icons.visibility_off
-                              : Icons.visibility),
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 20),
-                    FlatButton(
-                      onPressed: () {
-                        Navigator.of(context).pushNamed('/ForgotPassword');
-                      },
-                      child: Text(
-                        'Forgot your password ?',
-                        style: Theme.of(context).textTheme.body1,
-                      ),
-                    ),
-                    SizedBox(height: 30),
-                    _isLoading
-                        ? CommonUtils.showProgressBar()
-                        : FlatButton(
-                      padding: EdgeInsets.symmetric(
-                          vertical: 12, horizontal: 70),
-                      onPressed: () {
-                        // 2 number refer the index of Home page
-                        //Navigator.of(context).pushNamed('/Tabs', arguments: 2);
-                        //Navigator.of(context).pushNamedAndRemoveUntil('/Tabs', ModalRoute.withName('/'), arguments: 2);
-                        !_emailController.text.contains('@')
-                            ? _emailValid = true
-                            : _emailValid = false;
-                        !(_passwordController.text.length >= 6)
-                            ? _passwordValid = true
-                            : _passwordValid = false;
-                        setState(() {
-                          if (!_emailValid && !_passwordValid) _login();
-                        });
-                      },
-                      child: Text(
-                        'Login',
-                        style: Theme.of(context).textTheme.title.merge(
-                          TextStyle(
-                              color:
-                              Theme.of(context).primaryColor),
-                        ),
-                      ),
-                      color: Theme.of(context).accentColor,
-                      shape: StadiumBorder(),
-                    ),
-                    SizedBox(height: 50),
-                    Text(
-                      'Or using social media',
-                      style: Theme.of(context).textTheme.body1,
-                    ),
-                    SizedBox(height: 20),
-                    new SocialMediaWidget()
-                  ],
-                ),
-              ),
-            ],
-          ),
-          FlatButton(
-            onPressed: () {
-              Navigator.of(context).pushNamed('/SignUp');
+  newBottomBody() {
+    return BottomAppBar(
+        color: Colors.transparent,
+        elevation: 0,
+        child: FlatButton(
+          onPressed: () {
+            Navigator.push(context,
+              PageTransition(
+                  type: PageTransitionType.downToUp,
+                  child: PhoneNumberScreen()));
             },
-            child: RichText(
-              text: TextSpan(
-                style: Theme.of(context).textTheme.title.merge(
-                  TextStyle(color: Theme.of(context).primaryColor),
+          child: Container(
+            height: 30,
+            child: Column(
+              children: <Widget>[
+                Container(
+                    child: Center(child: Text('Don\'t have an account, Sign Up', style: TextStyle(fontWeight: FontWeight.bold),))
                 ),
-                children: [
-                  TextSpan(text: 'Don\'t have an account ?'),
-                  TextSpan(
-                      text: ' Sign Up',
-                      style: TextStyle(fontWeight: FontWeight.w700)),
-                ],
-              ),
+              ],
             ),
           ),
-        ],
-      ),
+        )
     );
   }
+
+  // loginPageBody() {
+  //   return ListView(
+  //     children: <Widget>[
+  //       SizedBox(height: 60,),
+  //       Container(
+  //         margin: EdgeInsets.symmetric(horizontal: 20),
+  //         height: 48.0,
+  //         decoration: BoxDecoration(
+  //           borderRadius: BorderRadius.circular(18.0),
+  //           color: const Color(0xffbe9f71),
+  //           border: Border.all(width: 1.0, color: const Color(0xffe4dcd1)),
+  //         ),
+  //         child: Center(
+  //           child: Text('Welcome to Sunbulahome', textScaleFactor: 1.7,
+  //             style: TextStyle(
+  //                 fontWeight: FontWeight.bold,
+  //                 color: Colors.white
+  //             ),),
+  //         ),
+  //       ),
+  //       SizedBox(height: 60,),
+  //       Container(
+  //         margin: EdgeInsets.symmetric(horizontal: 30),
+  //         decoration: BoxDecoration(
+  //           borderRadius: BorderRadius.circular(26.0),
+  //           color: const Color(0xffe4dcd1),
+  //           border: Border.all(width: 1.0, color: const Color(0xffe4dcd1)),
+  //           boxShadow: [
+  //             BoxShadow(
+  //               color: const Color(0xffbe9f71),
+  //               offset: Offset(0, 3),
+  //               blurRadius: 6,
+  //             ),
+  //           ],
+  //         ),
+  //         child: Column(
+  //           children: <Widget>[
+  //             Center(
+  //               child: Container(
+  //                 width: 300.0,
+  //                 height: 110.0,
+  //                 decoration: BoxDecoration(
+  //                   borderRadius: BorderRadius.circular(51.0),
+  //                   image: DecorationImage(
+  //                     image: const AssetImage('assets/launcher/icon.png'),
+  //                     fit: BoxFit.fill,
+  //                   ),
+  //                 ),
+  //               ),
+  //             ),
+  //             Container(
+  //               color: Colors.white,
+  //               child: Column(
+  //                 children: <Widget>[
+  //                   SizedBox(height: 20,),
+  //                   Container(
+  //                     margin: EdgeInsets.symmetric(horizontal: 10),
+  //                     child: TextField(
+  //                       controller: _emailController,
+  //                       keyboardType: TextInputType.emailAddress,
+  //                       decoration: InputDecoration(
+  //                         prefixIcon: Icon(Icons.email, color: Color(0xffbe9f71),),
+  //                         labelText: 'Email',
+  //                         labelStyle: TextStyle(
+  //                           color: Colors.black
+  //                         ),
+  //                         errorText:
+  //                         _emailValid ? 'Not an email address' : null,
+  //                         hintText: 'Type your email address',
+  //                         hintStyle: Theme.of(context).textTheme.body1.merge(
+  //                           TextStyle(color: Theme.of(context).accentColor),
+  //                         ),
+  //                         focusedBorder: OutlineInputBorder(
+  //                             borderSide: BorderSide(color: Color(0xffbe9f71), width: 2.0),
+  //                             borderRadius: BorderRadius.all(Radius.circular(32))
+  //                         ),
+  //                         enabledBorder: OutlineInputBorder(
+  //                             borderSide: BorderSide(color: Color(0xff707070), width: 2.0),
+  //                             borderRadius: BorderRadius.all(Radius.circular(32))
+  //                         ),
+  //                       ),
+  //                     ),
+  //                   ),
+  //                   SizedBox(height: 10,),
+  //                   Container(
+  //                     margin: EdgeInsets.symmetric(horizontal: 10),
+  //                     child: TextField(
+  //                       controller: _passwordController,
+  //                       obscureText: !_showPassword,
+  //                       style: TextStyle(color: Theme.of(context).accentColor),
+  //                       keyboardType: TextInputType.text,
+  //                       decoration: InputDecoration(
+  //                         prefixIcon: Icon(Icons.lock, color: Color(0xffbe9f71),),
+  //                         labelText: 'Password',
+  //                         labelStyle: TextStyle(
+  //                             color: Colors.black
+  //                         ),
+  //                         suffixIcon: IconButton(
+  //                           onPressed: () {
+  //                             setState(() {
+  //                               _showPassword = !_showPassword;
+  //                             });
+  //                           },
+  //                           color:
+  //                           Theme.of(context).accentColor.withOpacity(0.4),
+  //                           icon: Icon(_showPassword
+  //                               ? Icons.visibility_off
+  //                               : Icons.visibility),
+  //                         ),
+  //                         errorText:
+  //                         _passwordValid ? 'At least 6 character' : null,
+  //                         hintText: 'Type your password please',
+  //                         hintStyle: Theme.of(context).textTheme.body1.merge(
+  //                           TextStyle(color: Theme.of(context).accentColor),
+  //                         ),
+  //                         focusedBorder: OutlineInputBorder(
+  //                             borderSide: BorderSide(color: Color(0xffbe9f71), width: 2.0),
+  //                             borderRadius: BorderRadius.all(Radius.circular(32))
+  //                         ),
+  //                         enabledBorder: OutlineInputBorder(
+  //                             borderSide: BorderSide(color: Color(0xff707070), width: 2.0),
+  //                             borderRadius: BorderRadius.all(Radius.circular(32))
+  //                         ),
+  //                       ),
+  //                     ),
+  //                   ),
+  //                   SizedBox(height: 10,),
+  //                   FlatButton(
+  //                     textColor: Color(0xff1d1d1d),
+  //                     onPressed: () {
+  //                       print('forgot tapped');
+  //                       Navigator.of(context).pushNamed('/ForgotPassword');
+  //                       },
+  //                     child: Text(
+  //                         'Forgot password? Click here'
+  //                     ),
+  //                   ),
+  //                   SizedBox(height: 10,)
+  //                 ],
+  //               ),
+  //             ),
+  //             _isLoading
+  //                 ? CommonUtils.showProgressBar()
+  //                 : Container(
+  //               padding: EdgeInsets.symmetric(vertical: 10),
+  //               child: MaterialButton(
+  //                   textColor: Colors.white,
+  //                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+  //                   height: 40,
+  //                   minWidth: 160,
+  //                   color: const Color(0xffbe9f71),
+  //                   onPressed: (){
+  //                     FocusScope.of(context).unfocus();
+  //                     print('Login tapped');
+  //                     !_emailController.text.contains('@')
+  //                         ? _emailValid = true
+  //                         : _emailValid = false;
+  //                     !(_passwordController.text.length >= 6)
+  //                         ? _passwordValid = true
+  //                         : _passwordValid = false;
+  //                     setState(() {
+  //                       if (!_emailValid && !_passwordValid) _login();
+  //                     });
+  //                     },
+  //                   child: Text('Login', textScaleFactor: 1.3,)
+  //               ),
+  //             )
+  //           ],
+  //         ),
+  //       ),
+  //     ],
+  //   );
+  // }
+  //
+  // previousLoginPage() {
+  //   return SingleChildScrollView(
+  //     child: Column(
+  //       children: <Widget>[
+  //         Stack(
+  //           children: <Widget>[
+  //             Container(
+  //               width: double.infinity,
+  //               padding: EdgeInsets.symmetric(vertical: 30, horizontal: 20),
+  //               margin: EdgeInsets.symmetric(vertical: 65, horizontal: 50),
+  //               decoration: BoxDecoration(
+  //                 borderRadius: BorderRadius.circular(20),
+  //                 color: Theme.of(context).primaryColor.withOpacity(0.6),
+  //               ),
+  //             ),
+  //             Container(
+  //               width: double.infinity,
+  //               padding: EdgeInsets.symmetric(vertical: 30, horizontal: 30),
+  //               margin: EdgeInsets.symmetric(vertical: 85, horizontal: 20),
+  //               decoration: BoxDecoration(
+  //                   borderRadius: BorderRadius.circular(20),
+  //                   color: Theme.of(context).primaryColor,
+  //                   boxShadow: [
+  //                     BoxShadow(
+  //                         color: Theme.of(context).hintColor.withOpacity(0.2),
+  //                         offset: Offset(0, 10),
+  //                         blurRadius: 20)
+  //                   ]),
+  //               child: Column(
+  //                 children: <Widget>[
+  //                   SizedBox(height: 25),
+  //                   Text('Sign In',
+  //                       style: Theme.of(context).textTheme.display3),
+  //                   SizedBox(height: 20),
+  //                   new TextField(
+  //                     controller: _emailController,
+  //                     style: TextStyle(color: Theme.of(context).accentColor),
+  //                     keyboardType: TextInputType.emailAddress,
+  //                     decoration: new InputDecoration(
+  //                       errorText:
+  //                       _emailValid ? 'Not an email address' : null,
+  //                       hintText: 'Email Address',
+  //                       hintStyle: Theme.of(context).textTheme.body1.merge(
+  //                         TextStyle(color: Theme.of(context).accentColor),
+  //                       ),
+  //                       enabledBorder: UnderlineInputBorder(
+  //                           borderSide: BorderSide(
+  //                               color: Theme.of(context)
+  //                                   .accentColor
+  //                                   .withOpacity(0.2))),
+  //                       focusedBorder: UnderlineInputBorder(
+  //                           borderSide: BorderSide(
+  //                               color: Theme.of(context).accentColor)),
+  //                       prefixIcon: Icon(
+  //                         UiIcons.envelope,
+  //                         color: Theme.of(context).accentColor,
+  //                       ),
+  //                     ),
+  //                   ),
+  //                   SizedBox(height: 20),
+  //                   new TextField(
+  //                     controller: _passwordController,
+  //                     style: TextStyle(color: Theme.of(context).accentColor),
+  //                     keyboardType: TextInputType.text,
+  //                     obscureText: !_showPassword,
+  //                     decoration: new InputDecoration(
+  //                       errorText:
+  //                       _passwordValid ? 'At least 6 character' : null,
+  //                       hintText: 'Password',
+  //                       hintStyle: Theme.of(context).textTheme.body1.merge(
+  //                         TextStyle(color: Theme.of(context).accentColor),
+  //                       ),
+  //                       enabledBorder: UnderlineInputBorder(
+  //                           borderSide: BorderSide(
+  //                               color: Theme.of(context)
+  //                                   .accentColor
+  //                                   .withOpacity(0.2))),
+  //                       focusedBorder: UnderlineInputBorder(
+  //                           borderSide: BorderSide(
+  //                               color: Theme.of(context).accentColor)),
+  //                       prefixIcon: Icon(
+  //                         UiIcons.padlock_1,
+  //                         color: Theme.of(context).accentColor,
+  //                       ),
+  //                       suffixIcon: IconButton(
+  //                         onPressed: () {
+  //                           setState(() {
+  //                             _showPassword = !_showPassword;
+  //                           });
+  //                         },
+  //                         color:
+  //                         Theme.of(context).accentColor.withOpacity(0.4),
+  //                         icon: Icon(_showPassword
+  //                             ? Icons.visibility_off
+  //                             : Icons.visibility),
+  //                       ),
+  //                     ),
+  //                   ),
+  //                   SizedBox(height: 20),
+  //                   FlatButton(
+  //                     onPressed: () {
+  //                       Navigator.of(context).pushNamed('/ForgotPassword');
+  //                     },
+  //                     child: Text(
+  //                       'Forgot your password ?',
+  //                       style: Theme.of(context).textTheme.body1,
+  //                     ),
+  //                   ),
+  //                   SizedBox(height: 30),
+  //                   _isLoading
+  //                       ? CommonUtils.showProgressBar()
+  //                       : FlatButton(
+  //                     padding: EdgeInsets.symmetric(
+  //                         vertical: 12, horizontal: 70),
+  //                     onPressed: () {
+  //                       // 2 number refer the index of Home page
+  //                       //Navigator.of(context).pushNamed('/Tabs', arguments: 2);
+  //                       //Navigator.of(context).pushNamedAndRemoveUntil('/Tabs', ModalRoute.withName('/'), arguments: 2);
+  //                       !_emailController.text.contains('@')
+  //                           ? _emailValid = true
+  //                           : _emailValid = false;
+  //                       !(_passwordController.text.length >= 6)
+  //                           ? _passwordValid = true
+  //                           : _passwordValid = false;
+  //                       setState(() {
+  //                         if (!_emailValid && !_passwordValid) _login();
+  //                       });
+  //                     },
+  //                     child: Text(
+  //                       'Login',
+  //                       style: Theme.of(context).textTheme.title.merge(
+  //                         TextStyle(
+  //                             color:
+  //                             Theme.of(context).primaryColor),
+  //                       ),
+  //                     ),
+  //                     color: Theme.of(context).accentColor,
+  //                     shape: StadiumBorder(),
+  //                   ),
+  //                   SizedBox(height: 50),
+  //                   Text(
+  //                     'Or using social media',
+  //                     style: Theme.of(context).textTheme.body1,
+  //                   ),
+  //                   SizedBox(height: 20),
+  //                   new SocialMediaWidget()
+  //                 ],
+  //               ),
+  //             ),
+  //           ],
+  //         ),
+  //         FlatButton(
+  //           onPressed: () {
+  //             Navigator.of(context).pushNamed('/SignUp');
+  //           },
+  //           child: RichText(
+  //             text: TextSpan(
+  //               style: Theme.of(context).textTheme.title.merge(
+  //                 TextStyle(color: Theme.of(context).primaryColor),
+  //               ),
+  //               children: [
+  //                 TextSpan(text: 'Don\'t have an account ?'),
+  //                 TextSpan(
+  //                     text: ' Sign Up',
+  //                     style: TextStyle(fontWeight: FontWeight.w700)),
+  //               ],
+  //             ),
+  //           ),
+  //         ),
+  //       ],
+  //     ),
+  //   );
+  // }
 
   _login() async {
     setState(() {
