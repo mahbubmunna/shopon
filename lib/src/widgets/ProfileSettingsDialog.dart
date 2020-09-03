@@ -7,6 +7,7 @@ import 'package:smartcommercebd/src/screens/signin.dart';
 import 'package:smartcommercebd/src/screens/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart' show DateFormat;
+import 'package:smartcommercebd/src/utils/common_utils.dart';
 
 class ProfileSettingsDialog extends StatefulWidget {
   User user;
@@ -21,6 +22,10 @@ class ProfileSettingsDialog extends StatefulWidget {
 class _ProfileSettingsDialogState extends State<ProfileSettingsDialog> {
   GlobalKey<FormState> _profileSettingsFormKey = new GlobalKey<FormState>();
   final userNameController = TextEditingController(text: appUser.name);
+  final emailController = TextEditingController(text: appUser.email);
+  final addressController = TextEditingController(text: appUser.address !=null ? appUser.address : '');
+  final areaController = TextEditingController(text: appUser.area !=null ? appUser.area : '' );
+  final cityController = TextEditingController(text: appUser.country !=null ? appUser.country : '');
 
   @override
   Widget build(BuildContext context) {
@@ -59,13 +64,32 @@ class _ProfileSettingsDialogState extends State<ProfileSettingsDialog> {
                           }),
                         ),
                         new TextFormField(
+                          controller: emailController,
                           style: TextStyle(color: Theme.of(context).hintColor),
                           keyboardType: TextInputType.emailAddress,
                           decoration: getInputDecoration(hintText: 'johndo@gmail.com', labelText: 'Email Address'),
-                          initialValue: widget.user.email,
                           validator: (input) => !input.contains('@') ? 'Not a valid email' : null,
                           onSaved: (input) => widget.user.email = input,
                         ),
+                        new TextFormField(
+                          controller: addressController,
+                          style: TextStyle(color: Theme.of(context).hintColor),
+                          decoration: getInputDecoration(hintText: 'Enter your address', labelText: 'Address'),
+                          onSaved: (input) => widget.user.address = input,
+                        ),
+                        new TextFormField(
+                          controller: areaController,
+                          style: TextStyle(color: Theme.of(context).hintColor),
+                          decoration: getInputDecoration(hintText: 'Enter your area', labelText: 'Area'),
+                          onSaved: (input) => widget.user.area = input,
+                        ),
+                        new TextFormField(
+                          controller: cityController,
+                          style: TextStyle(color: Theme.of(context).hintColor),
+                          decoration: getInputDecoration(hintText: 'Enter your city', labelText: 'City'),
+                          onSaved: (input) => widget.user.city = input,
+                        ),
+
 //                        FormField<String>(
 //                          builder: (FormFieldState<String> state) {
 //                            return DropdownButtonFormField<String>(
@@ -159,8 +183,12 @@ class _ProfileSettingsDialogState extends State<ProfileSettingsDialog> {
   void _submit() async {
     if (_profileSettingsFormKey.currentState.validate()) {
       _profileSettingsFormKey.currentState.save();
-      Map updatedUserData = {
-        'name' : userNameController.text
+      Map<String, dynamic> updatedUserData = {
+        'name' : userNameController.text,
+        'email' : emailController.text,
+        'address': addressController.text,
+        'area' : areaController.text,
+        'country' : cityController.text
       };
       await UserRepository.postUser(updatedUserData).then((response) {
         appUser = response.user;
@@ -171,6 +199,7 @@ class _ProfileSettingsDialogState extends State<ProfileSettingsDialog> {
           dialogType: DialogType.SUCCES,
           body: Text('Saved')
       ).show();
+      closeAwesomeDialog(context);
     }
   }
 }

@@ -75,25 +75,25 @@ class _OtpPageState extends State<OtpPage> {
     });
     print(_otpResponse.statusCode);
     print(_otpResponse.data['message']);
-    if (otp == '123456') return null;
-//    if (_otpResponse.statusCode == 200) {
-//        if (_otpResponse.data['message'] == 'OTP doesn\'t match'){
-//          return 'OTP doesn\'t match';
-//        } if(_otpResponse.data['message'] == 'OTP matched.') {
-//          AwesomeDialog(
-//            context: context,
-//            dialogType: DialogType.SUCCES,
-//            body: Text('Successfully verified')
-//          ).show();
-//          closeAwesomeDialog(context);
-//          return null;
-//        } else {
-//          print(_otpResponse.data['message']);
-//          return 'Unknown error';
-//        }
-//    } else {
-//      return "Something went wrong";
-//    }
+    //if (otp == '123456') return null;
+   if (_otpResponse.statusCode == 200) {
+       if (_otpResponse.data['message'] == 'OTP doesn\'t match'){
+         return 'OTP doesn\'t match';
+       } if(_otpResponse.data['message'] == 'OTP matched.') {
+         AwesomeDialog(
+           context: context,
+           dialogType: DialogType.SUCCES,
+           body: Text('Successfully verified')
+         ).show();
+         closeAwesomeDialog(context);
+         return null;
+       } else {
+         print(_otpResponse.data['message']);
+         return 'Unknown error';
+       }
+   } else {
+     return "Something went wrong";
+   }
   }
 
   _postRegistrationData(String otp) async {
