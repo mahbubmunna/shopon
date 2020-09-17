@@ -1,5 +1,4 @@
 import 'package:smartcommercebd/src/configs/strings.dart';
-import 'package:flutter/material.dart';
 
 class Product {
   String id;

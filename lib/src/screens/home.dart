@@ -130,6 +130,8 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
 
           HomeSliderWidget(),
 
+          inStoreOffers(),
+
           bestSell(),
 
 //          newLaunches(),
@@ -145,6 +147,45 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
     );
 //      ],
 //    );
+  }
+
+  inStoreOffers() {
+    List _cities = ['JEDDAH', 'DAMMAM &\n KHOBAR', 'RIYADH', 'MAKKAH', 'MADINAH', 'ABHA', 'KHAMIS', 'TAIF'];
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        ListTile(
+          contentPadding: EdgeInsets.only(left: 10),
+          leading: Icon(Icons.store),
+          title: Text(
+            'Select store to place order',
+            style: Theme.of(context).textTheme.display1,
+          ),
+        ),
+        SizedBox(
+          height: 90,
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+            children: [
+              for (int index = 1; index <= 8; index++)
+                Container(
+                  height: 90,
+                  width: 200,
+                  child: Stack(
+                    children: [
+                      Image.asset('assets/img/city$index.png'),
+                      Center(
+                        child: Text(_cities[index -1], textScaleFactor: 1.7, style: TextStyle(color: Colors.white),
+                            overflow: TextOverflow.fade,),
+                      )
+                    ],
+                  ),
+                )
+            ],
+          ),
+        )
+      ],
+    );
   }
 
   Column Brands(BuildContext context, BrandsProvider brand_provider) {
@@ -329,12 +370,15 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
 //                                                    size: 18,
 //                                                  ),
                                                   Text(
-                                                    S.of(context).sar+
-                                                    provider
-                                                        .brands_product[index]
-                                                        .price
-                                                        .toString(),
-                                                    style: TextStyle(fontWeight: FontWeight.bold),
+                                                    S.of(context).sar +
+                                                        provider
+                                                            .brands_product[
+                                                                index]
+                                                            .price
+                                                            .toString(),
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.bold),
                                                   )
                                                 ],
                                                 crossAxisAlignment:
@@ -709,9 +753,11 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
 //                                            size: 18,
 //                                          ),
                                           Text(
-                                            S.of(context).sar+bestSell.data[index].price
-                                                .toString(),
-                                            style: TextStyle(fontWeight: FontWeight.bold),
+                                            S.of(context).sar +
+                                                bestSell.data[index].price
+                                                    .toString(),
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold),
                                           )
                                         ],
                                         crossAxisAlignment:
@@ -929,9 +975,11 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
 //                                            size: 18,
 //                                          ),
                                           Text(
-                                            S.of(context).sar+newLaunches.data[index].price
-                                                .toString(),
-                                            style: TextStyle(fontWeight: FontWeight.bold),
+                                            S.of(context).sar +
+                                                newLaunches.data[index].price
+                                                    .toString(),
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold),
                                           )
                                         ],
                                         crossAxisAlignment:

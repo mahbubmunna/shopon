@@ -1,14 +1,22 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:interactive_webview/interactive_webview.dart';
 import 'package:smartcommercebd/config/ui_icons.dart';
 import 'package:smartcommercebd/generated/l10n.dart';
+import 'package:smartcommercebd/src/configs/strings.dart';
 import 'package:smartcommercebd/src/models/route_argument.dart';
+import 'package:smartcommercebd/src/providers/shared_pref_provider.dart';
+import 'package:smartcommercebd/src/repositories/payment_repository.dart';
 import 'package:smartcommercebd/src/screens/splash.dart';
+import 'package:smartcommercebd/src/utils/common_utils.dart';
 import 'package:smartcommercebd/src/widgets/ShoppingCartButtonWidget.dart';
 
 
 class CheckoutWidget extends StatefulWidget {
   final RouteArgument routeArgument;
   double orderPrice;
+
   CheckoutWidget({this.routeArgument}) {
     orderPrice = routeArgument.argumentsList[0] as double;
   }
@@ -118,6 +126,8 @@ class _CheckoutWidgetState extends State<CheckoutWidget>
   }
   @override
   Widget build(BuildContext context) {
+    print('Checkout_test');
+    print(CommonUtils.cart_list.asMap());
 
     return Scaffold(
       appBar: AppBar(
@@ -194,6 +204,7 @@ class _CheckoutWidgetState extends State<CheckoutWidget>
                   //Navigator.of(context).pushNamed('/CheckoutDone');
                   animationOnlinePaymentController.forward();
                   animationCashOnDeliveryController.reverse();
+                  _paymentMethod ='online';
 
                 },
                 padding: EdgeInsets.symmetric(vertical: 12),
@@ -203,10 +214,11 @@ class _CheckoutWidgetState extends State<CheckoutWidget>
                     children:<Widget>[
                       Align(
                         alignment: Alignment(0, 0),
-                        child: Image.asset(
-                          'assets/img/pay_online.png',
-                          height: 28,
-                        ),
+                        child: Text(
+                            'PAY ONLINE',
+                            textScaleFactor: 1.2,
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                            )
                       ),
                       Align(
                         alignment: Alignment(.9, 0),
@@ -239,6 +251,7 @@ class _CheckoutWidgetState extends State<CheckoutWidget>
                   //Navigator.of(context).pushNamed('/CheckoutDone');
                   animationCashOnDeliveryController.forward();
                   animationOnlinePaymentController.reverse();
+                  _paymentMethod = 'cash';
 
                 },
                 padding: EdgeInsets.symmetric(vertical: 12),
@@ -248,9 +261,10 @@ class _CheckoutWidgetState extends State<CheckoutWidget>
                     children:<Widget>[
                       Align(
                         alignment: Alignment(0, 0),
-                        child: Image.asset(
-                          'assets/img/pay_on_delivery.png',
-                          height: 28,
+                        child: Text(
+                          'PAY ON DELIVERY',
+                          textScaleFactor: 1.2,
+                          style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                       ),
                       Align(
@@ -369,7 +383,42 @@ class _CheckoutWidgetState extends State<CheckoutWidget>
                   width: 320,
                   child: FlatButton(
                     onPressed: () {
-                      Navigator.of(context).pushNamed('/CheckoutDone');
+                      
+                      Map shippingInfo = {
+                        'email': appUser.email,
+                        'address': appUser.address,
+                        'city': appUser.city,
+                        'country': appUser.country
+                      };
+
+                      var carts = CommonUtils.payment_cart_list.map((e) => json.decode(e)).toList();
+
+                      print('cartMapTest');
+                      print(carts);
+
+                      Map<String, dynamic> paymentCheckoutBody = {
+                        'shipping_info': shippingInfo,
+                        'payment_method': _paymentMethod,
+                        'locale': 'en',
+                        'cart': carts
+                      };
+                      PaymentCheckoutRepository.postPaymentCheckout(paymentCheckoutBody).then((value){
+                        print('checkout_id');
+                        print(value.paymentCheckout.results.checkoutId);
+                        SharedPrefProvider.clearKey(cart_list_key);
+                        CommonUtils.payment_cart_list.clear();
+                        CommonUtils.cart_list.clear();
+                        if (_paymentMethod == 'cash') {
+                          Navigator.of(context).pushNamed('/CheckoutDone');
+                        } else {
+                          List _arguments = [value.paymentCheckout.results.checkoutId, value.paymentCheckout.results.orderId];
+                          Navigator.of(context).pushNamed('/PaymentView',
+                              arguments: RouteArgument(argumentsList: _arguments)).then((value) {
+                                Navigator.of(context).pushNamedAndRemoveUntil('/Tabs',  ModalRoute.withName('/'), arguments: 0);
+                          });
+                        }
+                      });
+                      //Navigator.of(context).pushNamed('/CheckoutDone');
                     },
                     padding: EdgeInsets.symmetric(vertical: 14),
                     color: Theme.of(context).accentColor,

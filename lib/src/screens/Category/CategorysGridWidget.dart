@@ -45,7 +45,7 @@ class _CategorysGridWidgetState extends State<CategorysGridWidget> {
     return StaggeredGridView.countBuilder(
       controller: _scrollController,
       shrinkWrap: true,
-      padding: EdgeInsets.only(top: 15),
+      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
       crossAxisCount:
           MediaQuery.of(context).orientation == Orientation.portrait ? 3 : 4,
       itemCount: provider.category_list.length,
@@ -66,114 +66,60 @@ class _CategorysGridWidgetState extends State<CategorysGridWidget> {
                       product: category,
                     )));
           },
-          child: Stack(
-            alignment: AlignmentDirectional.topCenter,
-            children: <Widget>[
-              Container(
-                margin: EdgeInsets.all(10),
-                alignment: AlignmentDirectional.topCenter,
-                padding: EdgeInsets.all(20),
-                width: double.infinity,
-                height: 100,
-                decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.7),
-                  borderRadius: BorderRadius.circular(10),
-                  boxShadow: [
-                    BoxShadow(
-                        color: Theme.of(context).hintColor.withOpacity(0.10),
-                        offset: Offset(0, 4),
-                        blurRadius: 10)
-                  ],
-                  /* gradient: LinearGradient(
-                        begin: Alignment.bottomLeft,
-                        end: Alignment.topRight,
-                        colors: [
-                          brand.color,
-                          brand.color,
-                        ])*/
-                ),
-                child: Image.network(
-                  "${public_path_url + category.icon}",
+          child: Card(
+            child: Container(
+              margin: EdgeInsets.all(2),
+              padding: EdgeInsets.all(5),
+              child: Column(
+                children: <Widget>[
+                  Container(
+                    alignment: AlignmentDirectional.topCenter,
+                    padding: EdgeInsets.all(10),
+                    width: double.infinity,
+                    height: 100,
+                    child: Image.network(
+                      "${public_path_url + category.icon}",
 //                  color: Theme.of(context).backgroundColor,
-                  width: 80,
-                  height: 80,
-                ),
-              ),
-              /*   Positioned(
-                right: -50,
-                bottom: -100,
-                child: Container(
-                  width: 220,
-                  height: 220,
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).primaryColor.withOpacity(0.08),
-                    borderRadius: BorderRadius.circular(150),
-                  ),
-                ),
-              ),
-              Positioned(
-                left: -30,
-                top: -60,
-                child: Container(
-                  width: 120,
-                  height: 120,
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).primaryColor.withOpacity(0.12),
-                    borderRadius: BorderRadius.circular(150),
-                  ),
-                ),
-              ),*/
-              Container(
-                margin: EdgeInsets.only(top: 100, bottom: 10),
-                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-                width: 140,
-                height: 60,
-                decoration: BoxDecoration(
-                    color: Theme.of(context).primaryColor,
-                    borderRadius: BorderRadius.circular(6),
-                    boxShadow: [
-                      BoxShadow(
-                          color: Theme.of(context).hintColor.withOpacity(0.15),
-                          offset: Offset(0, 3),
-                          blurRadius: 10)
-                    ]),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      category.name,
-                      style: Theme.of(context).textTheme.body2,
-                      maxLines: 1,
-                      softWrap: false,
-                      overflow: TextOverflow.fade,
+                      width: 80,
+                      height: 80,
                     ),
-                    /*Row(
-                      children: <Widget>[
-                        // The title of the product
-                        */ /*  Expanded(
-                          child: Text(
-                            '${brand.products.length} Products',
-                            style: Theme.of(context).textTheme.body1,
-                            overflow: TextOverflow.fade,
-                            softWrap: false,
-                          ),
-                        ),*/ /*
-                        Icon(
-                          Icons.star,
-                          color: Colors.amber,
-                          size: 18,
-                        ),
-                        Text(
-                          brand.rate.toString(),
-                          style: Theme.of(context).textTheme.body2,
-                        )
-                      ],
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                    ),*/
-                  ],
-                ),
+
+                  ),
+                  Text(
+                    category.name,
+                    textScaleFactor: 1.2,
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                    maxLines: 1,
+                    softWrap: false,
+                    overflow: TextOverflow.fade,
+                  ),
+                  /*   Positioned(
+                    right: -50,
+                    bottom: -100,
+                    child: Container(
+                      width: 220,
+                      height: 220,
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).primaryColor.withOpacity(0.08),
+                        borderRadius: BorderRadius.circular(150),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    left: -30,
+                    top: -60,
+                    child: Container(
+                      width: 120,
+                      height: 120,
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).primaryColor.withOpacity(0.12),
+                        borderRadius: BorderRadius.circular(150),
+                      ),
+                    ),
+                  ),*/
+                ],
               ),
-            ],
+            ),
           ),
         );
       },

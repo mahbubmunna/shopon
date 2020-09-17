@@ -428,7 +428,14 @@ class _ProductWidgetState extends State<ProductWidget>
             : widget.product.price,
       };
 
+      Map<String, dynamic> cartBodyToPassServer = {
+        "id": widget.product == null ? widget.results.id : widget.product.id,
+        "quantity": _quantity
+      };
+
+
       CommonUtils.cart_list.add(json.encode(cart));
+      CommonUtils.payment_cart_list.add(json.encode(cartBodyToPassServer));
 
       print("The List  ${CommonUtils.cart_list}");
     }

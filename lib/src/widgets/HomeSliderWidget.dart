@@ -56,13 +56,12 @@ class _HomeSliderWidgetState extends State<HomeSliderWidget> {
         builder: (BuildContext context) {
           return Container(
             margin:
-            const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+            const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
             height: 200,
             decoration: BoxDecoration(
               image: DecorationImage(
                   image: CachedNetworkImageProvider('$public_path_url${slide.image}'),
                   fit: BoxFit.cover),
-              borderRadius: BorderRadius.circular(6),
               boxShadow: [
                 BoxShadow(
                     color: Theme.of(context).hintColor.withOpacity(0.2),

@@ -15,6 +15,11 @@ class SharedPrefProvider {
     return sharedPref.getString(key);
   }
 
+  static clearKey(String key) async {
+    final sharedPref = await SharedPreferences.getInstance();
+    sharedPref.remove(key);
+  }
+
   static addCart(List<String> c) async {
     var sp = await SharedPreferences.getInstance();
 

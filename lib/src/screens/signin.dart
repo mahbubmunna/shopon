@@ -82,7 +82,13 @@ class _SignInWidgetState extends State<SignInWidget> {
   newLoginPageBody() {
     return ListView(
       children: [
-        Image.asset('assets/img/login.png', height: 200, width: 100,),
+        SizedBox(height: 20,),
+        Stack(
+          children: [
+            Center(child: Text('Sunbulahome', textScaleFactor: 2, style: TextStyle(fontWeight: FontWeight.bold, color: Theme.of(context).accentColor),)),
+            Center(child: Image.asset('assets/img/login.png', height: 150, width: 100,)),
+          ],
+        ),
         Padding(
           padding: const EdgeInsets.all(20),
           child: Column(
@@ -136,7 +142,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                     elevation: 0,
                     minWidth: 160,
                     height: 40,
-                    color: Color(0xffF46665),
+                    color: Theme.of(context).accentColor,
                     onPressed: () {
                       FocusScope.of(context).unfocus();
                       print('Login tapped');

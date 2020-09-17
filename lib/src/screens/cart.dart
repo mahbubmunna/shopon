@@ -272,23 +272,26 @@ class _CartWidgetState extends State<CartWidget> {
                               padding: EdgeInsets.symmetric(vertical: 14),
                               color: Theme.of(context).accentColor,
                               shape: StadiumBorder(),
-                              child: Text(
-                                S.of(context).checkout,
-                                textAlign: TextAlign.start,
-                                style: TextStyle(
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                children: [
+                                  Text(
+                                    S.of(context).checkout,
+                                    textAlign: TextAlign.start,
+                                    style: TextStyle(
+                                        color: Theme.of(context).primaryColor),
+                                  ),
+                                  Text(
+                                    'SAR ${(_totalPrice).toStringAsFixed(2)}',
+                                    textScaleFactor: 1.2,
+                                    style: TextStyle(fontWeight: FontWeight.bold,
                                     color: Theme.of(context).primaryColor),
-                              ),
+                                  ),
+                                ],
+
+                              )
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 20),
-                            child: Text(
-                              'SAR ${(_totalPrice).toStringAsFixed(2)}',
-                              style: Theme.of(context).textTheme.display1.merge(
-                                  TextStyle(
-                                      color: Theme.of(context).primaryColor)),
-                            ),
-                          )
                         ],
                       ),
                       SizedBox(height: 10),

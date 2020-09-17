@@ -9,12 +9,14 @@ import 'package:smartcommercebd/src/screens/cart.dart';
 import 'package:smartcommercebd/src/screens/category.dart';
 import 'package:smartcommercebd/src/screens/ShippingAddress.dart';
 import 'package:smartcommercebd/src/screens/checkout.dart';
+import 'package:smartcommercebd/src/screens/checkout_done.dart';
 import 'package:smartcommercebd/src/screens/delivery_selection.dart';
 import 'package:smartcommercebd/src/screens/forgot_password.dart';
 import 'package:smartcommercebd/src/screens/help.dart';
 import 'package:smartcommercebd/src/screens/languages.dart';
 import 'package:smartcommercebd/src/screens/on_boarding.dart';
 import 'package:smartcommercebd/src/screens/orders.dart';
+import 'package:smartcommercebd/src/screens/payement_page.dart';
 import 'package:smartcommercebd/src/screens/product.dart';
 import 'package:smartcommercebd/src/screens/signin.dart';
 import 'package:smartcommercebd/src/screens/signup.dart';
@@ -50,6 +52,10 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => OrdersWidget());
       case '/Brands':
         return MaterialPageRoute(builder: (context) => BrandsWidget());
+      case '/CheckoutDone':
+        return MaterialPageRoute(builder: (context) => CheckoutDoneWidget());
+      case '/PaymentView':
+        return MaterialPageRoute(builder: (context) => PaymentPage(routeArgument: args as RouteArgument,));
 
       case '/Brand':
         return MaterialPageRoute(

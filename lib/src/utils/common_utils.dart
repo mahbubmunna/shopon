@@ -14,6 +14,7 @@ class CommonUtils {
 
   static var token;
   static List<String> cart_list = new List<String>();
+  static List<String> payment_cart_list = new List<String>();
 
   static showProgressBar() {
     return Column(
