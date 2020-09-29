@@ -1,3 +1,4 @@
+import 'package:intl/intl.dart';
 import 'package:smartcommercebd/src/configs/strings.dart';
 
 class Product {
@@ -17,6 +18,7 @@ class Product {
   var thumbnail_img;
   var photos;
   var description;
+  String arName;
 
   // var description;
 
@@ -36,11 +38,12 @@ class Product {
       this.colors,
       this.variations,
       this.photos ,
-      this.description
+      this.arName,
+      this.description,
       });
 
   Product.formJson(from, dynamic json)
-      : name = json['name'],
+      : name = Intl.getCurrentLocale() == 'en' ? json['name'] : json['ar_name'],
         id = json['id'].toString(),
         image = from == "Category"
             ? "$public_path_url${json['banner']}"
@@ -52,6 +55,7 @@ class Product {
         sales = json['num_of_sale'],
         rate = json['rating'],
         discount = json['discount'],
+        arName = json['ar_name'],
         photos = json["photos"];
 
   String getPrice({double myPrice}) {

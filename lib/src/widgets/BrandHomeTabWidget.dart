@@ -1,4 +1,5 @@
 import 'package:smartcommercebd/config/ui_icons.dart';
+import 'package:smartcommercebd/generated/l10n.dart';
 import 'package:smartcommercebd/src/models/brand.dart';
 import 'package:smartcommercebd/src/models/product.dart';
 import 'package:smartcommercebd/src/widgets/FlashSalesCarouselWidget.dart';
@@ -46,7 +47,7 @@ class _BrandHomeTabWidgetState extends State<BrandHomeTabWidget> {
               color: Theme.of(context).hintColor,
             ),
             title: Text(
-              'Description',
+              S.of(context).description,
               style: Theme.of(context).textTheme.display1,
             ),
           ),
@@ -54,7 +55,7 @@ class _BrandHomeTabWidgetState extends State<BrandHomeTabWidget> {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
           child: Text(
-              'We’re all going somewhere. And whether it’s the podcast blaring from your headphones as you walk down the street or the essay that encourages you to take on that big project, there’s a real joy in getting lost in the kind of story that feels like a destination unto itself.'),
+              S.of(context).wereAllGoingSomewhereAndWhetherItsThePodcastBlaring),
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
@@ -66,7 +67,7 @@ class _BrandHomeTabWidgetState extends State<BrandHomeTabWidget> {
               color: Theme.of(context).hintColor,
             ),
             title: Text(
-              'Featured Products',
+              S.of(context).featuredProducts,
               style: Theme.of(context).textTheme.display1,
             ),
           ),

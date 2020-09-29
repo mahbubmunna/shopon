@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:smartcommercebd/generated/l10n.dart';
 import 'package:smartcommercebd/src/configs/strings.dart';
 import 'package:smartcommercebd/src/models/route_argument.dart';
 import 'package:smartcommercebd/src/providers/shared_pref_provider.dart';
@@ -36,7 +37,7 @@ class _PaymentPageState extends State<PaymentPage> {
   Widget build(BuildContext context) {
 
     return Scaffold(
-      appBar: AppBar(title: Text('Online Payment'),),
+      appBar: AppBar(title: Text(S.of(context).onlinePayment),),
       body: Stack(
         children: [
           Padding(

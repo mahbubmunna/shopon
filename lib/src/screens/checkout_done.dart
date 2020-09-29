@@ -1,5 +1,6 @@
 import 'package:smartcommercebd/config/app_config.dart' as config;
 import 'package:smartcommercebd/config/ui_icons.dart';
+import 'package:smartcommercebd/generated/l10n.dart';
 import 'package:smartcommercebd/src/widgets/ShoppingCartButtonWidget.dart';
 import 'package:flutter/material.dart';
 
@@ -22,7 +23,7 @@ class _CheckoutDoneWidgetState extends State<CheckoutDoneWidget> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         title: Text(
-          'Checkout',
+          S.of(context).checkout,
           style: Theme.of(context).textTheme.display1,
         ),
         actions: <Widget>[
@@ -85,7 +86,7 @@ class _CheckoutDoneWidgetState extends State<CheckoutDoneWidget> {
               ),
               SizedBox(height: 15),
               Text(
-                'Your order was successfully placed, please pay on delivery',
+                S.of(context).yourOrderHasBeenPlacedKindlyPayBySpanOn,
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.display2,
               ),
@@ -98,7 +99,7 @@ class _CheckoutDoneWidgetState extends State<CheckoutDoneWidget> {
                 color: Theme.of(context).focusColor.withOpacity(0.15),
                 shape: StadiumBorder(),
                 child: Text(
-                  'Your Orders',
+                  S.of(context).yourOrders,
                   style: Theme.of(context).textTheme.title,
                 ),
               ),

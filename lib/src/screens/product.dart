@@ -6,6 +6,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:smartcommercebd/config/ui_icons.dart';
+import 'package:smartcommercebd/generated/l10n.dart';
 import 'package:smartcommercebd/src/FlutterProvider/CartProvider/CartProvider.dart';
 import 'package:smartcommercebd/src/FlutterProvider/RelatedProductProvider.dart';
 import 'package:smartcommercebd/src/configs/strings.dart';
@@ -118,7 +119,7 @@ class _ProductWidgetState extends State<ProductWidget>
               child: Row(
                 children: <Widget>[
                   Text(
-                    'Add to Cart',
+                    S.of(context).addToCart,
                     textAlign: TextAlign.start,
                     style: TextStyle(color: Theme.of(context).primaryColor),
                   ),
@@ -311,7 +312,7 @@ class _ProductWidgetState extends State<ProductWidget>
                               width: 1)),
                       child: Align(
                         alignment: Alignment.center,
-                        child: Text("Product"),
+                        child: Text(S.of(context).product),
                       ),
                     ),
                   ),
@@ -327,7 +328,7 @@ class _ProductWidgetState extends State<ProductWidget>
                               width: 1)),
                       child: Align(
                         alignment: Alignment.center,
-                        child: Text("Detail"),
+                        child: Text(S.of(context).detail),
                       ),
                     ),
                   ),
@@ -381,7 +382,7 @@ class _ProductWidgetState extends State<ProductWidget>
                         color: Theme.of(context).hintColor,
                       ),
                       title: Text(
-                        'Product Reviews',
+                        S.of(context).productReviews,
                         overflow: TextOverflow.fade,
                         softWrap: false,
                         style: Theme.of(context).textTheme.display1,
@@ -445,7 +446,7 @@ class _ProductWidgetState extends State<ProductWidget>
     AwesomeDialog(
             context: context,
             dialogType: DialogType.SUCCES,
-            body: Text('successfully added to cart'))
+            body: Text(S.of(context).successfullyAddedToTheCart))
         .show();
 
     closeAwesomeDialog(context);

@@ -1,5 +1,6 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:smartcommercebd/custom_library/splash_screen.dart';
+import 'package:smartcommercebd/generated/l10n.dart';
 import 'package:smartcommercebd/src/configs/strings.dart';
 import 'package:smartcommercebd/src/models/user.dart';
 import 'package:smartcommercebd/src/providers/shared_pref_provider.dart';
@@ -65,7 +66,7 @@ class _SplashState extends State<SplashScreen> {
       backgroundColor: Colors.white,
       styleTextUnderTheLoader: new TextStyle(),
       photoSize: 100.0,
-      loadingText: Text('Loading'),
+      loadingText: Text(S.of(context).loading),
       loaderColor: config.Colors().mainColor(1),
     );
   }

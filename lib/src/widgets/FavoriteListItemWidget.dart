@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:smartcommercebd/config/ui_icons.dart';
+import 'package:smartcommercebd/generated/l10n.dart';
 import 'package:smartcommercebd/src/models/product.dart';
 import 'package:smartcommercebd/src/models/route_argument.dart';
 import 'package:flutter/material.dart';
@@ -108,7 +109,7 @@ class _FavoriteListItemWidgetState extends State<FavoriteListItemWidget> {
                             children: <Widget>[
                               // The title of the product
                               Text(
-                                '${widget.product.sales==null?"0" :widget.product.sales } Sales',
+                                '${widget.product.sales==null?"0" :widget.product.sales } ${S.of(context).available}',
                                 style: Theme.of(context).textTheme.body1,
                                 overflow: TextOverflow.fade,
                                 softWrap: false,

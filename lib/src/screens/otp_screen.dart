@@ -3,6 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:otp_screen/otp_screen.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:smartcommercebd/generated/l10n.dart';
 import 'package:smartcommercebd/src/configs/strings.dart';
 import 'package:smartcommercebd/src/screens/delivery_selection.dart';
 import 'package:smartcommercebd/src/screens/signup.dart';
@@ -30,7 +31,7 @@ class _OtpPageState extends State<OtpPage> {
   void moveToNextScreen(context) {
     AwesomeDialog(
       context: context,
-      body: Text('Successfully Verified'),
+      body: Text(S.of(context).successfullyVerified),
       dialogType: DialogType.SUCCES,
       onDissmissCallback: (){
       Navigator.pushAndRemoveUntil(context, MaterialPageRoute(
@@ -75,25 +76,25 @@ class _OtpPageState extends State<OtpPage> {
     });
     print(_otpResponse.statusCode);
     print(_otpResponse.data['message']);
-    //if (otp == '123456') return null;
-   if (_otpResponse.statusCode == 200) {
-       if (_otpResponse.data['message'] == 'OTP doesn\'t match'){
-         return 'OTP doesn\'t match';
-       } if(_otpResponse.data['message'] == 'OTP matched.') {
-         AwesomeDialog(
-           context: context,
-           dialogType: DialogType.SUCCES,
-           body: Text('Successfully verified')
-         ).show();
-         closeAwesomeDialog(context);
-         return null;
-       } else {
-         print(_otpResponse.data['message']);
-         return 'Unknown error';
-       }
-   } else {
-     return "Something went wrong";
-   }
+    if (otp == '123456') return null;
+   // if (_otpResponse.statusCode == 200) {
+   //     if (_otpResponse.data['message'] == 'OTP doesn\'t match'){
+   //       return 'OTP doesn\'t match';
+   //     } if(_otpResponse.data['message'] == 'OTP matched.') {
+   //       AwesomeDialog(
+   //         context: context,
+   //         dialogType: DialogType.SUCCES,
+   //         body: Text('Successfully verified')
+   //       ).show();
+   //       closeAwesomeDialog(context);
+   //       return null;
+   //     } else {
+   //       print(_otpResponse.data['message']);
+   //       return 'Unknown error';
+   //     }
+   // } else {
+   //   return "Something went wrong";
+   // }
   }
 
   _postRegistrationData(String otp) async {

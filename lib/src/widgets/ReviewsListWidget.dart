@@ -1,4 +1,5 @@
 import 'package:provider/provider.dart';
+import 'package:smartcommercebd/generated/l10n.dart';
 import 'package:smartcommercebd/src/FlutterProvider/ReviewProvider.dart';
 import 'package:smartcommercebd/src/widgets/ReviewItemWidget.dart';
 import 'package:flutter/material.dart';
@@ -47,7 +48,7 @@ class _ReviewsListWidgetState extends State<ReviewsListWidget> {
             );
           } else if (provider.listData == null) {
             return Center(
-              child: Text("No Review"),
+              child: Text(S.of(context).noReview),
             );
           } else {
             return ListView.separated(

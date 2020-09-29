@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:smartcommercebd/generated/l10n.dart';
 import 'package:smartcommercebd/src/FlutterProvider/BrandProvider/BrandsProvider.dart';
 import 'package:smartcommercebd/src/FlutterProvider/CategoryProvider/CategoryProvider.dart';
 import 'package:smartcommercebd/src/configs/strings.dart';
@@ -140,7 +141,7 @@ class _ProductsState extends State<Products> {
                                     // The title of the product
                                     Expanded(
                                       child: Text(
-                                        '${provider.categoryProductsList[index].sales ==null?"0":provider.categoryProductsList[index].sales} Sales',
+                                        '${provider.categoryProductsList[index].sales ==null?"0":provider.categoryProductsList[index].sales} ${S.of(context).available}',
                                         style:
                                             Theme.of(context).textTheme.body1,
                                         overflow: TextOverflow.fade,

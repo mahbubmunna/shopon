@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:provider/provider.dart';
 import 'package:smartcommercebd/config/ui_icons.dart';
+import 'package:smartcommercebd/generated/l10n.dart';
 import 'package:smartcommercebd/src/FlutterProvider/ChatProvider.dart';
 import 'package:smartcommercebd/src/FlutterProvider/MessageProvider.dart';
 import 'package:smartcommercebd/src/FlutterProvider/ProfileProvider/ProfileProvider.dart';
@@ -56,7 +57,7 @@ class _ChatWidgetState extends State<ChatWidget> {
           },
           icon: Icon(Icons.arrow_back_ios),
         ),
-        title: Text('Back'),
+        title: Text(S.of(context).back),
         centerTitle: false,
       ),
       body: ChangeNotifierProvider<ChatProvider>(
@@ -81,7 +82,7 @@ class _ChatWidgetState extends State<ChatWidget> {
                 Expanded(
                   child: chat_provider.chats_list == null
                       ? Center(
-                          child: Text("Loading..."),
+                          child: Text(S.of(context).loading),
                         )
                       : ListView.builder(
                           controller: scrollController,
@@ -120,7 +121,7 @@ class _ChatWidgetState extends State<ChatWidget> {
                     controller: myController,
                     decoration: InputDecoration(
                       contentPadding: EdgeInsets.all(20),
-                      hintText: 'Chat text here',
+                      hintText: S.of(context).chatTextHere,
                       hintStyle: TextStyle(
                           color: Theme.of(context).focusColor.withOpacity(0.8)),
                       suffixIcon: IconButton(

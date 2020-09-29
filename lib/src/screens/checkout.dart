@@ -139,7 +139,7 @@ class _CheckoutWidgetState extends State<CheckoutWidget>
         backgroundColor: Colors.transparent,
         elevation: 0,
         title: Text(
-          'Checkout',
+          S.of(context).checkout,
           style: Theme.of(context).textTheme.display1,
         ),
         actions: <Widget>[
@@ -175,13 +175,13 @@ class _CheckoutWidgetState extends State<CheckoutWidget>
                   color: Theme.of(context).hintColor,
                 ),
                 title: Text(
-                  'Payment Mode',
+                  S.of(context).paymentMode,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: Theme.of(context).textTheme.display1,
                 ),
                 subtitle: Text(
-                  'Select your prefered payment mode',
+                  S.of(context).selectYourPreferedPaymentMode,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: Theme.of(context).textTheme.caption,
@@ -215,7 +215,7 @@ class _CheckoutWidgetState extends State<CheckoutWidget>
                       Align(
                         alignment: Alignment(0, 0),
                         child: Text(
-                            'PAY ONLINE',
+                            S.of(context).payOnline,
                             textScaleFactor: 1.2,
                             style: TextStyle(fontWeight: FontWeight.bold),
                             )
@@ -262,7 +262,7 @@ class _CheckoutWidgetState extends State<CheckoutWidget>
                       Align(
                         alignment: Alignment(0, 0),
                         child: Text(
-                          'PAY ON DELIVERY',
+                          S.of(context).payOnDelivery,
                           textScaleFactor: 1.2,
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
@@ -326,7 +326,7 @@ class _CheckoutWidgetState extends State<CheckoutWidget>
                     onTap: () {},
                     dense: true,
                     title: Text(
-                      'Address',
+                      S.of(context).address,
                       style: Theme.of(context).textTheme.body1,
                     ),
                     trailing: Text(
@@ -338,7 +338,7 @@ class _CheckoutWidgetState extends State<CheckoutWidget>
                     onTap: () {},
                     dense: true,
                     title: Text(
-                      'Area',
+                      S.of(context).area,
                       style: Theme.of(context).textTheme.body1,
                     ),
                     trailing: Text(
@@ -350,7 +350,7 @@ class _CheckoutWidgetState extends State<CheckoutWidget>
                     onTap: () {},
                     dense: true,
                     title: Text(
-                      'City',
+                      S.of(context).city,
                       style: Theme.of(context).textTheme.body1,
                     ),
                     trailing: Text(
@@ -427,7 +427,7 @@ class _CheckoutWidgetState extends State<CheckoutWidget>
                       width: double.infinity,
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: Text(
-                        'Confirm Payment',
+                        S.of(context).confirmPayment,
                         textAlign: TextAlign.start,
                         style: TextStyle(color: Theme.of(context).primaryColor),
                       ),

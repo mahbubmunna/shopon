@@ -15,9 +15,11 @@ import 'package:smartcommercebd/src/screens/splash.dart';
 import 'package:smartcommercebd/config/app_config.dart' as config;
 
 class DeliverySelect extends StatefulWidget {
+
   @override
   _DeliverySelectState createState() => _DeliverySelectState();
 }
+
 
 class _DeliverySelectState extends State<DeliverySelect> {
   Completer<GoogleMapController> _controller = Completer();
@@ -25,6 +27,9 @@ class _DeliverySelectState extends State<DeliverySelect> {
   Position _position;
   Widget _child;
   String _completeAddress = 'Not added';
+
+  BitmapDescriptor _bitmapDescriptor;
+
 
   //static const LatLng _center = const LatLng(45.521563, -122.677433);
 
@@ -60,8 +65,17 @@ class _DeliverySelectState extends State<DeliverySelect> {
       _position = res;
       Marker _marker = Marker
         (markerId: MarkerId('currentLocation'),
+          draggable: true,
+          icon: _bitmapDescriptor,
           position: LatLng(_position.latitude, _position.longitude),
-          infoWindow: InfoWindow(title: 'home',)
+          onDragEnd: (value) {
+            print(value.latitude);
+            print(value.longitude);
+            setState(() {
+              setCurrentPosition(Position(latitude: value.latitude, longitude: value.longitude));
+            });
+          },
+          infoWindow: InfoWindow(title: S.of(context).home,)
       );
 
       final Map<String, Marker> _markers = {};
@@ -71,11 +85,12 @@ class _DeliverySelectState extends State<DeliverySelect> {
         onMapCreated: _onMapCreated,
         initialCameraPosition: CameraPosition(
             target:  LatLng(_position.latitude, _position.longitude),
-            zoom: 15
+            zoom: 12
         ),
         markers: _markers.values.toSet(),
       );
       setCurrentPosition(_position);
+
     });
 
 
@@ -84,8 +99,14 @@ class _DeliverySelectState extends State<DeliverySelect> {
   @override
   void initState() {
     _child = SpinKitDoubleBounce(color: Colors.black,);
+    getProperBitmap();
     getCurrentLocation();
     super.initState();
+  }
+  
+  void getProperBitmap() async {
+    await BitmapDescriptor.fromAssetImage(ImageConfiguration(size: Size(128, 128)), 'assets/img/location.png')
+    .then((value) => _bitmapDescriptor = value);
   }
 
   void goToAddAddressScreen() async {
@@ -110,7 +131,7 @@ class _DeliverySelectState extends State<DeliverySelect> {
           AwesomeDialog(
               context: context,
               dialogType: DialogType.SUCCES,
-              body: Text('Location Saved')
+              body: Text(S.of(context).locationSaved)
           ).show();
           await Future.delayed(Duration(seconds: 3), () {
             Navigator.of(context).pushNamedAndRemoveUntil(
@@ -121,7 +142,7 @@ class _DeliverySelectState extends State<DeliverySelect> {
         shape: StadiumBorder(),
         color: Theme.of(context).accentColor,
         minWidth: 80,
-        child: Text('Save Location', textScaleFactor: 1.5, style: TextStyle(color: Colors.white),),
+        child: Text(S.of(context).saveLocation, textScaleFactor: 1.5, style: TextStyle(color: Colors.white),),
       ),
       body: Column(
         children: <Widget>[
@@ -148,14 +169,14 @@ class _DeliverySelectState extends State<DeliverySelect> {
                       children: <Widget>[
                         Icon(Icons.add_location, color: Colors.white,),
                         SizedBox(width: 5,),
-                        Text('SELECT NEW LOCATION', textScaleFactor: 1.1,style: TextStyle(color: Colors.white),)
+                        Text(S.of(context).selectNewLocation, textScaleFactor: 1.1,style: TextStyle(color: Colors.white),)
                       ],
                     ),
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 30, top: 15),
-                  child: Text('home', textScaleFactor: 1.2, style: TextStyle(color: config.Colors().mainColor(1)),),
+                  child: Text(S.of(context).home, textScaleFactor: 1.2, style: TextStyle(color: config.Colors().mainColor(1)),),
                 ),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,

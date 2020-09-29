@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:smartcommercebd/config/app_config.dart' as config;
+import 'package:smartcommercebd/generated/l10n.dart';
 import 'package:smartcommercebd/src/models/on_boarding.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -106,7 +107,7 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     Text(
-                      'Sign up',
+                      S.of(context).signUp,
                       style: Theme.of(context).textTheme.display1.merge(
                             TextStyle(color: Theme.of(context).primaryColor),
                           ),

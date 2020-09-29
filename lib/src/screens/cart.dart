@@ -282,7 +282,7 @@ class _CartWidgetState extends State<CartWidget> {
                                         color: Theme.of(context).primaryColor),
                                   ),
                                   Text(
-                                    'SAR ${(_totalPrice).toStringAsFixed(2)}',
+                                    '${S.of(context).sar} ${(_totalPrice).toStringAsFixed(2)}',
                                     textScaleFactor: 1.2,
                                     style: TextStyle(fontWeight: FontWeight.bold,
                                     color: Theme.of(context).primaryColor),
@@ -307,7 +307,7 @@ class _CartWidgetState extends State<CartWidget> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Icon(Icons.remove_shopping_cart),
-              Text('No Items in the cart')
+              Text(S.of(context).noItemsInTheCart)
             ],
           ),
         ) /*FutureBuilder(

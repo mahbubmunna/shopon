@@ -1,4 +1,5 @@
 import 'package:smartcommercebd/config/ui_icons.dart';
+import 'package:smartcommercebd/generated/l10n.dart';
 import 'package:smartcommercebd/src/models/category.dart';
 import 'package:smartcommercebd/src/models/product.dart';
 import 'package:smartcommercebd/src/widgets/FavoriteListItemWidget.dart';
@@ -36,7 +37,7 @@ class _ProductsByCategoryWidgetState extends State<ProductsByCategoryWidget> {
               color: Theme.of(context).hintColor,
             ),
             title: Text(
-              '${widget.subCategory.name} Category',
+              '${widget.subCategory.name} ${S.of(context).category}',
               overflow: TextOverflow.fade,
               softWrap: false,
               style: Theme.of(context).textTheme.display1,

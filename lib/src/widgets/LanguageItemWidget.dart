@@ -1,3 +1,4 @@
+import 'package:smartcommercebd/generated/l10n.dart';
 import 'package:smartcommercebd/src/models/language.dart';
 import 'package:flutter/material.dart';
 
@@ -68,7 +69,9 @@ class _LanguageItemWidgetState extends State<LanguageItemWidget> with SingleTick
           animationController.forward();
 //          application.onLocaleChanged(Locale(languagesMap[widget.language.englishName]));
 //          SharedPrefProvider.setString('app_language', widget.language.englishName);
+          S.load(Locale(widget.language.languageCode));
           print(widget.language.englishName);
+          print(widget.language.localName);
         }
         checked = !checked;
       },

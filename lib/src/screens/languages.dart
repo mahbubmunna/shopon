@@ -1,3 +1,4 @@
+import 'package:smartcommercebd/generated/l10n.dart';
 import 'package:smartcommercebd/src/models/language.dart';
 import 'package:smartcommercebd/src/widgets/DrawerWidget.dart';
 import 'package:smartcommercebd/src/widgets/LanguageItemWidget.dart';
@@ -39,7 +40,7 @@ class _LanguagesWidgetState extends State<LanguagesWidget> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         title: Text(
-          'Languages',
+          S.of(context).languages,
           style: Theme.of(context).textTheme.display1,
         ),
         actions: <Widget>[
@@ -80,7 +81,7 @@ class _LanguagesWidgetState extends State<LanguagesWidget> {
                     color: Theme.of(context).hintColor,
                   ),
                   title: Text(
-                    'App Language',
+                    S.of(context).appLanguage,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: Theme.of(context).textTheme.display1,

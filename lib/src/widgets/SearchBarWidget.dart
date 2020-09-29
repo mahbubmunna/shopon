@@ -1,5 +1,6 @@
 import 'package:smartcommercebd/config/ui_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:smartcommercebd/generated/l10n.dart';
 
 class SearchBarWidget extends StatelessWidget {
   SearchBarWidget({
@@ -22,7 +23,7 @@ class SearchBarWidget extends StatelessWidget {
           TextField(
             decoration: InputDecoration(
               contentPadding: EdgeInsets.all(12),
-              hintText: 'Search',
+              hintText: S.of(context).search,
               hintStyle: TextStyle(color: Theme.of(context).focusColor.withOpacity(0.8)),
               prefixIcon: Icon(UiIcons.loupe, size: 20, color: Theme.of(context).hintColor),
               border: UnderlineInputBorder(borderSide: BorderSide.none),

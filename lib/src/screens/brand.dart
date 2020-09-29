@@ -352,7 +352,7 @@ class _BrandWidgetState extends State<BrandWidget>
                                     // The title of the product
                                     Expanded(
                                       child: Text(
-                                        '${provider.brands_product[index].sales==null?"0":provider.brands_product[index].sales} Sales',
+                                        '${provider.brands_product[index].sales==null?"0":provider.brands_product[index].available} Sales',
                                         style:
                                             Theme.of(context).textTheme.body1,
                                         overflow: TextOverflow.fade,

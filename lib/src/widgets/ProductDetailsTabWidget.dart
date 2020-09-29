@@ -1,4 +1,5 @@
 import 'package:smartcommercebd/config/ui_icons.dart';
+import 'package:smartcommercebd/generated/l10n.dart';
 import 'package:smartcommercebd/src/models/product.dart';
 import 'package:smartcommercebd/src/widgets/FlashSalesCarouselWidget.dart';
 import 'package:flutter/material.dart';
@@ -34,7 +35,7 @@ class ProductDetailsTabWidgetState extends State<ProductDetailsTabWidget> {
               color: Theme.of(context).hintColor,
             ),
             title: Text(
-              'Description',
+              S.of(context).description,
               style: Theme.of(context).textTheme.display1,
             ),
           ),

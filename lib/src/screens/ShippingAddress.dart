@@ -4,6 +4,7 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smartcommercebd/config/ui_icons.dart';
+import 'package:smartcommercebd/generated/l10n.dart';
 import 'package:smartcommercebd/src/FlutterProvider/CheckoutProvider.dart';
 import 'package:smartcommercebd/src/configs/strings.dart';
 import 'package:smartcommercebd/src/models/Delivery.dart';
@@ -49,7 +50,7 @@ class _ShippingAddressState extends State<ShippingAddress> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         title: Text(
-          'Shipping Address',
+          S.of(context).shippingAddress,
           style: Theme.of(context).textTheme.display1,
         ),
       ),
@@ -68,8 +69,8 @@ class _ShippingAddressState extends State<ShippingAddress> {
                       child: new TextField(
                         controller: controller_name,
                         decoration: new InputDecoration(
-                          labelText: 'Name',
-                          hintText: 'Name',
+                          labelText: S.of(context).name,
+                          hintText: S.of(context).name,
                           enabledBorder: UnderlineInputBorder(
                             borderSide: BorderSide(color: Colors.black26),
                           ),
@@ -87,8 +88,8 @@ class _ShippingAddressState extends State<ShippingAddress> {
                       child: new TextField(
                         controller: controller_email,
                         decoration: new InputDecoration(
-                          labelText: 'Email',
-                          hintText: 'Email',
+                          labelText: S.of(context).email,
+                          hintText: S.of(context).email,
                           enabledBorder: UnderlineInputBorder(
                             borderSide: BorderSide(color: Colors.black26),
                           ),
@@ -106,8 +107,8 @@ class _ShippingAddressState extends State<ShippingAddress> {
                       child: new TextField(
                         controller: controller_city,
                         decoration: new InputDecoration(
-                          labelText: 'City',
-                          hintText: 'City',
+                          labelText: S.of(context).city,
+                          hintText: S.of(context).city,
                           enabledBorder: UnderlineInputBorder(
                             borderSide: BorderSide(color: Colors.black26),
                           ),
@@ -125,8 +126,8 @@ class _ShippingAddressState extends State<ShippingAddress> {
                       child: new TextField(
                         controller: controller_country,
                         decoration: new InputDecoration(
-                          labelText: 'Country',
-                          hintText: 'Country',
+                          labelText: S.of(context).country,
+                          hintText: S.of(context).country,
                           enabledBorder: UnderlineInputBorder(
                             borderSide: BorderSide(color: Colors.black26),
                           ),
@@ -144,8 +145,8 @@ class _ShippingAddressState extends State<ShippingAddress> {
                       child: new TextField(
                         controller: controller_address,
                         decoration: new InputDecoration(
-                          labelText: 'Address',
-                          hintText: 'Address',
+                          labelText: S.of(context).address,
+                          hintText: S.of(context).address,
                           enabledBorder: UnderlineInputBorder(
                             borderSide: BorderSide(color: Colors.black26),
                           ),
@@ -164,8 +165,8 @@ class _ShippingAddressState extends State<ShippingAddress> {
                       child: new TextField(
                         controller: controller_postal_code,
                         decoration: new InputDecoration(
-                          labelText: 'Postal Code',
-                          hintText: 'Postal Code',
+                          labelText: S.of(context).postalCode,
+                          hintText: S.of(context).postalCode,
                           enabledBorder: UnderlineInputBorder(
                             borderSide: BorderSide(color: Colors.black26),
                           ),
@@ -183,8 +184,8 @@ class _ShippingAddressState extends State<ShippingAddress> {
                       child: new TextField(
                         controller: controller_phone,
                         decoration: new InputDecoration(
-                          labelText: 'Phone',
-                          hintText: 'Phone',
+                          labelText: S.of(context).phone,
+                          hintText: S.of(context).phone,
                           enabledBorder: UnderlineInputBorder(
                             borderSide: BorderSide(color: Colors.black26),
                           ),
@@ -214,7 +215,7 @@ class _ShippingAddressState extends State<ShippingAddress> {
                             width: MediaQuery.of(context).size.width,
                             height: 45,
                             child: Center(
-                              child: Text("Checkout",
+                              child: Text(S.of(context).checkout,
                                   style: Theme.of(context)
                                       .textTheme
                                       .display1
@@ -250,7 +251,7 @@ class _ShippingAddressState extends State<ShippingAddress> {
         controller_name.value.text.isEmpty &&
         controller_email.value.text.isEmpty) {
       _globalKey.currentState
-          .showSnackBar(new SnackBar(content: new Text('Empty!!!')));
+          .showSnackBar(new SnackBar(content: new Text(S.of(context).empty)));
     } else {
       setState(() {
         loading = true;
@@ -308,8 +309,8 @@ class _ShippingAddressState extends State<ShippingAddress> {
               context: context,
               dialogType: DialogType.SUCCES,
               animType: AnimType.BOTTOMSLIDE,
-              tittle: 'Success',
-              desc: 'Successful Checkout',
+              tittle: S.of(context).success,
+              desc: S.of(context).successfulCheckout,
               btnOkOnPress: () {
                 CommonUtils.cart_list.clear();
 
@@ -332,7 +333,7 @@ class _ShippingAddressState extends State<ShippingAddress> {
 
           _globalKey.currentState.showSnackBar(new SnackBar(
             content: new Text(
-              'Failed to Checkout !!!',
+              S.of(context).failedToCheckout,
             ),
             backgroundColor: Colors.red,
           ));

@@ -1,3 +1,4 @@
+import 'package:smartcommercebd/generated/l10n.dart';
 import 'package:smartcommercebd/src/widgets/DrawerWidget.dart';
 import 'package:smartcommercebd/src/widgets/FaqItemWidget.dart';
 import 'package:smartcommercebd/src/widgets/SearchBarWidget.dart';
@@ -42,7 +43,7 @@ class _HelpWidgetState extends State<HelpWidget> {
             labelColor: Theme.of(context).primaryColor,
           ),
           title: Text(
-            'Help & Support',
+            S.of(context).helpSupport,
             style: Theme.of(context).textTheme.display1.merge(TextStyle(color: Theme.of(context).primaryColor)),
           ),
           actions: <Widget>[
@@ -68,7 +69,7 @@ class _HelpWidgetState extends State<HelpWidget> {
                       color: Theme.of(context).hintColor,
                     ),
                     title: Text(
-                      'Faq',
+                      S.of(context).faq,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: Theme.of(context).textTheme.display1,

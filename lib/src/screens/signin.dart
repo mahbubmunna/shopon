@@ -4,6 +4,7 @@ import 'package:device_info/device_info.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:smartcommercebd/config/ui_icons.dart';
+import 'package:smartcommercebd/generated/l10n.dart';
 import 'package:smartcommercebd/src/configs/strings.dart';
 import 'package:smartcommercebd/src/models/user.dart';
 import 'package:smartcommercebd/src/providers/shared_pref_provider.dart';
@@ -83,26 +84,22 @@ class _SignInWidgetState extends State<SignInWidget> {
     return ListView(
       children: [
         SizedBox(height: 20,),
-        Stack(
-          children: [
-            Center(child: Text('Sunbulahome', textScaleFactor: 2, style: TextStyle(fontWeight: FontWeight.bold, color: Theme.of(context).accentColor),)),
-            Center(child: Image.asset('assets/img/login.png', height: 150, width: 100,)),
-          ],
-        ),
+        Center(child: Text(S.of(context).sunbulahome, textScaleFactor: 2, style: TextStyle(fontWeight: FontWeight.bold, color: Theme.of(context).accentColor),)),
+        Center(child: Image.asset('assets/img/login.png', height: 150, width: 100,)),
         Padding(
           padding: const EdgeInsets.all(20),
           child: Column(
             children: [
-              Center(child: Text('Account Login', textScaleFactor: 1.7,
+              Center(child: Text(S.of(context).accountLogin, textScaleFactor: 1.7,
                   style: TextStyle(fontWeight: FontWeight.bold),),),
               SizedBox(height: 10,),
               TextField(
                 controller: _emailController,
                 decoration: InputDecoration(
-                  labelText: 'Username',
+                  labelText: S.of(context).username,
                   errorText:
-                  _emailValid ? 'Not an email address' : null,
-                  hintText: 'Type your email address',
+                  _emailValid ? S.of(context).notAnEmailAddress : null,
+                  hintText: S.of(context).typeYourEmailAddress,
                   hintStyle: Theme.of(context).textTheme.body1.merge(
                     TextStyle(color: Theme.of(context).accentColor),
                   ),
@@ -114,11 +111,11 @@ class _SignInWidgetState extends State<SignInWidget> {
                 controller: _passwordController,
                 obscureText: true,
                 decoration: InputDecoration(
-                    labelText: 'Password',
+                    labelText: S.of(context).password,
                     suffixIcon: Icon(Icons.lock, color: Colors.black,),
                   errorText:
-                  _passwordValid ? 'At least 6 character' : null,
-                  hintText: 'Type your password',
+                  _passwordValid ? S.of(context).atLeast6Character : null,
+                  hintText: S.of(context).typeYourPassword,
                   hintStyle: Theme.of(context).textTheme.body1.merge(
                     TextStyle(color: Theme.of(context).accentColor),
                   ),
@@ -133,7 +130,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                       print('forgot tapped');
                       Navigator.of(context).pushNamed('/ForgotPassword');
                     },
-                    child: Text('Forgot Password'),
+                    child: Text(S.of(context).forgotPassword),
                   ),
                   SizedBox(width: 20,),
                   _isLoading ?
@@ -156,7 +153,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                         if (!_emailValid && !_passwordValid) _login();
                       });
                     },
-                    child: Text('Login', textScaleFactor: 1.2,),
+                    child: Text(S.of(context).login, textScaleFactor: 1.2,),
                   )
                 ],
               ),
@@ -184,7 +181,7 @@ class _SignInWidgetState extends State<SignInWidget> {
             child: Column(
               children: <Widget>[
                 Container(
-                    child: Center(child: Text('Don\'t have an account, Sign Up', style: TextStyle(fontWeight: FontWeight.bold),))
+                    child: Center(child: Text(S.of(context).dontHaveAnAccountSignUp, style: TextStyle(fontWeight: FontWeight.bold),))
                 ),
               ],
             ),

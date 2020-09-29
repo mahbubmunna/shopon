@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
+import 'package:intl/intl.dart';
 import 'package:smartcommercebd/src/configs/strings.dart';
 import 'package:smartcommercebd/src/models/RelatedProduct.dart';
 import 'package:smartcommercebd/src/models/product.dart';
@@ -45,7 +46,8 @@ class RelatedProductProvider {
                 thumbnail_img: value[i]["thumbnail_img"],
                 colors: value[i]["colors"],
                 variations: value[i]["variations"],
-                name: value[i]["name"],
+                arName: value[i]["ar_name"],
+                name: Intl.getCurrentLocale() == 'en' ? value[i]["name"] : value[i]["ar_name"],
                 icon: value[i]["icon"],
                 id: value[i]["id"].toString()),
           );

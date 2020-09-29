@@ -150,7 +150,10 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
   }
 
   inStoreOffers() {
-    List _cities = ['JEDDAH', 'DAMMAM &\n KHOBAR', 'RIYADH', 'MAKKAH', 'MADINAH', 'ABHA', 'KHAMIS', 'TAIF'];
+    List _cities = [S.of(context).jeddah, 
+      S.of(context).dammamNKhobar, S.of(context).riyadh, 
+      S.of(context).makkah, S.of(context).madinah, S.of(context).abha, 
+      S.of(context).khamis, S.of(context).taif];
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -158,7 +161,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
           contentPadding: EdgeInsets.only(left: 10),
           leading: Icon(Icons.store),
           title: Text(
-            'Select store to place order',
+            S.of(context).selectStoreToPlaceOrder,
             style: Theme.of(context).textTheme.display1,
           ),
         ),
@@ -314,7 +317,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                           margin: EdgeInsets.only(top: 175),
                                           padding: EdgeInsets.symmetric(
                                               vertical: 10, horizontal: 15),
-                                          width: 152,
+                                          width: 156,
                                           height: 70,
                                           decoration: BoxDecoration(
                                               color: Theme.of(context)
@@ -355,7 +358,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                   // The title of the product
                                                   Expanded(
                                                     child: Text(
-                                                      '${provider.brands_product[index].available == null ? "0" : provider.brands_product[index].available} ${S.of(context).left}',
+                                                      '${provider.brands_product[index].available == null ? "0" : provider.brands_product[index].available} ${S.of(context).available}',
                                                       style: Theme.of(context)
                                                           .textTheme
                                                           .body1,
@@ -739,7 +742,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                           // The title of the product
                                           Expanded(
                                             child: Text(
-                                              '${bestSell.data[index].available == null ? "0" : bestSell.data[index].available} ${S.of(context).left}',
+                                              '${bestSell.data[index].available == null ? "0" : bestSell.data[index].available} ${S.of(context).available}',
                                               style: Theme.of(context)
                                                   .textTheme
                                                   .body1,

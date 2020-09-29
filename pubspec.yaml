@@ -57,6 +57,7 @@ dependencies:
   otp_screen: ^0.0.3
   country_code_picker: ^1.4.0
   interactive_webview: ^0.1.2
+  intl: ^0.16.1
 
 
 dev_dependencies:

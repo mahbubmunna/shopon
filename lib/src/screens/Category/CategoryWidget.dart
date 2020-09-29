@@ -2,6 +2,7 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:smartcommercebd/config/ui_icons.dart';
+import 'package:smartcommercebd/generated/l10n.dart';
 import 'package:smartcommercebd/src/FlutterProvider/BrandProvider/BrandsProvider.dart';
 import 'package:smartcommercebd/src/FlutterProvider/CategoryProvider/CategoryProvider.dart';
 import 'package:smartcommercebd/src/configs/strings.dart';
@@ -180,9 +181,9 @@ class _CategoryWidgetState extends State<CategoryWidget>
             unselectedLabelStyle: TextStyle(fontWeight: FontWeight.w300),
             indicatorColor: Theme.of(context).primaryColor,
             tabs: [
-              Tab(text: 'Home'),
-              Tab(text: 'Products'),
-              Tab(text: 'Reviews'),
+              Tab(text: S.of(context).home),
+              Tab(text: S.of(context).products),
+              Tab(text: S.of(context).reviews),
             ],
           ),
         ),
@@ -212,7 +213,7 @@ class _CategoryWidgetState extends State<CategoryWidget>
                         color: Theme.of(context).hintColor,
                       ),
                       title: Text(
-                        'Users Reviews',
+                        S.of(context).usersReviews,
                         overflow: TextOverflow.fade,
                         softWrap: false,
                         style: Theme.of(context).textTheme.display1,

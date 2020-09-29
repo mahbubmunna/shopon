@@ -1,6 +1,7 @@
 import 'package:smartcommercebd/config/app_config.dart' as config;
 import 'package:smartcommercebd/config/ui_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:smartcommercebd/generated/l10n.dart';
 
 class EmptyOrdersProductsWidget extends StatelessWidget {
   const EmptyOrdersProductsWidget({
@@ -64,7 +65,7 @@ class EmptyOrdersProductsWidget extends StatelessWidget {
           Opacity(
             opacity: 0.4,
             child: Text(
-              'D\'ont have any orderd item',
+              S.of(context).dontHaveAnyOrderdItem,
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.display2.merge(TextStyle(fontWeight: FontWeight.w300)),
             ),
@@ -78,7 +79,7 @@ class EmptyOrdersProductsWidget extends StatelessWidget {
             color: Theme.of(context).focusColor.withOpacity(0.15),
             shape: StadiumBorder(),
             child: Text(
-              'Start Shopping',
+              S.of(context).startShopping,
               style: Theme.of(context).textTheme.title,
             ),
           ),

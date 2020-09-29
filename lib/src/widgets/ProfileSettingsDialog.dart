@@ -1,6 +1,7 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 import 'package:smartcommercebd/config/ui_icons.dart';
+import 'package:smartcommercebd/generated/l10n.dart';
 import 'package:smartcommercebd/src/models/user.dart';
 import 'package:smartcommercebd/src/repositories/user_repository.dart';
 import 'package:smartcommercebd/src/screens/signin.dart';
@@ -42,7 +43,7 @@ class _ProfileSettingsDialogState extends State<ProfileSettingsDialog> {
                     Icon(UiIcons.user_1),
                     SizedBox(width: 10),
                     Text(
-                      'Profile Settings',
+                      S.of(context).profileSettings,
                       style: Theme.of(context).textTheme.body2,
                     )
                   ],
@@ -56,8 +57,8 @@ class _ProfileSettingsDialogState extends State<ProfileSettingsDialog> {
                           controller: userNameController,
                           style: TextStyle(color: Theme.of(context).hintColor),
                           keyboardType: TextInputType.text,
-                          decoration: getInputDecoration(hintText: 'John Doe', labelText: 'Full Name'),
-                          validator: (input) => input.trim().length < 3 ? 'Not a valid full name' : null,
+                          decoration: getInputDecoration(hintText: S.of(context).johnDoe, labelText: S.of(context).fullName),
+                          validator: (input) => input.trim().length < 3 ? S.of(context).notAValidFullName : null,
                           onSaved: (input) => setState(() {
                             widget.user.name = input;
                             widget.onChanged();
@@ -67,26 +68,26 @@ class _ProfileSettingsDialogState extends State<ProfileSettingsDialog> {
                           controller: emailController,
                           style: TextStyle(color: Theme.of(context).hintColor),
                           keyboardType: TextInputType.emailAddress,
-                          decoration: getInputDecoration(hintText: 'johndo@gmail.com', labelText: 'Email Address'),
-                          validator: (input) => !input.contains('@') ? 'Not a valid email' : null,
+                          decoration: getInputDecoration(hintText: 'johndo@gmail.com', labelText: S.of(context).emailAddress),
+                          validator: (input) => !input.contains('@') ? S.of(context).notAValidEmail : null,
                           onSaved: (input) => widget.user.email = input,
                         ),
                         new TextFormField(
                           controller: addressController,
                           style: TextStyle(color: Theme.of(context).hintColor),
-                          decoration: getInputDecoration(hintText: 'Enter your address', labelText: 'Address'),
+                          decoration: getInputDecoration(hintText: S.of(context).enterYourAddress, labelText: S.of(context).address),
                           onSaved: (input) => widget.user.address = input,
                         ),
                         new TextFormField(
                           controller: areaController,
                           style: TextStyle(color: Theme.of(context).hintColor),
-                          decoration: getInputDecoration(hintText: 'Enter your area', labelText: 'Area'),
+                          decoration: getInputDecoration(hintText: S.of(context).enterYourArea, labelText: S.of(context).area),
                           onSaved: (input) => widget.user.area = input,
                         ),
                         new TextFormField(
                           controller: cityController,
                           style: TextStyle(color: Theme.of(context).hintColor),
-                          decoration: getInputDecoration(hintText: 'Enter your city', labelText: 'City'),
+                          decoration: getInputDecoration(hintText: S.of(context).enterYourCity, labelText: S.of(context).city),
                           onSaved: (input) => widget.user.city = input,
                         ),
 
@@ -140,12 +141,12 @@ class _ProfileSettingsDialogState extends State<ProfileSettingsDialog> {
                         onPressed: () {
                           Navigator.pop(context);
                         },
-                        child: Text('Cancel'),
+                        child: Text(S.of(context).cancel),
                       ),
                       MaterialButton(
                         onPressed: _submit,
                         child: Text(
-                          'Save',
+                          S.of(context).save,
                           style: TextStyle(color: Theme.of(context).accentColor),
                         ),
                       ),
@@ -197,7 +198,7 @@ class _ProfileSettingsDialogState extends State<ProfileSettingsDialog> {
       AwesomeDialog(
           context: context,
           dialogType: DialogType.SUCCES,
-          body: Text('Saved')
+          body: Text(S.of(context).saved)
       ).show();
       closeAwesomeDialog(context);
     }

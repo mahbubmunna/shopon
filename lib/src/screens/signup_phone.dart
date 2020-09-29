@@ -36,7 +36,7 @@ class _PhoneNumberScreenState extends State<PhoneNumberScreen> {
             child: Column(
               children: <Widget>[
                 Container(
-                    child: Center(child: Text('Already have an account, Sign In', style: TextStyle(fontWeight: FontWeight.bold),))
+                    child: Center(child: Text(S.of(context).alreadyHaveAnAccountSignIn, style: TextStyle(fontWeight: FontWeight.bold),))
                 ),
               ],
             ),
@@ -66,7 +66,7 @@ class _PhoneNumberScreenState extends State<PhoneNumberScreen> {
                     ),
                     height: 50,
                     width: 300,
-                    child: Center(child: Text('Sign In', textScaleFactor: 1.5, style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),))
+                    child: Center(child: Text(S.of(context).signIn, textScaleFactor: 1.5, style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),))
                 ),
               ],
             ),
@@ -84,7 +84,7 @@ class _PhoneNumberScreenState extends State<PhoneNumberScreen> {
           padding: const EdgeInsets.all(20),
           child: Column(
             children: [
-              Center(child: Text('Account Registration', textScaleFactor: 1.7,
+              Center(child: Text(S.of(context).accountRegistration, textScaleFactor: 1.7,
                 style: TextStyle(fontWeight: FontWeight.bold),),),
               SizedBox(height: 10,),
               TextField(
@@ -98,7 +98,7 @@ class _PhoneNumberScreenState extends State<PhoneNumberScreen> {
                       countryFilter: countryFilter,
                     ),
                   ),
-                  labelText: 'Mobile Number',
+                  labelText: S.of(context).mobileNumber,
                   labelStyle: TextStyle(
                       color: Colors.black
                   ),
@@ -119,7 +119,7 @@ class _PhoneNumberScreenState extends State<PhoneNumberScreen> {
                       FocusScope.of(context).unfocus();
                       print('Otp Tapped'); _register();
                     },
-                    child: Text('Send OTP', textScaleFactor: 1.2, ),
+                    child: Text(S.of(context).sendOtp, textScaleFactor: 1.2, ),
                   )
                 ],
               ),
@@ -201,7 +201,7 @@ class _PhoneNumberScreenState extends State<PhoneNumberScreen> {
                               countryFilter: countryFilter,
                             ),
                           ),
-                          labelText: 'Mobile Number',
+                          labelText: S.of(context).mobileNumber,
                           labelStyle: TextStyle(
                               color: Colors.black
                           ),
@@ -282,14 +282,14 @@ class _PhoneNumberScreenState extends State<PhoneNumberScreen> {
                   child: OtpPage(phoneNumber: mobileNumber['phone'],)));
         } else {
           CommonUtils.showErrorDialog(
-              context, "Failure", "Not supported number, try with working number", "close");
+              context, S.of(context).failure, S.of(context).notSupportedNumberTryWithWorkingNumber, S.of(context).close);
         }
       });
     } else {
       setState(() {
         _isLoading = false;
         CommonUtils.showErrorDialog(
-            context, "Failure", "Not supported number, try with working number", "close");
+            context, S.of(context).failure, S.of(context).notSupportedNumberTryWithWorkingNumber, S.of(context).close);
       });
     }
   }

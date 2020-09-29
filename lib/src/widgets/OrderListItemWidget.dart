@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:smartcommercebd/config/ui_icons.dart';
+import 'package:smartcommercebd/generated/l10n.dart';
 import 'package:smartcommercebd/src/configs/strings.dart';
 import 'package:smartcommercebd/src/models/route_argument.dart';
 import 'package:flutter/material.dart';
@@ -47,7 +48,7 @@ class _OrderListItemWidgetState extends State<OrderListItemWidget> {
         // Then show a snackbar.
         Scaffold.of(context).showSnackBar(SnackBar(
             content: Text(
-                "The ${widget.order_details.name} order is removed from wish list")));
+                S.of(context).theOrderIsRemovedFromWishList)));
       },
       child: InkWell(
         splashColor: Theme.of(context).accentColor,

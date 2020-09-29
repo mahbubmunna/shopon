@@ -2,6 +2,7 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:device_info/device_info.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:smartcommercebd/config/ui_icons.dart';
+import 'package:smartcommercebd/generated/l10n.dart';
 import 'package:smartcommercebd/src/configs/strings.dart';
 import 'package:smartcommercebd/src/providers/shared_pref_provider.dart';
 import 'package:smartcommercebd/src/repositories/registration_repository.dart';
@@ -65,7 +66,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
             child: Column(
               children: <Widget>[
                 Container(
-                    child: Center(child: Text('Already have an account, Sign In', style: TextStyle(fontWeight: FontWeight.bold),))
+                    child: Center(child: Text(S.of(context).alreadyHaveAnAccountSignIn, style: TextStyle(fontWeight: FontWeight.bold),))
                 ),
               ],
             ),
@@ -77,23 +78,21 @@ class _SignUpWidgetState extends State<SignUpWidget> {
   newLoginPageBody() {
     return ListView(
       children: [
-        Container(
-          height: 160,
-            child: Align(
-                alignment: Alignment.center,
-                child: Image.asset('assets/img/registration.png'))),
+        SizedBox(height: 20,),
+        Center(child: Text(S.of(context).sunbulahome, textScaleFactor: 2, style: TextStyle(fontWeight: FontWeight.bold, color: Theme.of(context).accentColor),)),
+        Center(child: Image.asset('assets/img/login.png', height: 150, width: 100,)),
         Padding(
           padding: const EdgeInsets.all(20),
           child: Column(
             children: [
-              Center(child: Text('Account Registration', textScaleFactor: 1.7,
+              Center(child: Text(S.of(context).accountRegistration, textScaleFactor: 1.7,
                 style: TextStyle(fontWeight: FontWeight.bold),),),
               SizedBox(height: 10,),
               TextField(
                 controller: _usernameController,
                 decoration: InputDecoration(
-                  labelText: 'Name',
-                  hintText: 'Type your name',
+                  labelText: S.of(context).name,
+                  hintText: S.of(context).typeYourName,
                   hintStyle: Theme.of(context).textTheme.body1.merge(
                     TextStyle(color: Theme.of(context).accentColor),
                   ),
@@ -104,8 +103,8 @@ class _SignUpWidgetState extends State<SignUpWidget> {
               TextField(
                 controller: _emailController,
                 decoration: InputDecoration(
-                  labelText: 'Email Address',
-                  hintText: 'Type your email address',
+                  labelText: S.of(context).emailAddress,
+                  hintText: S.of(context).typeYourEmailAddress,
                   hintStyle: Theme.of(context).textTheme.body1.merge(
                     TextStyle(color: Theme.of(context).accentColor),
                   ),
@@ -117,9 +116,9 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                 controller: _passwordController,
                 obscureText: true,
                 decoration: InputDecoration(
-                  labelText: 'Password',
+                  labelText: S.of(context).password,
                   suffixIcon: Icon(Icons.lock, color: Colors.black,),
-                  hintText: 'Type your password',
+                  hintText: S.of(context).typeYourPassword,
                   hintStyle: Theme.of(context).textTheme.body1.merge(
                     TextStyle(color: Theme.of(context).accentColor),
                   ),
@@ -135,13 +134,13 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                     elevation: 0,
                     minWidth: 160,
                     height: 40,
-                    color: Color(0xffF46665),
+                    color: Theme.of(context).accentColor,
                     onPressed: () {
                       FocusScope.of(context).unfocus();
                       _register();
-                      print('Registration tapped');
+                      print(S.of(context).registrationTapped);
                     },
-                    child: Text('Registration', textScaleFactor: 1.2,),
+                    child: Text(S.of(context).registration, textScaleFactor: 1.2,),
                   )
                 ],
               ),
@@ -166,7 +165,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
             border: Border.all(width: 1.0, color: const Color(0xffe4dcd1)),
           ),
           child: Center(
-            child: Text('Welcome to Sunbulahome', textScaleFactor: 1.7,
+            child: Text(S.of(context).welcomeToSunbulahome, textScaleFactor: 1.7,
               style: TextStyle(
                   fontWeight: FontWeight.bold,
                   color: Colors.white
@@ -214,7 +213,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                         controller: _usernameController,
                         decoration: InputDecoration(
                           prefixIcon: Icon(Icons.person, color: Color(0xffbe9f71),),
-                          labelText: 'Name',
+                          labelText: S.of(context).name,
                           labelStyle: TextStyle(
                               color: Colors.black
                           ),
@@ -236,7 +235,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                         controller: _emailController,
                         decoration: InputDecoration(
                           prefixIcon: Icon(Icons.email, color: Color(0xffbe9f71),),
-                          labelText: 'Email',
+                          labelText: S.of(context).email,
                           labelStyle: TextStyle(
                               color: Colors.black
                           ),
@@ -259,7 +258,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                         obscureText: !_showPassword,
                         decoration: InputDecoration(
                           prefixIcon: Icon(Icons.lock, color: Color(0xffbe9f71),),
-                          labelText: 'Password',
+                          labelText: S.of(context).password,
                           labelStyle: TextStyle(
                               color: Colors.black
                           ),
@@ -332,7 +331,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                     onPressed: (){
                       FocusScope.of(context).unfocus();
                       print('Register tapped'); _register();},
-                    child: Text('Register', textScaleFactor: 1.3,)
+                    child: Text(S.of(context).register, textScaleFactor: 1.3,)
                 ),
               )
             ],
@@ -374,7 +373,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                 child: Column(
                   children: <Widget>[
                     SizedBox(height: 25),
-                    Text('Sign Up',
+                    Text(S.of(context).signUp,
                         style: Theme.of(context).textTheme.display3),
                     SizedBox(height: 20),
                     new TextField(
@@ -382,7 +381,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                       style: TextStyle(color: Theme.of(context).accentColor),
                       keyboardType: TextInputType.text,
                       decoration: new InputDecoration(
-                        hintText: 'Full Name',
+                        hintText: S.of(context).fullName,
                         hintStyle: Theme.of(context).textTheme.body1.merge(
                           TextStyle(color: Theme.of(context).accentColor),
                         ),
@@ -406,7 +405,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                       style: TextStyle(color: Theme.of(context).accentColor),
                       keyboardType: TextInputType.emailAddress,
                       decoration: new InputDecoration(
-                        hintText: 'Email Address',
+                        hintText: S.of(context).emailAddress,
                         hintStyle: Theme.of(context).textTheme.body1.merge(
                           TextStyle(color: Theme.of(context).accentColor),
                         ),
@@ -431,7 +430,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                       keyboardType: TextInputType.text,
                       obscureText: !_showPassword,
                       decoration: new InputDecoration(
-                        hintText: 'Password',
+                        hintText: S.of(context).password,
                         hintStyle: Theme.of(context).textTheme.body1.merge(
                           TextStyle(color: Theme.of(context).accentColor),
                         ),
@@ -472,7 +471,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                         _register();
                       },
                       child: Text(
-                        'Sign Up',
+                        S.of(context).signUp,
                         style: Theme.of(context).textTheme.title.merge(
                           TextStyle(
                               color:
@@ -484,7 +483,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                     ),
                     SizedBox(height: 50),
                     Text(
-                      'Or using social media',
+                      S.of(context).orUsingSocialMedia,
                       style: Theme.of(context).textTheme.body1,
                     ),
                     SizedBox(height: 20),
@@ -504,9 +503,9 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                   TextStyle(color: Theme.of(context).primaryColor),
                 ),
                 children: [
-                  TextSpan(text: 'Already have an account ?'),
+                  TextSpan(text: S.of(context).alreadyHaveAnAccount),
                   TextSpan(
-                      text: ' Sign In',
+                      text: S.of(context).signIn,
                       style: TextStyle(fontWeight: FontWeight.w700)),
                 ],
               ),
@@ -561,7 +560,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
       setState(() {
         _isLoading = false;
         CommonUtils.showErrorDialog(
-            context, "Failure", "Failed to register, try again", "close");
+            context, S.of(context).failure, S.of(context).failedToRegisterTryAgain, S.of(context).close);
       });
     }
   }
@@ -583,7 +582,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
       setState(() {
         _isLoading = false;
         CommonUtils.showErrorDialog(
-            context, "Failure", "Failed to Login, try again", "close");
+            context, S.of(context).failure, S.of(context).failedToLoginTryAgain, S.of(context).close);
       });
     } else {
       print(tokenResponse.token);

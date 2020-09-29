@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'package:flutter/widgets.dart';
 import 'package:http/http.dart' as http;
+import 'package:intl/intl.dart';
 import 'package:smartcommercebd/src/configs/strings.dart';
-import 'package:smartcommercebd/src/models/category.dart';
 import 'package:smartcommercebd/src/models/product.dart';
 
 class CategoryProvider extends ChangeNotifier {
@@ -70,6 +70,7 @@ class CategoryProvider extends ChangeNotifier {
                 variations: value[i]["variations"],
                 name: value[i]["name"],
                 icon: value[i]["icon"],
+                arName: value[i]["ar_name"],
                 id: value[i]["id"].toString()),
           );
 
@@ -107,7 +108,7 @@ class CategoryProvider extends ChangeNotifier {
                 thumbnail_img: value[i]["thumbnail_img"],
                 colors: value[i]["colors"],
                 variations: value[i]["variations"],
-                name: value[i]["name"],
+                name: Intl.getCurrentLocale() == 'en' ? value[i]["name"] : value[i]["ar_name"],
                 icon: /*public_path_url +*/ value[i]["icon"],
                 id: value[i]["id"].toString()));
             isError = false;

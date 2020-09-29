@@ -7,6 +7,7 @@ import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:smartcommercebd/config/ui_icons.dart';
+import 'package:smartcommercebd/generated/l10n.dart';
 import 'package:smartcommercebd/src/FlutterProvider/MessageProvider.dart';
 import 'package:smartcommercebd/src/FlutterProvider/RelatedProductProvider.dart';
 import 'package:smartcommercebd/src/configs/strings.dart';
@@ -130,7 +131,7 @@ class productHomeTabWidgetState extends State<ProductHomeTabWidget> {
                       children: <Widget>[
                         Expanded(
                           child: Text(
-                            'Select Color',
+                            S.of(context).selectColor,
                             style: Theme.of(context).textTheme.body2,
                           ),
                         ),
@@ -165,7 +166,7 @@ class productHomeTabWidgetState extends State<ProductHomeTabWidget> {
               color: Theme.of(context).hintColor,
             ),
             title: Text(
-              'Related Poducts',
+              S.of(context).relatedPoducts,
               style: Theme.of(context).textTheme.display1,
             ),
           ),
@@ -240,7 +241,7 @@ class productHomeTabWidgetState extends State<ProductHomeTabWidget> {
     AwesomeDialog(
         context: context,
         dialogType: DialogType.SUCCES,
-        body: Text('successfully added to favorites'))
+        body: Text(S.of(context).successfullyAddedToFavorites))
         .show();
     Timer(Duration(seconds: 3), () {
       Navigator.pop(context);
@@ -263,7 +264,7 @@ class productHomeTabWidgetState extends State<ProductHomeTabWidget> {
         print("Status Value   ${message_provider.loading}");
 
         return AlertDialog(
-          title: Text('Start Convercation'),
+          title: Text(S.of(context).startConvercation),
           content: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -276,8 +277,8 @@ class productHomeTabWidgetState extends State<ProductHomeTabWidget> {
                         new TextField(
                           autofocus: true,
                           decoration: new InputDecoration(
-                            labelText: 'Title',
-                            hintText: 'Title',
+                            labelText: S.of(context).title,
+                            hintText: S.of(context).title,
                             enabledBorder: UnderlineInputBorder(
                               borderSide: BorderSide(color: Colors.black26),
                             ),
@@ -297,8 +298,8 @@ class productHomeTabWidgetState extends State<ProductHomeTabWidget> {
                           maxLines: 5,
                           autofocus: true,
                           decoration: new InputDecoration(
-                            labelText: 'Description',
-                            hintText: 'Description',
+                            labelText: S.of(context).description,
+                            hintText: S.of(context).description,
                             enabledBorder: UnderlineInputBorder(
                               borderSide: BorderSide(color: Colors.black26),
                             ),
@@ -341,7 +342,7 @@ class productHomeTabWidgetState extends State<ProductHomeTabWidget> {
           actions: <Widget>[
             FlatButton(
               child: Text(
-                'Cancel',
+                S.of(context).cancel,
                 style: TextStyle(color: Colors.red),
               ),
               onPressed: () {
@@ -349,7 +350,7 @@ class productHomeTabWidgetState extends State<ProductHomeTabWidget> {
               },
             ),
             FlatButton(
-              child: Text('Send'),
+              child: Text(S.of(context).send),
               onPressed: () {
                 message_provider.setLoading(true);
 

@@ -41,6 +41,7 @@ class BestSellProvider {
                 variations: value[i]["variations"],
                 name: value[i]["name"],
                 icon: value[i]["icon"],
+                arName: value[i]["ar_name"],
                 id: value[i]["id"].toString()),
 
           );

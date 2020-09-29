@@ -1,6 +1,7 @@
 import 'package:smartcommercebd/config/app_config.dart' as config;
 import 'package:smartcommercebd/config/ui_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:smartcommercebd/generated/l10n.dart';
 
 class EmptyMessagesWidget extends StatelessWidget {
   const EmptyMessagesWidget({
@@ -64,7 +65,7 @@ class EmptyMessagesWidget extends StatelessWidget {
           Opacity(
             opacity: 0.4,
             child: Text(
-              'D\'ont have any message',
+              S.of(context).dontHaveAnyMessage,
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.display2.merge(TextStyle(fontWeight: FontWeight.w300)),
             ),
@@ -78,7 +79,7 @@ class EmptyMessagesWidget extends StatelessWidget {
             color: Theme.of(context).focusColor.withOpacity(0.15),
             shape: StadiumBorder(),
             child: Text(
-              'Start Exploring',
+              S.of(context).startExploring,
 //                        textAlign: TextAlign.ce,
               style: Theme.of(context).textTheme.title,
             ),

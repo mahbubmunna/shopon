@@ -1,4 +1,5 @@
 import 'package:provider/provider.dart';
+import 'package:smartcommercebd/generated/l10n.dart';
 import 'package:smartcommercebd/src/FlutterProvider/Order/OrderProvider.dart';
 import 'package:smartcommercebd/src/FlutterProvider/Order/PaidProvider.dart';
 import 'package:smartcommercebd/src/FlutterProvider/Order/PendingProvider.dart';
@@ -43,7 +44,7 @@ class _OrdersWidgetState extends State<OrdersWidget> {
             backgroundColor: Colors.transparent,
             elevation: 0,
             title: Text(
-              'My Orders',
+              S.of(context).myOrders,
               style: Theme.of(context).textTheme.display1,
             ),
             actions: <Widget>[
@@ -83,7 +84,7 @@ class _OrdersWidgetState extends State<OrdersWidget> {
                               color: Theme.of(context).accentColor, width: 1)),
                       child: Align(
                         alignment: Alignment.center,
-                        child: Text("All"),
+                        child: Text(S.of(context).all),
                       ),
                     ),
                   ),
@@ -96,7 +97,7 @@ class _OrdersWidgetState extends State<OrdersWidget> {
                               color: Theme.of(context).accentColor, width: 1)),
                       child: Align(
                         alignment: Alignment.center,
-                        child: Text("Unpaid"),
+                        child: Text(S.of(context).unpaid),
                       ),
                     ),
                   ),
@@ -109,7 +110,7 @@ class _OrdersWidgetState extends State<OrdersWidget> {
                               color: Theme.of(context).accentColor, width: 1)),
                       child: Align(
                         alignment: Alignment.center,
-                        child: Text("Paid"),
+                        child: Text(S.of(context).paid),
                       ),
                     ),
                   ),
@@ -122,7 +123,7 @@ class _OrdersWidgetState extends State<OrdersWidget> {
                               color: Theme.of(context).accentColor, width: 1)),
                       child: Align(
                         alignment: Alignment.center,
-                        child: Text("Shipped"),
+                        child: Text(S.of(context).shipped),
                       ),
                     ),
                   ),
@@ -135,7 +136,7 @@ class _OrdersWidgetState extends State<OrdersWidget> {
                               color: Theme.of(context).accentColor, width: 1)),
                       child: Align(
                         alignment: Alignment.center,
-                        child: Text("Pending"),
+                        child: Text(S.of(context).pending),
                       ),
                     ),
                   ),

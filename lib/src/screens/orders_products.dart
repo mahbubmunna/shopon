@@ -1,5 +1,6 @@
 import 'package:provider/provider.dart';
 import 'package:smartcommercebd/config/ui_icons.dart';
+import 'package:smartcommercebd/generated/l10n.dart';
 import 'package:smartcommercebd/src/FlutterProvider/Order/OrderProvider.dart';
 import 'package:smartcommercebd/src/models/Order.dart';
 import 'package:smartcommercebd/src/widgets/EmptyOrdersProductsWidget.dart';
@@ -66,7 +67,7 @@ class _OrdersProductsWidgetState extends State<OrdersProductsWidget> {
                       color: Theme.of(context).hintColor,
                     ),
                     title: Text(
-                      'Orders List',
+                      S.of(context).ordersList,
                       overflow: TextOverflow.fade,
                       softWrap: false,
                       style: Theme.of(context).textTheme.display1,

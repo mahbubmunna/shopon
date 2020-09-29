@@ -1,4 +1,5 @@
 import 'package:smartcommercebd/config/ui_icons.dart';
+import 'package:smartcommercebd/generated/l10n.dart';
 import 'package:smartcommercebd/src/models/product.dart';
 import 'package:smartcommercebd/src/repositories/favorites_repository.dart';
 import 'package:smartcommercebd/src/utils/helper.dart';
@@ -52,7 +53,7 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
                         color: Theme.of(context).hintColor,
                       ),
                       title: Text(
-                        'Wish List',
+                        S.of(context).wishList,
                         overflow: TextOverflow.fade,
                         softWrap: false,
                         style: Theme.of(context).textTheme.display1,

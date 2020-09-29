@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:smartcommercebd/generated/l10n.dart';
 import 'package:smartcommercebd/src/FlutterProvider/CategoryProvider/CategoryProvider.dart';
 import 'package:smartcommercebd/src/configs/strings.dart';
 import 'package:smartcommercebd/src/models/product.dart';
@@ -287,7 +288,7 @@ class _CategorizedProductsWidgetState extends State<CategorizedProductsWidget>
                         child: CircularProgressIndicator(),
                       )
                 : Center(
-                    child: Text("Empty"),
+                    child: Text(S.of(context).empty),
                   );
           },
         ),
