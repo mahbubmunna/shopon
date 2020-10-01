@@ -493,26 +493,26 @@ class _AccountWidgetState extends State<AccountWidget> {
                     style: TextStyle(color: Theme.of(context).focusColor),
                   ),
                 ),
-                ListTile(
-                  onTap: () {
-                    Navigator.of(context).pushNamed('/Help');
-                  },
-                  dense: true,
-                  title: Row(
-                    children: <Widget>[
-                      Icon(
-                        UiIcons.information,
-                        size: 22,
-                        color: Theme.of(context).focusColor,
-                      ),
-                      SizedBox(width: 10),
-                      Text(
-                        S.of(context).helpSupport,
-                        style: Theme.of(context).textTheme.body1,
-                      ),
-                    ],
-                  ),
-                ),
+                // ListTile(
+                //   onTap: () {
+                //     Navigator.of(context).pushNamed('/Help');
+                //   },
+                //   dense: true,
+                //   title: Row(
+                //     children: <Widget>[
+                //       Icon(
+                //         UiIcons.information,
+                //         size: 22,
+                //         color: Theme.of(context).focusColor,
+                //       ),
+                //       SizedBox(width: 10),
+                //       Text(
+                //         S.of(context).helpSupport,
+                //         style: Theme.of(context).textTheme.body1,
+                //       ),
+                //     ],
+                //   ),
+                // ),
               ],
             ),
           ),

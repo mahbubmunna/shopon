@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:provider/provider.dart';
 import 'package:smartcommercebd/config/ui_icons.dart';
+import 'package:smartcommercebd/generated/l10n.dart';
 import 'package:smartcommercebd/src/FlutterProvider/BrandProvider/BrandsProvider.dart';
 import 'package:smartcommercebd/src/FlutterProvider/CategoryProvider/CategoryProvider.dart';
 import 'package:smartcommercebd/src/FlutterProvider/FlashProvider/FlashProvider.dart';
@@ -56,7 +57,7 @@ class _TabsWidgetState extends State<TabsWidget> {
       widget.selectedTab = tabItem;
       switch (tabItem) {
         case 0:
-          widget.currentTitle = 'Home';
+          widget.currentTitle = S.current.home;
           widget.currentPage = MultiProvider(
             providers: [
               ChangeNotifierProvider(create: (_) => BrandsProvider(1)),
@@ -71,11 +72,11 @@ class _TabsWidgetState extends State<TabsWidget> {
           );
           break;
         case 1:
-          widget.currentTitle = 'Favorites';
+          widget.currentTitle = S.current.favorites;
           widget.currentPage = FavoritesWidget();
           break;
         case 2:
-          widget.currentTitle = 'Account';
+          widget.currentTitle = S.current.account;
           widget.currentPage = AccountWidget();
           break;
 //        case 3:
@@ -83,7 +84,7 @@ class _TabsWidgetState extends State<TabsWidget> {
 //          widget.currentPage = MessagesWidget();
 //          break;
         case 3:
-          widget.currentTitle = 'Notifications';
+          widget.currentTitle = S.current.notifications;
           widget.currentPage = NotificationsWidget();
           break;
         /*case 5:

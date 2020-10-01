@@ -36,7 +36,7 @@ class BrandsProvider extends ChangeNotifier {
         if (value != null) {
           for (int i = 0; i < value.length; i++) {
             _brands_list.add(Brand(
-                name: value[i]["name"],
+                name: Intl.getCurrentLocale() == 'en' ? value[i]["name"] : value[i]["ar_name"],
                 logo: value[i]["logo"],
                 id: value[i]["id"].toString()));
 

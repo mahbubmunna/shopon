@@ -4,8 +4,10 @@ import 'package:flutter/material.dart';
 
 class LanguageItemWidget extends StatefulWidget {
   final Language language;
+  final Function() notifyParent;
 
   const LanguageItemWidget({
+    @required this.notifyParent,
     Key key,
     this.language,
   }) : super(key: key);
@@ -70,6 +72,7 @@ class _LanguageItemWidgetState extends State<LanguageItemWidget> with SingleTick
 //          application.onLocaleChanged(Locale(languagesMap[widget.language.englishName]));
 //          SharedPrefProvider.setString('app_language', widget.language.englishName);
           S.load(Locale(widget.language.languageCode));
+          widget.notifyParent();
           print(widget.language.englishName);
           print(widget.language.localName);
         }

@@ -68,7 +68,7 @@ class CategoryProvider extends ChangeNotifier {
                 thumbnail_img: value[i]["thumbnail_img"],
                 colors: value[i]["colors"],
                 variations: value[i]["variations"],
-                name: value[i]["name"],
+                name: Intl.getCurrentLocale() == 'en' ? value[i]["name"] : value[i]["ar_name"],
                 icon: value[i]["icon"],
                 arName: value[i]["ar_name"],
                 id: value[i]["id"].toString()),
@@ -249,7 +249,7 @@ class CategoryProvider extends ChangeNotifier {
               thumbnail_img: value[i]["thumbnail_img"],
               colors: value[i]["colors"],
               variations: value[i]["variations"],
-              name: value[i]["name"],
+              name: Intl.getCurrentLocale() == 'en' ? value[i]["name"] : value[i]["ar_name"],
               icon: value[i]["icon"],
               id: value[i]["id"].toString()));
 

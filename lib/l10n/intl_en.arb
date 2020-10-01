@@ -144,5 +144,12 @@
   "save": "Save",
   "saved": "Saved",
   "noReview": "No Review",
-  "search": "Search"
+  "search": "Search",
+  "notifications": "Notifications",
+  "categories": "Categories",
+  "applicationPreferences": "Application Preferences",
+  "settings": "Settings",
+  "logOut": "Log out",
+  "favorites": "Favorites",
+  "account": "Account"
 }

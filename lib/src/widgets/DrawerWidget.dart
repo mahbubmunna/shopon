@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:smartcommercebd/config/ui_icons.dart';
+import 'package:smartcommercebd/generated/l10n.dart';
 import 'package:smartcommercebd/src/configs/strings.dart';
 import 'package:smartcommercebd/src/models/route_argument.dart';
 import 'package:smartcommercebd/src/providers/shared_pref_provider.dart';
@@ -49,7 +50,7 @@ class DrawerWidget extends StatelessWidget {
               color: Theme.of(context).focusColor.withOpacity(1),
             ),
             title: Text(
-              "Home",
+              S.of(context).home,
               style: Theme.of(context).textTheme.subhead,
             ),
           ),
@@ -62,7 +63,7 @@ class DrawerWidget extends StatelessWidget {
               color: Theme.of(context).focusColor.withOpacity(1),
             ),
             title: Text(
-              "Notifications",
+              S.of(context).notifications,
               style: Theme.of(context).textTheme.subhead,
             ),
           ),
@@ -75,7 +76,7 @@ class DrawerWidget extends StatelessWidget {
               color: Theme.of(context).focusColor.withOpacity(1),
             ),
             title: Text(
-              "My Orders",
+              S.of(context).myOrders,
               style: Theme.of(context).textTheme.subhead,
             ),
             /*  trailing: Chip(
@@ -98,14 +99,14 @@ class DrawerWidget extends StatelessWidget {
               color: Theme.of(context).focusColor.withOpacity(1),
             ),
             title: Text(
-              "Wish List",
+              S.of(context).wishList,
               style: Theme.of(context).textTheme.subhead,
             ),
           ),
           ListTile(
             dense: true,
             title: Text(
-              "Products",
+              S.of(context).products,
               style: Theme.of(context).textTheme.body1,
             ),
             trailing: Icon(
@@ -126,7 +127,7 @@ class DrawerWidget extends StatelessWidget {
               color: Theme.of(context).focusColor.withOpacity(1),
             ),
             title: Text(
-              "Categories",
+              S.of(context).categories,
               style: Theme.of(context).textTheme.subhead,
             ),
           ),
@@ -140,14 +141,14 @@ class DrawerWidget extends StatelessWidget {
               color: Theme.of(context).focusColor.withOpacity(1),
             ),
             title: Text(
-              "Brands",
+              S.of(context).brands,
               style: Theme.of(context).textTheme.subhead,
             ),
           ),
           ListTile(
             dense: true,
             title: Text(
-              "Application Preferences",
+              S.of(context).applicationPreferences,
               style: Theme.of(context).textTheme.body1,
             ),
             trailing: Icon(
@@ -155,29 +156,29 @@ class DrawerWidget extends StatelessWidget {
               color: Theme.of(context).focusColor.withOpacity(0.3),
             ),
           ),
+          // ListTile(
+          //   onTap: () {
+          //     Navigator.of(context).pushNamed('/Help');
+          //   },
+          //   leading: Icon(
+          //     UiIcons.information,
+          //     color: Theme.of(context).focusColor.withOpacity(1),
+          //   ),
+          //   title: Text(
+          //     "Help & Support",
+          //     style: Theme.of(context).textTheme.subhead,
+          //   ),
+          // ),
           ListTile(
             onTap: () {
-              Navigator.of(context).pushNamed('/Help');
-            },
-            leading: Icon(
-              UiIcons.information,
-              color: Theme.of(context).focusColor.withOpacity(1),
-            ),
-            title: Text(
-              "Help & Support",
-              style: Theme.of(context).textTheme.subhead,
-            ),
-          ),
-          ListTile(
-            onTap: () {
-              Navigator.of(context).pushNamed('/Tabs', arguments: 4);
+              Navigator.of(context).pushNamed('/Tabs', arguments: 2);
             },
             leading: Icon(
               UiIcons.settings_1,
               color: Theme.of(context).focusColor.withOpacity(1),
             ),
             title: Text(
-              "Settings",
+              S.of(context).settings,
               style: Theme.of(context).textTheme.subhead,
             ),
           ),
@@ -190,7 +191,7 @@ class DrawerWidget extends StatelessWidget {
               color: Theme.of(context).focusColor.withOpacity(1),
             ),
             title: Text(
-              "Languages",
+              S.of(context).languages,
               style: Theme.of(context).textTheme.subhead,
             ),
           ),
@@ -205,21 +206,21 @@ class DrawerWidget extends StatelessWidget {
               color: Theme.of(context).focusColor.withOpacity(1),
             ),
             title: Text(
-              "Log out",
+              S.of(context).logOut,
               style: Theme.of(context).textTheme.subhead,
             ),
           ),
-          ListTile(
-            dense: true,
-            title: Text(
-              "Version 0.0.1",
-              style: Theme.of(context).textTheme.body1,
-            ),
-            trailing: Icon(
-              Icons.remove,
-              color: Theme.of(context).focusColor.withOpacity(0.3),
-            ),
-          ),
+          // ListTile(
+          //   dense: true,
+          //   title: Text(
+          //     "Version 0.0.1",
+          //     style: Theme.of(context).textTheme.body1,
+          //   ),
+          //   trailing: Icon(
+          //     Icons.remove,
+          //     color: Theme.of(context).focusColor.withOpacity(0.3),
+          //   ),
+          // ),
         ],
       ),
     );

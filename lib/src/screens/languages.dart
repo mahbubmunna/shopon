@@ -99,6 +99,7 @@ class _LanguagesWidgetState extends State<LanguagesWidget> {
                 },
                 itemBuilder: (context, index) {
                   return LanguageItemWidget(
+                      notifyParent: refresh,
                       language: languagesList.languages.elementAt(index));
                 },
               ),
@@ -107,5 +108,10 @@ class _LanguagesWidgetState extends State<LanguagesWidget> {
         ),
       ),
     );
+  }
+
+  refresh() {
+    setState(() {
+    });
   }
 }

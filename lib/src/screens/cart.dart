@@ -294,7 +294,6 @@ class _CartWidgetState extends State<CartWidget> {
                           ),
                         ],
                       ),
-                      SizedBox(height: 10),
                     ],
                   ),
                 ),

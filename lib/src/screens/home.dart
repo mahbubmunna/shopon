@@ -318,7 +318,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                           padding: EdgeInsets.symmetric(
                                               vertical: 10, horizontal: 15),
                                           width: 156,
-                                          height: 70,
+                                          height: 72,
                                           decoration: BoxDecoration(
                                               color: Theme.of(context)
                                                   .primaryColor,
