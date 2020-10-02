@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>259179567140-6e28bjhucocg1cc7n0fln5pulh9d5k00.apps.googleusercontent.com</string>
+	<string>670982011260-5ncbn1rjoqk56qdmvrchivleh8k62i2f.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.259179567140-6e28bjhucocg1cc7n0fln5pulh9d5k00</string>
+	<string>com.googleusercontent.apps.670982011260-5ncbn1rjoqk56qdmvrchivleh8k62i2f</string>
 	<key>API_KEY</key>
-	<string>AIzaSyCewTx5hrHNZLPj98S2p_gjhz4mV6KciF8</string>
+	<string>AIzaSyA3QP4RoE11k6vz39CrM5QySo-yNOY4eL4</string>
 	<key>GCM_SENDER_ID</key>
-	<string>259179567140</string>
+	<string>670982011260</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.saneno.user</string>
+	<string>com.sunbulahome.user</string>
 	<key>PROJECT_ID</key>
-	<string>smartcommerce-1555856817595</string>
+	<string>sunbulhome</string>
 	<key>STORAGE_BUCKET</key>
-	<string>smartcommerce-1555856817595.appspot.com</string>
+	<string>sunbulhome.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,8 +29,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:259179567140:ios:0fc096406aa894775620b1</string>
+	<string>1:670982011260:ios:17a805ca57363d6ed98cf9</string>
 	<key>DATABASE_URL</key>
-	<string>https://smartcommerce-1555856817595.firebaseio.com</string>
+	<string>https://sunbulhome.firebaseio.com</string>
 </dict>
 </plist>
