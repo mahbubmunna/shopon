@@ -15,7 +15,6 @@ let mapsAPIKey = "AIzaSyB47znSzgNH60kXP4lSPvP7SuWhLlwuDIk"
      fatalError("Please provide an API Key using mapsAPIKey")
     }
     GMSServices.provideAPIKey("AIzaSyA3QP4RoE11k6vz39CrM5QySo-yNOY4eL4")
-    GMSPlacesClient.provideAPIKey("AIzaSyA3QP4RoE11k6vz39CrM5QySo-yNOY4eL4")
     GeneratedPluginRegistrant.register(with: self)
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }
