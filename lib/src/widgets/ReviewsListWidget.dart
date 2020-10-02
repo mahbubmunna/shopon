@@ -1,7 +1,7 @@
 import 'package:provider/provider.dart';
-import 'package:smartcommercebd/generated/l10n.dart';
-import 'package:smartcommercebd/src/FlutterProvider/ReviewProvider.dart';
-import 'package:smartcommercebd/src/widgets/ReviewItemWidget.dart';
+import 'package:sunbulahome/generated/l10n.dart';
+import 'package:sunbulahome/src/FlutterProvider/ReviewProvider.dart';
+import 'package:sunbulahome/src/widgets/ReviewItemWidget.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable

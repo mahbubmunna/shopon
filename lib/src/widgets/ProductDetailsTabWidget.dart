@@ -1,7 +1,7 @@
-import 'package:smartcommercebd/config/ui_icons.dart';
-import 'package:smartcommercebd/generated/l10n.dart';
-import 'package:smartcommercebd/src/models/product.dart';
-import 'package:smartcommercebd/src/widgets/FlashSalesCarouselWidget.dart';
+import 'package:sunbulahome/config/ui_icons.dart';
+import 'package:sunbulahome/generated/l10n.dart';
+import 'package:sunbulahome/src/models/product.dart';
+import 'package:sunbulahome/src/widgets/FlashSalesCarouselWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 

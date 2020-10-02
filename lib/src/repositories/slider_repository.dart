@@ -1,7 +1,7 @@
 
 
-import 'package:smartcommercebd/src/models/slider.dart';
-import 'package:smartcommercebd/src/providers/slider_provider.dart';
+import 'package:sunbulahome/src/models/slider.dart';
+import 'package:sunbulahome/src/providers/slider_provider.dart';
 
 class SliderRepository{
 

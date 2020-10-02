@@ -1,10 +1,10 @@
 import 'dart:convert';
 
 import 'package:flutter/widgets.dart';
-import 'package:smartcommercebd/src/configs/strings.dart';
-import 'package:smartcommercebd/src/models/CheckoutModel.dart';
-import 'package:smartcommercebd/src/models/Delivery.dart';
-import 'package:smartcommercebd/src/providers/shared_pref_provider.dart';
+import 'package:sunbulahome/src/configs/strings.dart';
+import 'package:sunbulahome/src/models/CheckoutModel.dart';
+import 'package:sunbulahome/src/models/Delivery.dart';
+import 'package:sunbulahome/src/providers/shared_pref_provider.dart';
 import 'package:http/http.dart' as http;
 
 class CheckoutProvider extends ChangeNotifier {

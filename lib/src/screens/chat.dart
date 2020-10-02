@@ -2,15 +2,15 @@ import 'dart:async';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:provider/provider.dart';
-import 'package:smartcommercebd/config/ui_icons.dart';
-import 'package:smartcommercebd/generated/l10n.dart';
-import 'package:smartcommercebd/src/FlutterProvider/ChatProvider.dart';
-import 'package:smartcommercebd/src/FlutterProvider/MessageProvider.dart';
-import 'package:smartcommercebd/src/FlutterProvider/ProfileProvider/ProfileProvider.dart';
-import 'package:smartcommercebd/src/configs/strings.dart';
-import 'package:smartcommercebd/src/models/Chat.dart';
-import 'package:smartcommercebd/src/models/user.dart';
-import 'package:smartcommercebd/src/utils/common_utils.dart';
+import 'package:sunbulahome/config/ui_icons.dart';
+import 'package:sunbulahome/generated/l10n.dart';
+import 'package:sunbulahome/src/FlutterProvider/ChatProvider.dart';
+import 'package:sunbulahome/src/FlutterProvider/MessageProvider.dart';
+import 'package:sunbulahome/src/FlutterProvider/ProfileProvider/ProfileProvider.dart';
+import 'package:sunbulahome/src/configs/strings.dart';
+import 'package:sunbulahome/src/models/Chat.dart';
+import 'package:sunbulahome/src/models/user.dart';
+import 'package:sunbulahome/src/utils/common_utils.dart';
 import 'package:flutter/material.dart';
 
 class ChatWidget extends StatefulWidget {

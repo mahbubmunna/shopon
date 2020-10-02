@@ -1,11 +1,11 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:provider/provider.dart';
-import 'package:smartcommercebd/config/ui_icons.dart';
-import 'package:smartcommercebd/generated/l10n.dart';
-import 'package:smartcommercebd/src/FlutterProvider/ProfileProvider/ProfileProvider.dart';
-import 'package:smartcommercebd/src/screens/splash.dart';
-import 'package:smartcommercebd/src/widgets/ProfileSettingsDialog.dart';
+import 'package:sunbulahome/config/ui_icons.dart';
+import 'package:sunbulahome/generated/l10n.dart';
+import 'package:sunbulahome/src/FlutterProvider/ProfileProvider/ProfileProvider.dart';
+import 'package:sunbulahome/src/screens/splash.dart';
+import 'package:sunbulahome/src/widgets/ProfileSettingsDialog.dart';
 import 'package:flutter/material.dart';
 
 class AccountWidget extends StatefulWidget {

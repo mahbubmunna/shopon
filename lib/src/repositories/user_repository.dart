@@ -1,6 +1,6 @@
 
-import 'package:smartcommercebd/src/models/user.dart';
-import 'package:smartcommercebd/src/providers/user_provider.dart';
+import 'package:sunbulahome/src/models/user.dart';
+import 'package:sunbulahome/src/providers/user_provider.dart';
 
 
 class UserRepository {

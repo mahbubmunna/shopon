@@ -1,8 +1,8 @@
 
 
-import 'package:smartcommercebd/src/configs/strings.dart';
-import 'package:smartcommercebd/src/models/slider.dart';
-import 'package:smartcommercebd/src/utils/helper.dart';
+import 'package:sunbulahome/src/configs/strings.dart';
+import 'package:sunbulahome/src/models/slider.dart';
+import 'package:sunbulahome/src/utils/helper.dart';
 import 'dart:convert' as convert;
 import 'package:http/http.dart' as http;
 

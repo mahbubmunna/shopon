@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:smartcommercebd/config/ui_icons.dart';
-import 'package:smartcommercebd/src/configs/strings.dart';
-import 'package:smartcommercebd/src/models/Notification.dart';
+import 'package:sunbulahome/config/ui_icons.dart';
+import 'package:sunbulahome/src/configs/strings.dart';
+import 'package:sunbulahome/src/models/Notification.dart';
 import 'package:flutter/material.dart';
 
 class NotificationItemWidget extends StatefulWidget {

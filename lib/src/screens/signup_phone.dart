@@ -3,11 +3,11 @@ import 'package:country_code_picker/country_code_picker.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:smartcommercebd/generated/l10n.dart';
-import 'package:smartcommercebd/src/configs/strings.dart';
-import 'package:smartcommercebd/src/screens/otp_screen.dart';
-import 'package:smartcommercebd/src/utils/common_utils.dart';
-import 'package:smartcommercebd/src/utils/helper.dart';
+import 'package:sunbulahome/generated/l10n.dart';
+import 'package:sunbulahome/src/configs/strings.dart';
+import 'package:sunbulahome/src/screens/otp_screen.dart';
+import 'package:sunbulahome/src/utils/common_utils.dart';
+import 'package:sunbulahome/src/utils/helper.dart';
 
 class PhoneNumberScreen extends StatefulWidget {
   @override

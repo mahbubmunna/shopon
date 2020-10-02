@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
-import 'package:smartcommercebd/src/configs/strings.dart';
-import 'package:smartcommercebd/src/models/product.dart';
-import 'package:smartcommercebd/src/providers/shared_pref_provider.dart';
-import 'package:smartcommercebd/src/utils/helper.dart';
+import 'package:sunbulahome/src/configs/strings.dart';
+import 'package:sunbulahome/src/models/product.dart';
+import 'package:sunbulahome/src/providers/shared_pref_provider.dart';
+import 'package:sunbulahome/src/utils/helper.dart';
 
 class FavoriteApiProvider {
   static final _endpoint = "${api_base_url}wishlist";

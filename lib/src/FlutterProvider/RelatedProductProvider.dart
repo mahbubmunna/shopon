@@ -2,10 +2,10 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:intl/intl.dart';
-import 'package:smartcommercebd/src/configs/strings.dart';
-import 'package:smartcommercebd/src/models/RelatedProduct.dart';
-import 'package:smartcommercebd/src/models/product.dart';
-import 'package:smartcommercebd/src/utils/common_utils.dart';
+import 'package:sunbulahome/src/configs/strings.dart';
+import 'package:sunbulahome/src/models/RelatedProduct.dart';
+import 'package:sunbulahome/src/models/product.dart';
+import 'package:sunbulahome/src/utils/common_utils.dart';
 import 'package:http/http.dart' as http;
 
 class RelatedProductProvider {

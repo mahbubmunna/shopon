@@ -1,5 +1,5 @@
-import 'package:smartcommercebd/generated/l10n.dart';
-import 'package:smartcommercebd/src/models/language.dart';
+import 'package:sunbulahome/generated/l10n.dart';
+import 'package:sunbulahome/src/models/language.dart';
 import 'package:flutter/material.dart';
 
 class LanguageItemWidget extends StatefulWidget {

@@ -1,5 +1,5 @@
 import 'package:intl/intl.dart';
-import 'package:smartcommercebd/src/configs/strings.dart';
+import 'package:sunbulahome/src/configs/strings.dart';
 
 class Product {
   String id;

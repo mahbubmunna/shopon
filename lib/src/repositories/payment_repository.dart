@@ -1,6 +1,6 @@
 
-import 'package:smartcommercebd/src/models/payment.dart';
-import 'package:smartcommercebd/src/providers/payment_provieder.dart';
+import 'package:sunbulahome/src/models/payment.dart';
+import 'package:sunbulahome/src/providers/payment_provieder.dart';
 
 
 class PaymentCheckoutRepository {

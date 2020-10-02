@@ -2,11 +2,11 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:smartcommercebd/generated/l10n.dart';
-import 'package:smartcommercebd/src/configs/strings.dart';
-import 'package:smartcommercebd/src/models/route_argument.dart';
-import 'package:smartcommercebd/src/providers/shared_pref_provider.dart';
-import 'package:smartcommercebd/src/screens/splash.dart';
+import 'package:sunbulahome/generated/l10n.dart';
+import 'package:sunbulahome/src/configs/strings.dart';
+import 'package:sunbulahome/src/models/route_argument.dart';
+import 'package:sunbulahome/src/providers/shared_pref_provider.dart';
+import 'package:sunbulahome/src/screens/splash.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class PaymentPage extends StatefulWidget {

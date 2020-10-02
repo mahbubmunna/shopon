@@ -1,7 +1,7 @@
-/*const base_url = "https://smartcommercebd.com/";
-const api_base_url = "https://smartcommercebd.com/apii/";
-const public_path_url = "https://smartcommercebd.com/public/";
-const forgot_password_url = "https://smartcommercebd.com/password/reset";*/
+/*const base_url = "https://sunbulahome.com/";
+const api_base_url = "https://sunbulahome.com/apii/";
+const public_path_url = "https://sunbulahome.com/public/";
+const forgot_password_url = "https://sunbulahome.com/password/reset";*/
 
 //http://157.175.91.49/
 

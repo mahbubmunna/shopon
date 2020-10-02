@@ -2,15 +2,15 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:interactive_webview/interactive_webview.dart';
-import 'package:smartcommercebd/config/ui_icons.dart';
-import 'package:smartcommercebd/generated/l10n.dart';
-import 'package:smartcommercebd/src/configs/strings.dart';
-import 'package:smartcommercebd/src/models/route_argument.dart';
-import 'package:smartcommercebd/src/providers/shared_pref_provider.dart';
-import 'package:smartcommercebd/src/repositories/payment_repository.dart';
-import 'package:smartcommercebd/src/screens/splash.dart';
-import 'package:smartcommercebd/src/utils/common_utils.dart';
-import 'package:smartcommercebd/src/widgets/ShoppingCartButtonWidget.dart';
+import 'package:sunbulahome/config/ui_icons.dart';
+import 'package:sunbulahome/generated/l10n.dart';
+import 'package:sunbulahome/src/configs/strings.dart';
+import 'package:sunbulahome/src/models/route_argument.dart';
+import 'package:sunbulahome/src/providers/shared_pref_provider.dart';
+import 'package:sunbulahome/src/repositories/payment_repository.dart';
+import 'package:sunbulahome/src/screens/splash.dart';
+import 'package:sunbulahome/src/utils/common_utils.dart';
+import 'package:sunbulahome/src/widgets/ShoppingCartButtonWidget.dart';
 
 
 class CheckoutWidget extends StatefulWidget {

@@ -1,8 +1,8 @@
-import 'package:smartcommercebd/src/configs/strings.dart';
-import 'package:smartcommercebd/src/models/product.dart';
-import 'package:smartcommercebd/src/models/route_argument.dart';
+import 'package:sunbulahome/src/configs/strings.dart';
+import 'package:sunbulahome/src/models/product.dart';
+import 'package:sunbulahome/src/models/route_argument.dart';
 import 'package:flutter/material.dart';
-import 'package:smartcommercebd/src/screens/product.dart';
+import 'package:sunbulahome/src/screens/product.dart';
 
 class ProductGridItemWidget extends StatelessWidget {
   const ProductGridItemWidget({

@@ -1,9 +1,9 @@
 import 'package:provider/provider.dart';
-import 'package:smartcommercebd/src/FlutterProvider/MessageProvider.dart';
-import 'package:smartcommercebd/src/models/Conversations.dart';
-import 'package:smartcommercebd/src/widgets/EmptyMessagesWidget.dart';
-import 'package:smartcommercebd/src/widgets/MessageItemWidget.dart';
-import 'package:smartcommercebd/src/widgets/SearchBarWidget.dart';
+import 'package:sunbulahome/src/FlutterProvider/MessageProvider.dart';
+import 'package:sunbulahome/src/models/Conversations.dart';
+import 'package:sunbulahome/src/widgets/EmptyMessagesWidget.dart';
+import 'package:sunbulahome/src/widgets/MessageItemWidget.dart';
+import 'package:sunbulahome/src/widgets/SearchBarWidget.dart';
 import 'package:flutter/material.dart';
 
 class MessagesWidget extends StatefulWidget {

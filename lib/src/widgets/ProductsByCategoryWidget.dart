@@ -1,10 +1,10 @@
-import 'package:smartcommercebd/config/ui_icons.dart';
-import 'package:smartcommercebd/generated/l10n.dart';
-import 'package:smartcommercebd/src/models/category.dart';
-import 'package:smartcommercebd/src/models/product.dart';
-import 'package:smartcommercebd/src/widgets/FavoriteListItemWidget.dart';
-import 'package:smartcommercebd/src/widgets/ProductGridItemWidget.dart';
-import 'package:smartcommercebd/src/widgets/SearchBarWidget.dart';
+import 'package:sunbulahome/config/ui_icons.dart';
+import 'package:sunbulahome/generated/l10n.dart';
+import 'package:sunbulahome/src/models/category.dart';
+import 'package:sunbulahome/src/models/product.dart';
+import 'package:sunbulahome/src/widgets/FavoriteListItemWidget.dart';
+import 'package:sunbulahome/src/widgets/ProductGridItemWidget.dart';
+import 'package:sunbulahome/src/widgets/SearchBarWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 

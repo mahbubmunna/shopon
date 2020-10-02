@@ -2,8 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:loading/indicator/ball_pulse_indicator.dart';
 import 'package:loading/loading.dart';
-import 'package:smartcommercebd/config/app_config.dart';
-import 'package:smartcommercebd/config/app_config.dart' as config;
+import 'package:sunbulahome/config/app_config.dart';
+import 'package:sunbulahome/config/app_config.dart' as config;
 class Helper {
   static trimTrailing(String input) {
     var toRemove =

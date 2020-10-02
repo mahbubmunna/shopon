@@ -1,8 +1,8 @@
-import 'package:smartcommercebd/src/configs/strings.dart';
-import 'package:smartcommercebd/src/models/product.dart';
+import 'package:sunbulahome/src/configs/strings.dart';
+import 'package:sunbulahome/src/models/product.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:smartcommercebd/config/app_config.dart' as config;
+import 'package:sunbulahome/config/app_config.dart' as config;
 
 class Brand {
   String id;

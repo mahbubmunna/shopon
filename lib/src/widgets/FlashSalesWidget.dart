@@ -1,9 +1,9 @@
 import 'dart:async';
 
-import 'package:smartcommercebd/config/ui_icons.dart';
+import 'package:sunbulahome/config/ui_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart' show DateFormat;
-import 'package:smartcommercebd/generated/l10n.dart';
+import 'package:sunbulahome/generated/l10n.dart';
 
 class FlashSalesHeaderWidget extends StatefulWidget {
   const FlashSalesHeaderWidget({

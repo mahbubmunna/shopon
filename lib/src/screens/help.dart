@@ -1,8 +1,8 @@
-import 'package:smartcommercebd/generated/l10n.dart';
-import 'package:smartcommercebd/src/widgets/DrawerWidget.dart';
-import 'package:smartcommercebd/src/widgets/FaqItemWidget.dart';
-import 'package:smartcommercebd/src/widgets/SearchBarWidget.dart';
-import 'package:smartcommercebd/src/widgets/ShoppingCartButtonWidget.dart';
+import 'package:sunbulahome/generated/l10n.dart';
+import 'package:sunbulahome/src/widgets/DrawerWidget.dart';
+import 'package:sunbulahome/src/widgets/FaqItemWidget.dart';
+import 'package:sunbulahome/src/widgets/SearchBarWidget.dart';
+import 'package:sunbulahome/src/widgets/ShoppingCartButtonWidget.dart';
 import 'package:flutter/material.dart';
 
 class HelpWidget extends StatefulWidget {

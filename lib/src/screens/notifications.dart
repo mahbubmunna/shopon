@@ -1,9 +1,9 @@
 import 'package:provider/provider.dart';
-import 'package:smartcommercebd/src/FlutterProvider/NotificationProvider.dart';
-import 'package:smartcommercebd/src/models/Notification.dart';
-import 'package:smartcommercebd/src/widgets/EmptyNotificationsWidget.dart';
-import 'package:smartcommercebd/src/widgets/NotificationItemWidget.dart';
-import 'package:smartcommercebd/src/widgets/SearchBarWidget.dart';
+import 'package:sunbulahome/src/FlutterProvider/NotificationProvider.dart';
+import 'package:sunbulahome/src/models/Notification.dart';
+import 'package:sunbulahome/src/widgets/EmptyNotificationsWidget.dart';
+import 'package:sunbulahome/src/widgets/NotificationItemWidget.dart';
+import 'package:sunbulahome/src/widgets/SearchBarWidget.dart';
 import 'package:flutter/material.dart';
 
 class NotificationsWidget extends StatefulWidget {

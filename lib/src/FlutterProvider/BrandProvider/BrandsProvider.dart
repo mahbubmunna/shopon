@@ -2,11 +2,11 @@ import 'dart:convert';
 
 import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
-import 'package:smartcommercebd/src/configs/strings.dart';
+import 'package:sunbulahome/src/configs/strings.dart';
 
-import 'package:smartcommercebd/src/models/brand.dart';
+import 'package:sunbulahome/src/models/brand.dart';
 import 'package:http/http.dart' as http;
-import 'package:smartcommercebd/src/models/product.dart';
+import 'package:sunbulahome/src/models/product.dart';
 
 class BrandsProvider extends ChangeNotifier {
   var _selectedBrandId;

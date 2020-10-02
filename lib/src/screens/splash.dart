@@ -1,13 +1,13 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
-import 'package:smartcommercebd/custom_library/splash_screen.dart';
-import 'package:smartcommercebd/generated/l10n.dart';
-import 'package:smartcommercebd/src/configs/strings.dart';
-import 'package:smartcommercebd/src/models/user.dart';
-import 'package:smartcommercebd/src/providers/shared_pref_provider.dart';
-import 'package:smartcommercebd/src/repositories/user_repository.dart';
+import 'package:sunbulahome/custom_library/splash_screen.dart';
+import 'package:sunbulahome/generated/l10n.dart';
+import 'package:sunbulahome/src/configs/strings.dart';
+import 'package:sunbulahome/src/models/user.dart';
+import 'package:sunbulahome/src/providers/shared_pref_provider.dart';
+import 'package:sunbulahome/src/repositories/user_repository.dart';
 import 'package:flutter/material.dart';
-import 'package:smartcommercebd/config/app_config.dart' as config;
-import 'package:smartcommercebd/src/utils/common_utils.dart';
+import 'package:sunbulahome/config/app_config.dart' as config;
+import 'package:sunbulahome/src/utils/common_utils.dart';
 
 User appUser;
 

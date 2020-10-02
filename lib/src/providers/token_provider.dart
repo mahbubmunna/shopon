@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
-import 'package:smartcommercebd/src/configs/strings.dart';
-import 'package:smartcommercebd/src/models/token.dart';
-import 'package:smartcommercebd/src/utils/helper.dart';
+import 'package:sunbulahome/src/configs/strings.dart';
+import 'package:sunbulahome/src/models/token.dart';
+import 'package:sunbulahome/src/utils/helper.dart';
 
 class TokenProvider {
   static final _endPoint = "${api_base_url}login";

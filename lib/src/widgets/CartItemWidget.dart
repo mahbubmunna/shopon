@@ -1,12 +1,12 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:provider/provider.dart';
-import 'package:smartcommercebd/src/FlutterProvider/CartProvider/CartProvider.dart';
-import 'package:smartcommercebd/src/models/Cart.dart';
-import 'package:smartcommercebd/src/models/product.dart';
-import 'package:smartcommercebd/src/models/route_argument.dart';
+import 'package:sunbulahome/src/FlutterProvider/CartProvider/CartProvider.dart';
+import 'package:sunbulahome/src/models/Cart.dart';
+import 'package:sunbulahome/src/models/product.dart';
+import 'package:sunbulahome/src/models/route_argument.dart';
 import 'package:flutter/material.dart';
-import 'package:smartcommercebd/src/screens/product.dart';
+import 'package:sunbulahome/src/screens/product.dart';
 
 import '../configs/strings.dart';
 

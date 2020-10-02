@@ -3,8 +3,8 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 
 import 'package:http/http.dart' as http;
-import 'package:smartcommercebd/src/configs/strings.dart';
-import 'package:smartcommercebd/src/models/Notification.dart';
+import 'package:sunbulahome/src/configs/strings.dart';
+import 'package:sunbulahome/src/models/Notification.dart';
 
 class Notificationprovider extends ChangeNotifier {
   NotificationModel _notification;

@@ -1,7 +1,7 @@
 
 
-import 'package:smartcommercebd/src/models/slider.dart';
-import 'package:smartcommercebd/src/repositories/slider_repository.dart';
+import 'package:sunbulahome/src/models/slider.dart';
+import 'package:sunbulahome/src/repositories/slider_repository.dart';
 import 'package:rxdart/rxdart.dart';
 
 class SliderBloc {

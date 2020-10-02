@@ -2,13 +2,13 @@ import 'dart:convert';
 
 import 'package:flutter/widgets.dart';
 import 'package:http/http.dart' as http;
-import 'package:smartcommercebd/src/configs/strings.dart';
-import 'package:smartcommercebd/src/models/Chat.dart';
-import 'package:smartcommercebd/src/models/Conversations.dart';
-import 'package:smartcommercebd/src/models/Message.dart';
-import 'package:smartcommercebd/src/models/SendMessage.dart';
-import 'package:smartcommercebd/src/providers/shared_pref_provider.dart';
-import 'package:smartcommercebd/src/utils/common_utils.dart';
+import 'package:sunbulahome/src/configs/strings.dart';
+import 'package:sunbulahome/src/models/Chat.dart';
+import 'package:sunbulahome/src/models/Conversations.dart';
+import 'package:sunbulahome/src/models/Message.dart';
+import 'package:sunbulahome/src/models/SendMessage.dart';
+import 'package:sunbulahome/src/providers/shared_pref_provider.dart';
+import 'package:sunbulahome/src/utils/common_utils.dart';
 
 class ChatProvider extends ChangeNotifier {
   List<ChatData> _chats_list;

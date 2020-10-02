@@ -1,9 +1,9 @@
-import 'package:smartcommercebd/config/ui_icons.dart';
-import 'package:smartcommercebd/src/models/category.dart';
-import 'package:smartcommercebd/src/models/route_argument.dart';
-import 'package:smartcommercebd/src/widgets/DrawerWidget.dart';
-import 'package:smartcommercebd/src/widgets/ProductsByCategoryWidget.dart';
-import 'package:smartcommercebd/src/widgets/ShoppingCartButtonWidget.dart';
+import 'package:sunbulahome/config/ui_icons.dart';
+import 'package:sunbulahome/src/models/category.dart';
+import 'package:sunbulahome/src/models/route_argument.dart';
+import 'package:sunbulahome/src/widgets/DrawerWidget.dart';
+import 'package:sunbulahome/src/widgets/ProductsByCategoryWidget.dart';
+import 'package:sunbulahome/src/widgets/ShoppingCartButtonWidget.dart';
 import 'package:flutter/material.dart';
 
 class CategoryWidget extends StatefulWidget {

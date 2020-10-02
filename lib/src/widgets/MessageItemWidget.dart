@@ -1,8 +1,8 @@
-import 'package:smartcommercebd/config/ui_icons.dart';
-import 'package:smartcommercebd/src/models/Conversations.dart';
-import 'package:smartcommercebd/src/models/user.dart';
+import 'package:sunbulahome/config/ui_icons.dart';
+import 'package:sunbulahome/src/models/Conversations.dart';
+import 'package:sunbulahome/src/models/user.dart';
 import 'package:flutter/material.dart';
-import 'package:smartcommercebd/src/screens/chat.dart';
+import 'package:sunbulahome/src/screens/chat.dart';
 
 class MessageItemWidget extends StatefulWidget {
   MessageItemWidget({

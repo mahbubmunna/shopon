@@ -2,18 +2,18 @@ import 'dart:convert';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:provider/provider.dart';
-import 'package:smartcommercebd/config/ui_icons.dart';
-import 'package:smartcommercebd/generated/l10n.dart';
-import 'package:smartcommercebd/src/FlutterProvider/CartProvider/CartProvider.dart';
-import 'package:smartcommercebd/src/models/Cart.dart';
-import 'package:smartcommercebd/src/models/product.dart';
-import 'package:smartcommercebd/src/models/route_argument.dart';
-import 'package:smartcommercebd/src/screens/ShippingAddress.dart';
-import 'package:smartcommercebd/src/screens/checkout.dart';
-import 'package:smartcommercebd/src/screens/splash.dart';
-import 'package:smartcommercebd/src/utils/common_utils.dart';
-import 'package:smartcommercebd/src/utils/helper.dart';
-import 'package:smartcommercebd/src/widgets/CartItemWidget.dart';
+import 'package:sunbulahome/config/ui_icons.dart';
+import 'package:sunbulahome/generated/l10n.dart';
+import 'package:sunbulahome/src/FlutterProvider/CartProvider/CartProvider.dart';
+import 'package:sunbulahome/src/models/Cart.dart';
+import 'package:sunbulahome/src/models/product.dart';
+import 'package:sunbulahome/src/models/route_argument.dart';
+import 'package:sunbulahome/src/screens/ShippingAddress.dart';
+import 'package:sunbulahome/src/screens/checkout.dart';
+import 'package:sunbulahome/src/screens/splash.dart';
+import 'package:sunbulahome/src/utils/common_utils.dart';
+import 'package:sunbulahome/src/utils/helper.dart';
+import 'package:sunbulahome/src/widgets/CartItemWidget.dart';
 import 'package:flutter/material.dart';
 
 class CartWidget extends StatefulWidget {

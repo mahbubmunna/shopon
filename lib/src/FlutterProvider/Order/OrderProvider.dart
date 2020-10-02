@@ -3,12 +3,12 @@ import 'package:flutter/widgets.dart';
 import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
-import 'package:smartcommercebd/src/configs/strings.dart';
-import 'package:smartcommercebd/src/models/Order.dart';
+import 'package:sunbulahome/src/configs/strings.dart';
+import 'package:sunbulahome/src/models/Order.dart';
 
 import 'package:http/http.dart' as http;
-import 'package:smartcommercebd/src/providers/shared_pref_provider.dart';
-import 'package:smartcommercebd/src/utils/common_utils.dart';
+import 'package:sunbulahome/src/providers/shared_pref_provider.dart';
+import 'package:sunbulahome/src/utils/common_utils.dart';
 
 class OrderProvider extends ChangeNotifier {
   bool loading;

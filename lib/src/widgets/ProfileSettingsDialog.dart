@@ -1,14 +1,14 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
-import 'package:smartcommercebd/config/ui_icons.dart';
-import 'package:smartcommercebd/generated/l10n.dart';
-import 'package:smartcommercebd/src/models/user.dart';
-import 'package:smartcommercebd/src/repositories/user_repository.dart';
-import 'package:smartcommercebd/src/screens/signin.dart';
-import 'package:smartcommercebd/src/screens/splash.dart';
+import 'package:sunbulahome/config/ui_icons.dart';
+import 'package:sunbulahome/generated/l10n.dart';
+import 'package:sunbulahome/src/models/user.dart';
+import 'package:sunbulahome/src/repositories/user_repository.dart';
+import 'package:sunbulahome/src/screens/signin.dart';
+import 'package:sunbulahome/src/screens/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart' show DateFormat;
-import 'package:smartcommercebd/src/utils/common_utils.dart';
+import 'package:sunbulahome/src/utils/common_utils.dart';
 
 class ProfileSettingsDialog extends StatefulWidget {
   User user;

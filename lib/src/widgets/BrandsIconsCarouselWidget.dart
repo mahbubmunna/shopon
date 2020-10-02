@@ -1,12 +1,12 @@
 import 'package:provider/provider.dart';
-import 'package:smartcommercebd/config/ui_icons.dart';
-import 'package:smartcommercebd/src/FlutterProvider/BrandProvider/BrandsProvider.dart';
-import 'package:smartcommercebd/src/configs/strings.dart';
-import 'package:smartcommercebd/src/models/brand.dart';
-import 'package:smartcommercebd/src/screens/brands.dart';
-import 'package:smartcommercebd/src/screens/home.dart';
-import 'package:smartcommercebd/src/utils/helper.dart';
-import 'package:smartcommercebd/src/models/route_argument.dart';
+import 'package:sunbulahome/config/ui_icons.dart';
+import 'package:sunbulahome/src/FlutterProvider/BrandProvider/BrandsProvider.dart';
+import 'package:sunbulahome/src/configs/strings.dart';
+import 'package:sunbulahome/src/models/brand.dart';
+import 'package:sunbulahome/src/screens/brands.dart';
+import 'package:sunbulahome/src/screens/home.dart';
+import 'package:sunbulahome/src/utils/helper.dart';
+import 'package:sunbulahome/src/models/route_argument.dart';
 import 'package:flutter/material.dart';
 
 class BrandsIconsCarouselWidget extends StatefulWidget {

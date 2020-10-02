@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:smartcommercebd/src/models/Cart.dart';
-import 'package:smartcommercebd/src/models/product.dart';
+import 'package:sunbulahome/src/models/Cart.dart';
+import 'package:sunbulahome/src/models/product.dart';
 
 class CommonUtils {
   //

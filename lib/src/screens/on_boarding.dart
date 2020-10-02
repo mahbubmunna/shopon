@@ -1,7 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:smartcommercebd/config/app_config.dart' as config;
-import 'package:smartcommercebd/generated/l10n.dart';
-import 'package:smartcommercebd/src/models/on_boarding.dart';
+import 'package:sunbulahome/config/app_config.dart' as config;
+import 'package:sunbulahome/generated/l10n.dart';
+import 'package:sunbulahome/src/models/on_boarding.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

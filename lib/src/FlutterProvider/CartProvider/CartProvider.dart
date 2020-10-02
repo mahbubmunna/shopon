@@ -2,12 +2,12 @@ import 'dart:convert';
 
 import 'package:flutter/widgets.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:smartcommercebd/src/models/Cart.dart';
-import 'package:smartcommercebd/src/models/RelatedProduct.dart';
-import 'package:smartcommercebd/src/models/product.dart';
+import 'package:sunbulahome/src/models/Cart.dart';
+import 'package:sunbulahome/src/models/RelatedProduct.dart';
+import 'package:sunbulahome/src/models/product.dart';
 import 'package:dio/dio.dart';
-import 'package:smartcommercebd/src/providers/shared_pref_provider.dart';
-import 'package:smartcommercebd/src/utils/common_utils.dart';
+import 'package:sunbulahome/src/providers/shared_pref_provider.dart';
+import 'package:sunbulahome/src/utils/common_utils.dart';
 import '../../configs/strings.dart';
 
 class CartProvider extends ChangeNotifier {

@@ -1,8 +1,8 @@
-/*import 'package:smartcommercebd/src/blocs/flashsale_bloc.dart';
-import 'package:smartcommercebd/src/models/product.dart';
-import 'package:smartcommercebd/src/repositories/flashsale_repository.dart';
-import 'package:smartcommercebd/src/utils/helper.dart';
-import 'package:smartcommercebd/src/widgets/FlashSalesCarouselItemWidget.dart';
+/*import 'package:sunbulahome/src/blocs/flashsale_bloc.dart';
+import 'package:sunbulahome/src/models/product.dart';
+import 'package:sunbulahome/src/repositories/flashsale_repository.dart';
+import 'package:sunbulahome/src/utils/helper.dart';
+import 'package:sunbulahome/src/widgets/FlashSalesCarouselItemWidget.dart';
 import 'package:flutter/material.dart';
 
 class FlashSalesCarouselWidget extends StatefulWidget {

@@ -1,10 +1,10 @@
 import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
-import 'package:smartcommercebd/src/configs/strings.dart';
-import 'package:smartcommercebd/src/models/Review.dart';
+import 'package:sunbulahome/src/configs/strings.dart';
+import 'package:sunbulahome/src/models/Review.dart';
 import 'package:http/http.dart' as http;
-import 'package:smartcommercebd/src/utils/common_utils.dart';
+import 'package:sunbulahome/src/utils/common_utils.dart';
 
 class ReviewProvider extends ChangeNotifier {
   bool loading;

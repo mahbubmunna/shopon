@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:smartcommercebd/config/ui_icons.dart';
+import 'package:sunbulahome/config/ui_icons.dart';
 import 'package:flutter/material.dart';
 
 class ShoppingCartButtonWidget extends StatelessWidget {

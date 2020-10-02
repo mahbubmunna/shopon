@@ -2,7 +2,7 @@
 
 
 
-import 'package:smartcommercebd/src/providers/registration_provider.dart';
+import 'package:sunbulahome/src/providers/registration_provider.dart';
 
 class RegistrationRepository{
 

@@ -1,6 +1,6 @@
-import 'package:smartcommercebd/config/ui_icons.dart';
-import 'package:smartcommercebd/src/configs/strings.dart';
-import 'package:smartcommercebd/src/models/product.dart';
+import 'package:sunbulahome/config/ui_icons.dart';
+import 'package:sunbulahome/src/configs/strings.dart';
+import 'package:sunbulahome/src/models/product.dart';
 import 'package:flutter/material.dart';
 
 class Category {

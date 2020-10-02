@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:smartcommercebd/generated/l10n.dart';
-import 'package:smartcommercebd/src/screens/splash.dart';
+import 'package:sunbulahome/generated/l10n.dart';
+import 'package:sunbulahome/src/screens/splash.dart';
 
 class AddAddress extends StatefulWidget {
   @override

@@ -1,11 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:smartcommercebd/src/blocs/slider_bloc.dart';
-import 'package:smartcommercebd/src/configs/strings.dart';
-import 'package:smartcommercebd/src/models/slider.dart';
-import 'package:smartcommercebd/src/models/slider.dart' as prefix0;
-import 'package:smartcommercebd/src/repositories/slider_repository.dart';
-import 'package:smartcommercebd/src/utils/helper.dart';
+import 'package:sunbulahome/src/blocs/slider_bloc.dart';
+import 'package:sunbulahome/src/configs/strings.dart';
+import 'package:sunbulahome/src/models/slider.dart';
+import 'package:sunbulahome/src/models/slider.dart' as prefix0;
+import 'package:sunbulahome/src/repositories/slider_repository.dart';
+import 'package:sunbulahome/src/utils/helper.dart';
 import 'package:flutter/material.dart';
 
 class HomeSliderWidget extends StatefulWidget {
