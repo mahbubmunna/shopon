@@ -62,7 +62,7 @@ class CategoryProvider extends ChangeNotifier {
                 quantity: value[i]["quantity"],
                 rate: value[i]["rating"],
                 image: value[i]["image"],
-                available: value[i]["available"],
+                available: value[i]["current_stock"],
                 sales: value[i]["sales"],
                 discount: value[i]["discount"],
                 thumbnail_img: value[i]["thumbnail_img"],

@@ -114,7 +114,7 @@ class _PhoneNumberScreenState extends State<PhoneNumberScreen> {
                     elevation: 0,
                     minWidth: 160,
                     height: 40,
-                    color: Color(0xffF46665),
+                    color: Theme.of(context).accentColor,
                     onPressed: () {
                       FocusScope.of(context).unfocus();
                       print('Otp Tapped'); _register();

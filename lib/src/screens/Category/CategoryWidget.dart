@@ -41,7 +41,7 @@ class _CategoryWidgetState extends State<CategoryWidget>
   @override
   void initState() {
     _tabController =
-        TabController(length: 3, initialIndex: _tabIndex, vsync: this);
+        TabController(length: 1, initialIndex: _tabIndex, vsync: this);
     _tabController.addListener(_handleTabSelection);
 
     super.initState();
@@ -181,23 +181,23 @@ class _CategoryWidgetState extends State<CategoryWidget>
             unselectedLabelStyle: TextStyle(fontWeight: FontWeight.w300),
             indicatorColor: Theme.of(context).primaryColor,
             tabs: [
-              Tab(text: S.of(context).home),
+              //Tab(text: S.of(context).home),
               Tab(text: S.of(context).products),
-              Tab(text: S.of(context).reviews),
+              //Tab(text: S.of(context).reviews),
             ],
           ),
         ),
         SliverList(
           delegate: SliverChildListDelegate([
-            Offstage(
-              offstage: 0 != _tabIndex,
-              child: Column(
-                children: <Widget>[
-                  CategoryHomeTabWidget(product: widget.product),
-                ],
-              ),
-            ),
-            Offstage(offstage: 1 != _tabIndex, child: Products()),
+            // Offstage(
+            //   offstage: 0 != _tabIndex,
+            //   child: Column(
+            //     children: <Widget>[
+            //       CategoryHomeTabWidget(product: widget.product),
+            //     ],
+            //   ),
+            // ),
+            Offstage(offstage: 0 != _tabIndex, child: Products()),
             Offstage(
               offstage: 2 != _tabIndex,
               child: Column(

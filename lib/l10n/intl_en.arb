@@ -151,5 +151,6 @@
   "settings": "Settings",
   "logOut": "Log out",
   "favorites": "Favorites",
-  "account": "Account"
+  "account": "Account",
+  "total": "Total"
 }

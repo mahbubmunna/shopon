@@ -40,7 +40,7 @@ class RelatedProductProvider {
                 quantity: value[i]["quantity"],
                 rate: value[i]["rating"],
                 image: value[i]["image"],
-                available: value[i]["available"],
+                available: value[i]["current_stock"],
                 sales: value[i]["num_of_sale"],
                 discount: value[i]["discount"],
                 thumbnail_img: value[i]["thumbnail_img"],

@@ -90,25 +90,25 @@ class _ProductsState extends State<Products> {
                                     ),
                                   ),
                                 ),
-                          Positioned(
-                            top: 6,
-                            right: 10,
-                            child: Container(
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 10, vertical: 3),
-                              decoration: BoxDecoration(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(100)),
-                                  color: Theme.of(context).accentColor),
-                              alignment: AlignmentDirectional.topEnd,
-                              child: Text(
-                                '${provider.categoryProductsList[index].discount} %',
-                                style: Theme.of(context).textTheme.body2.merge(
-                                    TextStyle(
-                                        color: Theme.of(context).primaryColor)),
-                              ),
-                            ),
-                          ),
+                          // Positioned(
+                          //   top: 6,
+                          //   right: 10,
+                          //   child: Container(
+                          //     padding: EdgeInsets.symmetric(
+                          //         horizontal: 10, vertical: 3),
+                          //     decoration: BoxDecoration(
+                          //         borderRadius:
+                          //             BorderRadius.all(Radius.circular(100)),
+                          //         color: Theme.of(context).accentColor),
+                          //     alignment: AlignmentDirectional.topEnd,
+                          //     child: Text(
+                          //       '${provider.categoryProductsList[index].discount} %',
+                          //       style: Theme.of(context).textTheme.body2.merge(
+                          //           TextStyle(
+                          //               color: Theme.of(context).primaryColor)),
+                          //     ),
+                          //   ),
+                          // ),
                           Container(
                             margin: EdgeInsets.only(top: 170),
                             padding: EdgeInsets.symmetric(
@@ -148,20 +148,21 @@ class _ProductsState extends State<Products> {
                                         softWrap: false,
                                       ),
                                     ),
-                                    Icon(
-                                      Icons.star,
-                                      color: Colors.amber,
-                                      size: 18,
-                                    ),
                                     Text(
-                                      provider.categoryProductsList[index].rate
-                                          .toString(),
-                                      style: Theme.of(context).textTheme.body2,
+                                      S.of(context).sar +
+                                          provider
+                                              .categoryProductsList[
+                                          index]
+                                              .price
+                                              .toString(),
+                                      style: TextStyle(
+                                          fontWeight:
+                                          FontWeight.bold),
                                     )
                                   ],
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                 ),
-                                SizedBox(height: 7),
+
                                 /* Text(
                                     '${provider.brands_product[index].available} Available',
                                     style: Theme.of(context).textTheme.body1,

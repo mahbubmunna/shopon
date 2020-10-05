@@ -150,5 +150,6 @@
   "settings": "إعدادات",
   "logOut": "تسجيل خروج",
   "favorites": "المفضلة",
-  "account": "الحساب"
+  "account": "الحساب",
+  "total": "Total"
 }

@@ -159,6 +159,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "theOrderIsRemovedFromWishList" : MessageLookupByLibrary.simpleMessage("The order is removed from wish list"),
     "title" : MessageLookupByLibrary.simpleMessage("Title"),
     "topSelling" : MessageLookupByLibrary.simpleMessage("Top Selling"),
+    "total" : MessageLookupByLibrary.simpleMessage("Total"),
     "typeYourEmailAddress" : MessageLookupByLibrary.simpleMessage("Type your email address"),
     "typeYourName" : MessageLookupByLibrary.simpleMessage("Type your name"),
     "typeYourPassword" : MessageLookupByLibrary.simpleMessage("Type your password"),

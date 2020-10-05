@@ -185,7 +185,7 @@ class _CartWidgetState extends State<CartWidget> {
             Positioned(
               bottom: 0,
               child: Container(
-                height: 200,
+                height: 230,
                 padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
                 decoration: BoxDecoration(
                     color: Theme.of(context).primaryColor,
@@ -253,6 +253,22 @@ class _CartWidgetState extends State<CartWidget> {
                               style: Theme.of(context).textTheme.subhead),
                         ],
                       ),
+                      Divider(thickness: 2,),
+                      Row(
+                        children: <Widget>[
+                          Expanded(
+                            child: Text(
+                              S.of(context).total,
+                              style: Theme.of(context).textTheme.body2,
+                            ),
+                          ),
+                          Text(
+                            '${S.of(context).sar} ${(_totalPrice).toStringAsFixed(2)}',
+                            textScaleFactor: 1.2,
+                            style: TextStyle(fontWeight: FontWeight.bold,),
+                          ),
+                        ],
+                      ),
                       SizedBox(height: 10),
                       Stack(
                         fit: StackFit.loose,
@@ -260,7 +276,8 @@ class _CartWidgetState extends State<CartWidget> {
                         children: <Widget>[
                           SizedBox(
                             width: MediaQuery.of(context).size.width - 40,
-                            child: FlatButton(
+                            child: MaterialButton(
+                              elevation: 8,
                               onPressed: () {
                                 Navigator.of(context).pushNamed('/Checkout',
                                     arguments: RouteArgument(
@@ -280,12 +297,6 @@ class _CartWidgetState extends State<CartWidget> {
                                     textAlign: TextAlign.start,
                                     style: TextStyle(
                                         color: Theme.of(context).primaryColor),
-                                  ),
-                                  Text(
-                                    '${S.of(context).sar} ${(_totalPrice).toStringAsFixed(2)}',
-                                    textScaleFactor: 1.2,
-                                    style: TextStyle(fontWeight: FontWeight.bold,
-                                    color: Theme.of(context).primaryColor),
                                   ),
                                 ],
 

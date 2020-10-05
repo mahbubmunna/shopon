@@ -289,30 +289,30 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                   ),
                                                 ),
                                               ),
-                                        Positioned(
-                                          top: 6,
-                                          right: 10,
-                                          child: Container(
-                                            padding: EdgeInsets.symmetric(
-                                                horizontal: 10, vertical: 3),
-                                            decoration: BoxDecoration(
-                                                borderRadius: BorderRadius.all(
-                                                    Radius.circular(100)),
-                                                color: Theme.of(context)
-                                                    .accentColor),
-                                            alignment:
-                                                AlignmentDirectional.topEnd,
-                                            child: Text(
-                                              '${provider.brands_product[index].discount} %',
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .body2
-                                                  .merge(TextStyle(
-                                                      color: Theme.of(context)
-                                                          .primaryColor)),
-                                            ),
-                                          ),
-                                        ),
+                                        // Positioned(
+                                        //   top: 6,
+                                        //   right: 10,
+                                        //   child: Container(
+                                        //     padding: EdgeInsets.symmetric(
+                                        //         horizontal: 10, vertical: 3),
+                                        //     decoration: BoxDecoration(
+                                        //         borderRadius: BorderRadius.all(
+                                        //             Radius.circular(100)),
+                                        //         color: Theme.of(context)
+                                        //             .accentColor),
+                                        //     alignment:
+                                        //         AlignmentDirectional.topEnd,
+                                        //     child: Text(
+                                        //       '${provider.brands_product[index].discount} %',
+                                        //       style: Theme.of(context)
+                                        //           .textTheme
+                                        //           .body2
+                                        //           .merge(TextStyle(
+                                        //               color: Theme.of(context)
+                                        //                   .primaryColor)),
+                                        //     ),
+                                        //   ),
+                                        // ),
                                         Container(
                                           margin: EdgeInsets.only(top: 175),
                                           padding: EdgeInsets.symmetric(
