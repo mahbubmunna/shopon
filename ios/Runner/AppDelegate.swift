@@ -14,7 +14,7 @@ let mapsAPIKey = "AIzaSyB47znSzgNH60kXP4lSPvP7SuWhLlwuDIk"
     if mapsAPIKey.isEmpty {
      fatalError("Please provide an API Key using mapsAPIKey")
     }
-    GMSServices.provideAPIKey("AIzaSyA3QP4RoE11k6vz39CrM5QySo-yNOY4eL4")
+    GMSServices.provideAPIKey("AIzaSyB47znSzgNH60kXP4lSPvP7SuWhLlwuDIk")
     GeneratedPluginRegistrant.register(with: self)
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }
