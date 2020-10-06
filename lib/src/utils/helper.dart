@@ -39,7 +39,7 @@ class Common {
     ));
   }
 
-  static String handleError(Error error) {
+  static String handleError(var error) {
     String errorDescription = "";
     if (error is DioError) {
       DioError dioError = error as DioError;
