@@ -291,89 +291,89 @@ class _CheckoutWidgetState extends State<CheckoutWidget>
               ),
             ),
             SizedBox(height: 40),
-            Container(
-              margin: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-              decoration: BoxDecoration(
-                color: Theme.of(context).primaryColor,
-                borderRadius: BorderRadius.circular(6),
-                boxShadow: [
-                  BoxShadow(color: Theme.of(context).hintColor.withOpacity(0.15), offset: Offset(0, 3), blurRadius: 10)
-                ],
-              ),
-              child: ListView(
-                shrinkWrap: true,
-                primary: false,
-                children: <Widget>[
-//                  ListTile(
-//                    leading: Icon(UiIcons.placeholder),
-//                    title: Text(
-//                      'Shipping Adress',
-//                      style: Theme.of(context).textTheme.body2,
-//                    ),
-//                    trailing: ButtonTheme(
-//                      padding: EdgeInsets.all(0),
-//                      minWidth: 50.0,
-//                      height: 25.0,
-//                      child: ShippingAddressDialog(
-//                        user: appUser,
-//                        onChanged: () {
-//                          setState(() {});
-//                        },
-//                      ),
-//                    ),
-//                  ),
-                  ListTile(
-                    onTap: () {},
-                    dense: true,
-                    title: Text(
-                      S.of(context).address,
-                      style: Theme.of(context).textTheme.body1,
-                    ),
-                    trailing: Text(
-                      appUser.address,
-                      style: TextStyle(color: Theme.of(context).focusColor),
-                    ),
-                  ),
-                  ListTile(
-                    onTap: () {},
-                    dense: true,
-                    title: Text(
-                      S.of(context).area,
-                      style: Theme.of(context).textTheme.body1,
-                    ),
-                    trailing: Text(
-                      appUser.area,
-                      style: TextStyle(color: Theme.of(context).focusColor),
-                    ),
-                  ),
-                  ListTile(
-                    onTap: () {},
-                    dense: true,
-                    title: Text(
-                      S.of(context).city,
-                      style: Theme.of(context).textTheme.body1,
-                    ),
-                    trailing: Text(
-                      appUser.country,
-                      style: TextStyle(color: Theme.of(context).focusColor),
-                    ),
-                  ),
-
-//                ListTile(
-//                  onTap: () {},
-//                  dense: true,
-//                  title: Text(
-//                    'Birth Date',
-//                    style: Theme.of(context).textTheme.body1,
-//                  ),
-//                  trailing: Text(
-//                    appUser.getDateOfBirth(),
-//                    style: TextStyle(color: Theme.of(context).focusColor),
-//                  ),
-//                ),
-                ],
-              ),
-            ),
+//             Container(
+//               margin: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+//               decoration: BoxDecoration(
+//                 color: Theme.of(context).primaryColor,
+//                 borderRadius: BorderRadius.circular(6),
+//                 boxShadow: [
+//                   BoxShadow(color: Theme.of(context).hintColor.withOpacity(0.15), offset: Offset(0, 3), blurRadius: 10)
+//                 ],
+//               ),
+//               child: ListView(
+//                 shrinkWrap: true,
+//                 primary: false,
+//                 children: <Widget>[
+// //                  ListTile(
+// //                    leading: Icon(UiIcons.placeholder),
+// //                    title: Text(
+// //                      'Shipping Adress',
+// //                      style: Theme.of(context).textTheme.body2,
+// //                    ),
+// //                    trailing: ButtonTheme(
+// //                      padding: EdgeInsets.all(0),
+// //                      minWidth: 50.0,
+// //                      height: 25.0,
+// //                      child: ShippingAddressDialog(
+// //                        user: appUser,
+// //                        onChanged: () {
+// //                          setState(() {});
+// //                        },
+// //                      ),
+// //                    ),
+// //                  ),
+//                   ListTile(
+//                     onTap: () {},
+//                     dense: true,
+//                     title: Text(
+//                       S.of(context).address,
+//                       style: Theme.of(context).textTheme.body1,
+//                     ),
+//                     trailing: Text(
+//                       appUser.address,
+//                       style: TextStyle(color: Theme.of(context).focusColor),
+//                     ),
+//                   ),
+//                   ListTile(
+//                     onTap: () {},
+//                     dense: true,
+//                     title: Text(
+//                       S.of(context).area,
+//                       style: Theme.of(context).textTheme.body1,
+//                     ),
+//                     trailing: Text(
+//                       appUser.area,
+//                       style: TextStyle(color: Theme.of(context).focusColor),
+//                     ),
+//                   ),
+//                   ListTile(
+//                     onTap: () {},
+//                     dense: true,
+//                     title: Text(
+//                       S.of(context).city,
+//                       style: Theme.of(context).textTheme.body1,
+//                     ),
+//                     trailing: Text(
+//                       appUser.country,
+//                       style: TextStyle(color: Theme.of(context).focusColor),
+//                     ),
+//                   ),
+//
+// //                ListTile(
+// //                  onTap: () {},
+// //                  dense: true,
+// //                  title: Text(
+// //                    'Birth Date',
+// //                    style: Theme.of(context).textTheme.body1,
+// //                  ),
+// //                  trailing: Text(
+// //                    appUser.getDateOfBirth(),
+// //                    style: TextStyle(color: Theme.of(context).focusColor),
+// //                  ),
+// //                ),
+//                 ],
+//               ),
+//             ),
             SizedBox(height: 40,),
             Stack(
               fit: StackFit.loose,
@@ -381,7 +381,8 @@ class _CheckoutWidgetState extends State<CheckoutWidget>
               children: <Widget>[
                 SizedBox(
                   width: 320,
-                  child: FlatButton(
+                  child: MaterialButton(
+                    elevation: 8,
                     onPressed: () {
                       
                       Map shippingInfo = {

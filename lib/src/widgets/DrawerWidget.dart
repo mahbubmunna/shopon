@@ -131,20 +131,20 @@ class DrawerWidget extends StatelessWidget {
               style: Theme.of(context).textTheme.subhead,
             ),
           ),
-          ListTile(
-            onTap: () {
-              Navigator.of(context).pushNamed('/Brands',
-                  arguments: RouteArgument(argumentsList: brandsList));
-            },
-            leading: Icon(
-              UiIcons.folder_1,
-              color: Theme.of(context).focusColor.withOpacity(1),
-            ),
-            title: Text(
-              S.of(context).brands,
-              style: Theme.of(context).textTheme.subhead,
-            ),
-          ),
+          // ListTile(
+          //   onTap: () {
+          //     Navigator.of(context).pushNamed('/Brands',
+          //         arguments: RouteArgument(argumentsList: brandsList));
+          //   },
+          //   leading: Icon(
+          //     UiIcons.folder_1,
+          //     color: Theme.of(context).focusColor.withOpacity(1),
+          //   ),
+          //   title: Text(
+          //     S.of(context).brands,
+          //     style: Theme.of(context).textTheme.subhead,
+          //   ),
+          // ),
           ListTile(
             dense: true,
             title: Text(

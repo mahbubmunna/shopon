@@ -115,11 +115,6 @@ class _FavoriteListItemWidgetState extends State<FavoriteListItemWidget> {
                                 softWrap: false,
                               ),
                               SizedBox(width: 10),
-                              Icon(
-                                Icons.star,
-                                color: Colors.amber,
-                                size: 18,
-                              ),
                               Text(
                                 widget.product.rate.toString(),
                                 style: Theme.of(context).textTheme.body2,
