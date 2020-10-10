@@ -27,6 +27,7 @@ import 'package:sunbulahome/src/widgets/RelatedProductView.dart';
 import 'package:sunbulahome/src/widgets/ReviewsListWidget.dart';
 import 'package:sunbulahome/src/widgets/ShoppingCartButtonWidget.dart';
 import 'package:flutter/material.dart';
+import 'package:sunbulahome/config/app_config.dart' as config;
 
 class ProductWidget extends StatefulWidget {
   RouteArgument routeArgument;
@@ -173,7 +174,7 @@ class _ProductWidgetState extends State<ProductWidget>
           automaticallyImplyLeading: false,
           leading: new IconButton(
             icon: new Icon(UiIcons.return_icon,
-                color: Theme.of(context).hintColor),
+                color: config.Colors().mainColor(1)),
             onPressed: () => Navigator.of(context).pop(),
           ),
           actions: <Widget>[

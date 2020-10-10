@@ -1,6 +1,10 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:interactive_webview/interactive_webview.dart';
 import 'package:sunbulahome/config/ui_icons.dart';
 import 'package:sunbulahome/generated/l10n.dart';
@@ -50,11 +54,29 @@ class _CheckoutWidgetState extends State<CheckoutWidget>
 
   String _paymentMethod;
 
+  Completer<GoogleMapController> _controller = Completer();
+  Geolocator geoLocator = Geolocator()..forceAndroidLocationManager;
+  Position _position;
+  Widget _child;
+  String _completeAddress = 'Not added';
+
+  BitmapDescriptor _bitmapDescriptor;
+
+
+  //static const LatLng _center = const LatLng(45.521563, -122.677433);
+
+  void _onMapCreated(GoogleMapController controller) {
+    _controller.complete(controller);
+  }
+
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+    _child = SpinKitDoubleBounce(color: Colors.black,);
+    getProperBitmap();
+    getCurrentLocation();
     animationOnlinePaymentController = AnimationController(duration: Duration(milliseconds: 350), vsync: this);
     CurvedAnimation curveOnlinePayment = CurvedAnimation(parent: animationOnlinePaymentController, curve: Curves.easeOut);
     animationOnlinePayment = Tween(begin: 0.0, end: 25.0).animate(curveOnlinePayment)
@@ -124,6 +146,64 @@ class _CheckoutWidgetState extends State<CheckoutWidget>
         setState(() {});
       });
   }
+  void getProperBitmap() async {
+    await BitmapDescriptor.fromAssetImage(ImageConfiguration(size: Size(128, 128)), 'assets/img/location.png')
+        .then((value) => _bitmapDescriptor = value);
+  }
+  void setCurrentPosition(Position _currentPosition) async {
+    try {
+      List<Placemark> p =  await geoLocator.placemarkFromCoordinates(
+          _currentPosition.latitude, _currentPosition.longitude);
+
+      Placemark place = p[0];
+
+      appUser.address = place.name;
+      appUser.city = place.administrativeArea;
+      appUser.postalCode = place.postalCode;
+      appUser.country = place.country;
+      appUser.area = place.locality;
+
+
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  void getCurrentLocation() async{
+    Position res = await Geolocator().getCurrentPosition();
+
+    setState(() {
+      _position = res;
+      Marker _marker = Marker
+        (markerId: MarkerId('currentLocation'),
+          draggable: true,
+          icon: _bitmapDescriptor,
+          position: LatLng(_position.latitude, _position.longitude),
+          onDragEnd: (value) {
+            print(value.latitude);
+            print(value.longitude);
+            setState(() {
+              setCurrentPosition(Position(latitude: value.latitude, longitude: value.longitude));
+            });
+          },
+          infoWindow: InfoWindow(title: S.of(context).home,)
+      );
+
+      final Map<String, Marker> _markers = {};
+      _markers['currentLocation'] = _marker;
+
+      _child = GoogleMap(
+        onMapCreated: _onMapCreated,
+        initialCameraPosition: CameraPosition(
+            target:  LatLng(_position.latitude, _position.longitude),
+            zoom: 12
+        ),
+        markers: _markers.values.toSet(),
+      );
+      setCurrentPosition(_position);
+
+    });
+  }
   @override
   Widget build(BuildContext context) {
     print('Checkout_test');
@@ -163,134 +243,136 @@ class _CheckoutWidgetState extends State<CheckoutWidget>
       body: SingleChildScrollView(
         padding: EdgeInsets.symmetric(vertical: 10),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisSize: MainAxisSize.max,
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.only(left: 20, right: 10),
-              child: ListTile(
-                contentPadding: EdgeInsets.symmetric(vertical: 0),
-                leading: Icon(
-                  UiIcons.credit_card,
-                  color: Theme.of(context).hintColor,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.only(left: 20, right: 10),
+                  child: ListTile(
+                    contentPadding: EdgeInsets.symmetric(vertical: 0),
+                    leading: Icon(
+                      UiIcons.credit_card,
+                      color: Theme.of(context).hintColor,
+                    ),
+                    title: Text(
+                      S.of(context).paymentMode,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: Theme.of(context).textTheme.display1,
+                    ),
+                    subtitle: Text(
+                      S.of(context).selectYourPreferedPaymentMode,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: Theme.of(context).textTheme.caption,
+                    ),
+                  ),
                 ),
-                title: Text(
-                  S.of(context).paymentMode,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: Theme.of(context).textTheme.display1,
-                ),
-                subtitle: Text(
-                  S.of(context).selectYourPreferedPaymentMode,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: Theme.of(context).textTheme.caption,
-                ),
-              ),
-            ),
 //            SizedBox(height: 20),
 //            CreditCardsWidget(),
 
-            SizedBox(height: 40),
+                SizedBox(height: 20),
 //            Text(
 //              'Or Checkout With',
 //              style: Theme.of(context).textTheme.caption,
 //            ),
 //            SizedBox(height: 40),
-            SizedBox(
-              width: 320,
-              child: FlatButton(
-                onPressed: () {
-                  //Navigator.of(context).pushNamed('/CheckoutDone');
-                  animationOnlinePaymentController.forward();
-                  animationCashOnDeliveryController.reverse();
-                  _paymentMethod ='online';
+                SizedBox(
+                  width: 320,
+                  child: FlatButton(
+                    onPressed: () {
+                      //Navigator.of(context).pushNamed('/CheckoutDone');
+                      animationOnlinePaymentController.forward();
+                      animationCashOnDeliveryController.reverse();
+                      _paymentMethod ='online';
 
-                },
-                padding: EdgeInsets.symmetric(vertical: 12),
-                color: Theme.of(context).focusColor.withOpacity(0.2),
-                shape: StadiumBorder(),
-                child: Stack(
-                    children:<Widget>[
-                      Align(
-                        alignment: Alignment(0, 0),
-                        child: Text(
-                            S.of(context).payOnline,
-                            textScaleFactor: 1.2,
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                            )
-                      ),
-                      Align(
-                        alignment: Alignment(.9, 0),
-                        child: Container(
-                          height: animationOnlinePayment.value,
-                          width: animationOnlinePayment.value,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(40)),
-                            color: Theme.of(context).accentColor.withOpacity(opacityOnlinePaymentAnimation.value),
+                    },
+                    padding: EdgeInsets.symmetric(vertical: 12),
+                    color: Theme.of(context).focusColor.withOpacity(0.2),
+                    shape: StadiumBorder(),
+                    child: Stack(
+                        children:<Widget>[
+                          Align(
+                              alignment: Alignment(0, 0),
+                              child: Text(
+                                S.of(context).payOnline,
+                                textScaleFactor: 1.2,
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              )
                           ),
-                          child: Transform.rotate(
-                            angle: rotateCheckOnlinePaymentAnimation.value,
-                            child: Icon(
-                              Icons.check,
-                              size: sizeCheckOnlinePaymentAnimation.value,
-                              color: Theme.of(context).primaryColor.withOpacity(opacityCheckOnlinePaymentAnimation.value),
+                          Align(
+                            alignment: Alignment(.9, 0),
+                            child: Container(
+                              height: animationOnlinePayment.value,
+                              width: animationOnlinePayment.value,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.all(Radius.circular(40)),
+                                color: Theme.of(context).accentColor.withOpacity(opacityOnlinePaymentAnimation.value),
+                              ),
+                              child: Transform.rotate(
+                                angle: rotateCheckOnlinePaymentAnimation.value,
+                                child: Icon(
+                                  Icons.check,
+                                  size: sizeCheckOnlinePaymentAnimation.value,
+                                  color: Theme.of(context).primaryColor.withOpacity(opacityCheckOnlinePaymentAnimation.value),
+                                ),
+                              ),
                             ),
                           ),
-                        ),
-                      ),
-                    ]
+                        ]
+                    ),
+                  ),
                 ),
-              ),
-            ),
-            SizedBox(height: 40),
-            SizedBox(
-              width: 320,
-              child: FlatButton(
-                onPressed: () {
-                  //Navigator.of(context).pushNamed('/CheckoutDone');
-                  animationCashOnDeliveryController.forward();
-                  animationOnlinePaymentController.reverse();
-                  _paymentMethod = 'cash';
+                SizedBox(height: 20),
+                SizedBox(
+                  width: 320,
+                  child: FlatButton(
+                    onPressed: () {
+                      //Navigator.of(context).pushNamed('/CheckoutDone');
+                      animationCashOnDeliveryController.forward();
+                      animationOnlinePaymentController.reverse();
+                      _paymentMethod = 'cash';
 
-                },
-                padding: EdgeInsets.symmetric(vertical: 12),
-                color: Theme.of(context).focusColor.withOpacity(0.2),
-                shape: StadiumBorder(),
-                child: Stack(
-                    children:<Widget>[
-                      Align(
-                        alignment: Alignment(0, 0),
-                        child: Text(
-                          S.of(context).payOnDelivery,
-                          textScaleFactor: 1.2,
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                      Align(
-                        alignment: Alignment(.9, 0),
-                        child: Container(
-                          height: animationCashOnDelivery.value,
-                          width: animationCashOnDelivery.value,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(40)),
-                            color: Theme.of(context).accentColor.withOpacity(opacityCashOnDeliveryAnimation.value),
-                          ),
-                          child: Transform.rotate(
-                            angle: rotateCheckCashOnDeliveryAnimation.value,
-                            child: Icon(
-                              Icons.check,
-                              size: sizeCheckCashOnDeliveryAnimation.value,
-                              color: Theme.of(context).primaryColor.withOpacity(opacityCheckCashOnDeliveryAnimation.value),
+                    },
+                    padding: EdgeInsets.symmetric(vertical: 12),
+                    color: Theme.of(context).focusColor.withOpacity(0.2),
+                    shape: StadiumBorder(),
+                    child: Stack(
+                        children:<Widget>[
+                          Align(
+                            alignment: Alignment(0, 0),
+                            child: Text(
+                              S.of(context).payOnDelivery,
+                              textScaleFactor: 1.2,
+                              style: TextStyle(fontWeight: FontWeight.bold),
                             ),
                           ),
-                        ),
-                      ),
-                    ]
+                          Align(
+                            alignment: Alignment(.9, 0),
+                            child: Container(
+                              height: animationCashOnDelivery.value,
+                              width: animationCashOnDelivery.value,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.all(Radius.circular(40)),
+                                color: Theme.of(context).accentColor.withOpacity(opacityCashOnDeliveryAnimation.value),
+                              ),
+                              child: Transform.rotate(
+                                angle: rotateCheckCashOnDeliveryAnimation.value,
+                                child: Icon(
+                                  Icons.check,
+                                  size: sizeCheckCashOnDeliveryAnimation.value,
+                                  color: Theme.of(context).primaryColor.withOpacity(opacityCheckCashOnDeliveryAnimation.value),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ]
+                    ),
+                  ),
                 ),
-              ),
-            ),
-            SizedBox(height: 40),
 //             Container(
 //               margin: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
 //               decoration: BoxDecoration(
@@ -374,78 +456,85 @@ class _CheckoutWidgetState extends State<CheckoutWidget>
 //                 ],
 //               ),
 //             ),
-            SizedBox(height: 40,),
-            Stack(
-              fit: StackFit.loose,
-              alignment: AlignmentDirectional.centerEnd,
-              children: <Widget>[
-                SizedBox(
-                  width: 320,
-                  child: MaterialButton(
-                    elevation: 8,
-                    onPressed: () {
-                      
-                      Map shippingInfo = {
-                        'email': appUser.email,
-                        'address': appUser.address,
-                        'city': appUser.city,
-                        'country': appUser.country
-                      };
+                SizedBox(height: 40,),
+                Stack(
+                  fit: StackFit.loose,
+                  alignment: AlignmentDirectional.centerEnd,
+                  children: <Widget>[
+                    SizedBox(
+                      width: 320,
+                      child: MaterialButton(
+                        elevation: 8,
+                        onPressed: () {
 
-                      var carts = CommonUtils.payment_cart_list.map((e) => json.decode(e)).toList();
+                          Map shippingInfo = {
+                            'email': appUser.email,
+                            'address': appUser.address,
+                            'city': appUser.city,
+                            'country': appUser.country
+                          };
 
-                      print('cartMapTest');
-                      print(carts);
+                          var carts = CommonUtils.payment_cart_list.map((e) => json.decode(e)).toList();
 
-                      Map<String, dynamic> paymentCheckoutBody = {
-                        'shipping_info': shippingInfo,
-                        'payment_method': _paymentMethod,
-                        'locale': 'en',
-                        'cart': carts
-                      };
-                      PaymentCheckoutRepository.postPaymentCheckout(paymentCheckoutBody).then((value){
-                        print('checkout_id');
-                        print(value.paymentCheckout.results.checkoutId);
-                        SharedPrefProvider.clearKey(cart_list_key);
-                        CommonUtils.payment_cart_list.clear();
-                        CommonUtils.cart_list.clear();
-                        if (_paymentMethod == 'cash') {
-                          Navigator.of(context).pushNamed('/CheckoutDone');
-                        } else {
-                          List _arguments = [value.paymentCheckout.results.checkoutId, value.paymentCheckout.results.orderId];
-                          Navigator.of(context).pushNamed('/PaymentView',
-                              arguments: RouteArgument(argumentsList: _arguments)).then((value) {
+                          print('cartMapTest');
+                          print(carts);
+
+                          Map<String, dynamic> paymentCheckoutBody = {
+                            'shipping_info': shippingInfo,
+                            'payment_method': _paymentMethod,
+                            'locale': 'en',
+                            'cart': carts
+                          };
+                          PaymentCheckoutRepository.postPaymentCheckout(paymentCheckoutBody).then((value){
+                            print('checkout_id');
+                            print(value.paymentCheckout.results.checkoutId);
+                            SharedPrefProvider.clearKey(cart_list_key);
+                            CommonUtils.payment_cart_list.clear();
+                            CommonUtils.cart_list.clear();
+                            if (_paymentMethod == 'cash') {
+                              Navigator.of(context).pushNamed('/CheckoutDone');
+                            } else {
+                              List _arguments = [value.paymentCheckout.results.checkoutId, value.paymentCheckout.results.orderId];
+                              Navigator.of(context).pushNamed('/PaymentView',
+                                  arguments: RouteArgument(argumentsList: _arguments)).then((value) {
                                 Navigator.of(context).pushNamedAndRemoveUntil('/Tabs',  ModalRoute.withName('/'), arguments: 0);
+                              });
+                            }
                           });
-                        }
-                      });
-                      //Navigator.of(context).pushNamed('/CheckoutDone');
-                    },
-                    padding: EdgeInsets.symmetric(vertical: 14),
-                    color: Theme.of(context).accentColor,
-                    shape: StadiumBorder(),
-                    child: Container(
-                      width: double.infinity,
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: Text(
-                        S.of(context).confirmPayment,
-                        textAlign: TextAlign.start,
-                        style: TextStyle(color: Theme.of(context).primaryColor),
+                          //Navigator.of(context).pushNamed('/CheckoutDone');
+                        },
+                        padding: EdgeInsets.symmetric(vertical: 14),
+                        color: Theme.of(context).accentColor,
+                        shape: StadiumBorder(),
+                        child: Container(
+                          width: double.infinity,
+                          padding: const EdgeInsets.symmetric(horizontal: 20),
+                          child: Text(
+                            S.of(context).confirmPayment,
+                            textAlign: TextAlign.start,
+                            style: TextStyle(color: Theme.of(context).primaryColor),
+                          ),
+                        ),
                       ),
                     ),
-                  ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: Text(
+                        '${S.of(context).sar} ${(widget.orderPrice).toStringAsFixed(2)}',
+                        style: Theme.of(context).textTheme.display1.merge(TextStyle(color: Theme.of(context).primaryColor)),
+                      ),
+                    )
+                  ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Text(
-                    '${S.of(context).sar} ${(widget.orderPrice).toStringAsFixed(2)}',
-                    style: Theme.of(context).textTheme.display1.merge(TextStyle(color: Theme.of(context).primaryColor)),
-                  ),
-                )
               ],
             ),
+            SizedBox(height: 40,),
+            SizedBox(
+              height: 200,
+              child: _child,
+            )
           ],
-        ),
+        )
       ),
     );
   }

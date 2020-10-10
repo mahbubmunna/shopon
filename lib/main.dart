@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:dynamic_theme/dynamic_theme.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -127,142 +128,156 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(
-          create: (_) => OrderProvider(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => PaidProvider(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => UnpaidProvider(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => PendingProvider(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => ShippedProvider(),
-        ),
-        ChangeNotifierProvider(create: (_) => ProfileProvider()),
-        ChangeNotifierProvider(create: (_) => BrandsProvider(1)),
-        ChangeNotifierProvider(create: (_) => FlashProvider(1)),
-        ChangeNotifierProvider(create: (_) => CategoryProvider()),
-        ChangeNotifierProvider(create: (_) => CartProvider()),
-        ChangeNotifierProvider(create: (_) => Notificationprovider()),
-        ChangeNotifierProvider(create: (_) => MessageProvider(null)),
-        ChangeNotifierProvider(create: (_) => CheckoutProvider()),
-        Provider(
-          create: (_) => RelatedProductProvider(),
-        ),
-      ],
-      child: MaterialApp(
-        title: 'Sunbulahome',
-        initialRoute: '/',
-        onGenerateRoute: RouteGenerator.generateRoute,
-        debugShowCheckedModeBanner: false,
-        localizationsDelegates: [
-          S.delegate,
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
-        ],
-        supportedLocales: S.delegate.supportedLocales,
-        darkTheme: ThemeData(
-          fontFamily: 'Poppins',
-          primaryColor: Color(0xFF252525),
-          brightness: Brightness.dark,
-          scaffoldBackgroundColor: Color(0xFF2C2C2C),
-          accentColor: config.Colors().mainDarkColor(1),
-          hintColor: config.Colors().secondDarkColor(1),
-          focusColor: config.Colors().accentDarkColor(1),
-          textTheme: TextTheme(
-            button: TextStyle(color: Color(0xFF252525)),
-            headline: TextStyle(
-                fontSize: 20.0, color: config.Colors().secondDarkColor(1)),
-            display1: TextStyle(
-                fontSize: 18.0,
-                fontWeight: FontWeight.w600,
-                color: config.Colors().secondDarkColor(1)),
-            display2: TextStyle(
-                fontSize: 20.0,
-                fontWeight: FontWeight.w600,
-                color: config.Colors().secondDarkColor(1)),
-            display3: TextStyle(
-                fontSize: 22.0,
-                fontWeight: FontWeight.w700,
-                color: config.Colors().mainDarkColor(1)),
-            display4: TextStyle(
-                fontSize: 22.0,
-                fontWeight: FontWeight.w300,
-                color: config.Colors().secondDarkColor(1)),
-            subhead: TextStyle(
-                fontSize: 15.0,
-                fontWeight: FontWeight.w500,
-                color: config.Colors().secondDarkColor(1)),
-            title: TextStyle(
-                fontSize: 16.0,
-                fontWeight: FontWeight.w600,
-                color: config.Colors().mainDarkColor(1)),
-            body1: TextStyle(
-                fontSize: 12.0, color: config.Colors().secondDarkColor(1)),
-            body2: TextStyle(
-                fontSize: 14.0,
-                fontWeight: FontWeight.w600,
-                color: config.Colors().secondDarkColor(1)),
-            caption: TextStyle(
-                fontSize: 12.0, color: config.Colors().secondDarkColor(0.7)),
+    return DynamicTheme(
+      defaultBrightness: Brightness.light,
+      data: (brightness) {
+        if (brightness == Brightness.light) {
+          return ThemeData(
+            fontFamily: 'Poppins',
+            primaryColor: Colors.white,
+            brightness: Brightness.light,
+            accentColor: config.Colors().mainColor(1),
+            focusColor: config.Colors().accentColor(1),
+            hintColor: config.Colors().secondColor(1),
+            appBarTheme: AppBarTheme(actionsIconTheme: IconThemeData(color: config.Colors().mainColor(1))),
+            bottomNavigationBarTheme: BottomNavigationBarThemeData(backgroundColor: Colors.white),
+            inputDecorationTheme: InputDecorationTheme(border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(12))),
+                focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(12))),
+                labelStyle: TextStyle(color: Colors.black), suffixStyle: TextStyle(color: Colors.black)),
+            textTheme: TextTheme(
+              button: TextStyle(color: Colors.white),
+              headline: TextStyle(
+                  fontSize: 20.0, color: config.Colors().secondColor(1)),
+              display1: TextStyle(
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.w600,
+                  color: config.Colors().secondColor(1)),
+              display2: TextStyle(
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.w600,
+                  color: config.Colors().secondColor(1)),
+              display3: TextStyle(
+                  fontSize: 22.0,
+                  fontWeight: FontWeight.w700,
+                  color: config.Colors().mainColor(1)),
+              display4: TextStyle(
+                  fontSize: 22.0,
+                  fontWeight: FontWeight.w300,
+                  color: config.Colors().secondColor(1)),
+              subhead: TextStyle(
+                  fontSize: 15.0,
+                  fontWeight: FontWeight.w500,
+                  color: config.Colors().secondColor(1)),
+              title: TextStyle(
+                  fontSize: 16.0,
+                  fontWeight: FontWeight.w600,
+                  color: config.Colors().mainColor(1)),
+              body1: TextStyle(
+                  fontSize: 12.0, color: config.Colors().secondColor(1)),
+              body2: TextStyle(
+                  fontSize: 14.0,
+                  fontWeight: FontWeight.w600,
+                  color: config.Colors().secondColor(1)),
+              caption: TextStyle(
+                  fontSize: 12.0, color: config.Colors().secondColor(0.6)),
+            ),
+          );
+        } else {
+          return ThemeData(
+            fontFamily: 'Poppins',
+            primaryColor: Color(0xFF252525),
+            brightness: Brightness.dark,
+            scaffoldBackgroundColor: Color(0xFF2C2C2C),
+            accentColor: config.Colors().mainDarkColor(1),
+            hintColor: config.Colors().secondDarkColor(1),
+            focusColor: config.Colors().accentDarkColor(1),
+            bottomNavigationBarTheme: BottomNavigationBarThemeData(backgroundColor: Color(0xFF2C2C2C)),
+            textTheme: TextTheme(
+              button: TextStyle(color: Color(0xFF252525)),
+              headline: TextStyle(
+                  fontSize: 20.0, color: config.Colors().secondDarkColor(1)),
+              display1: TextStyle(
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.w600,
+                  color: config.Colors().secondDarkColor(1)),
+              display2: TextStyle(
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.w600,
+                  color: config.Colors().secondDarkColor(1)),
+              display3: TextStyle(
+                  fontSize: 22.0,
+                  fontWeight: FontWeight.w700,
+                  color: config.Colors().mainDarkColor(1)),
+              display4: TextStyle(
+                  fontSize: 22.0,
+                  fontWeight: FontWeight.w300,
+                  color: config.Colors().secondDarkColor(1)),
+              subhead: TextStyle(
+                  fontSize: 15.0,
+                  fontWeight: FontWeight.w500,
+                  color: config.Colors().secondDarkColor(1)),
+              title: TextStyle(
+                  fontSize: 16.0,
+                  fontWeight: FontWeight.w600,
+                  color: config.Colors().mainDarkColor(1)),
+              body1: TextStyle(
+                  fontSize: 12.0, color: config.Colors().secondDarkColor(1)),
+              body2: TextStyle(
+                  fontSize: 14.0,
+                  fontWeight: FontWeight.w600,
+                  color: config.Colors().secondDarkColor(1)),
+              caption: TextStyle(
+                  fontSize: 12.0, color: config.Colors().secondDarkColor(0.7)),
+            ),
+          );
+        }
+      },
+      themedWidgetBuilder: (context, theme) {
+        return MultiProvider(
+          providers: [
+            ChangeNotifierProvider(
+              create: (_) => OrderProvider(),
+            ),
+            ChangeNotifierProvider(
+              create: (_) => PaidProvider(),
+            ),
+            ChangeNotifierProvider(
+              create: (_) => UnpaidProvider(),
+            ),
+            ChangeNotifierProvider(
+              create: (_) => PendingProvider(),
+            ),
+            ChangeNotifierProvider(
+              create: (_) => ShippedProvider(),
+            ),
+            ChangeNotifierProvider(create: (_) => ProfileProvider()),
+            ChangeNotifierProvider(create: (_) => BrandsProvider(1)),
+            ChangeNotifierProvider(create: (_) => FlashProvider(1)),
+            ChangeNotifierProvider(create: (_) => CategoryProvider()),
+            ChangeNotifierProvider(create: (_) => CartProvider()),
+            ChangeNotifierProvider(create: (_) => Notificationprovider()),
+            ChangeNotifierProvider(create: (_) => MessageProvider(null)),
+            ChangeNotifierProvider(create: (_) => CheckoutProvider()),
+            Provider(
+              create: (_) => RelatedProductProvider(),
+            ),
+          ],
+          child: MaterialApp(
+            title: 'Sunbulahome',
+            initialRoute: '/',
+            onGenerateRoute: RouteGenerator.generateRoute,
+            debugShowCheckedModeBanner: false,
+            localizationsDelegates: [
+              S.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            supportedLocales: S.delegate.supportedLocales,
+            theme: theme,
           ),
-        ),
-        theme: ThemeData(
-          fontFamily: 'Poppins',
-          primaryColor: Colors.white,
-          brightness: Brightness.light,
-          accentColor: config.Colors().mainColor(1),
-          focusColor: config.Colors().accentColor(1),
-          hintColor: config.Colors().secondColor(1),
-          inputDecorationTheme: InputDecorationTheme(border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(12))),
-          focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(12))),
-          labelStyle: TextStyle(color: Colors.black), suffixStyle: TextStyle(color: Colors.black)),
-          textTheme: TextTheme(
-            button: TextStyle(color: Colors.white),
-            headline: TextStyle(
-                fontSize: 20.0, color: config.Colors().secondColor(1)),
-            display1: TextStyle(
-                fontSize: 18.0,
-                fontWeight: FontWeight.w600,
-                color: config.Colors().secondColor(1)),
-            display2: TextStyle(
-                fontSize: 20.0,
-                fontWeight: FontWeight.w600,
-                color: config.Colors().secondColor(1)),
-            display3: TextStyle(
-                fontSize: 22.0,
-                fontWeight: FontWeight.w700,
-                color: config.Colors().mainColor(1)),
-            display4: TextStyle(
-                fontSize: 22.0,
-                fontWeight: FontWeight.w300,
-                color: config.Colors().secondColor(1)),
-            subhead: TextStyle(
-                fontSize: 15.0,
-                fontWeight: FontWeight.w500,
-                color: config.Colors().secondColor(1)),
-            title: TextStyle(
-                fontSize: 16.0,
-                fontWeight: FontWeight.w600,
-                color: config.Colors().mainColor(1)),
-            body1: TextStyle(
-                fontSize: 12.0, color: config.Colors().secondColor(1)),
-            body2: TextStyle(
-                fontSize: 14.0,
-                fontWeight: FontWeight.w600,
-                color: config.Colors().secondColor(1)),
-            caption: TextStyle(
-                fontSize: 12.0, color: config.Colors().secondColor(0.6)),
-          ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

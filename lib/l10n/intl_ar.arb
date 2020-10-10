@@ -151,5 +151,7 @@
   "logOut": "تسجيل خروج",
   "favorites": "المفضلة",
   "account": "الحساب",
-  "total": "Total"
+  "total": "Total",
+  "lightMode": "وضع الضوء",
+  "darkMode": "الوضع المظلم"
 }

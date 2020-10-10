@@ -152,5 +152,7 @@
   "logOut": "Log out",
   "favorites": "Favorites",
   "account": "Account",
-  "total": "Total"
+  "total": "Total",
+  "lightMode": "Light Mode",
+  "darkMode": "Dark Mode"
 }

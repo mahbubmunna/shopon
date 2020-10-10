@@ -38,7 +38,7 @@ class App {
 class Colors {
   Color _mainColor = Color(0xffbe9f71);
   Color _mainColorCopy = Color(0xFF009DB5);
-  Color _mainDarkColor = Color(0xFF22B7CE);
+  Color _mainDarkColor = Color(0xffbe9f71);
   Color _secondColor = Color(0xFF04526B);
   Color _secondDarkColor = Color(0xFFE7F6F8);
   Color _accentColor = Color(0xFFADC4C8);

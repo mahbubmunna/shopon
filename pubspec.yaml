@@ -58,6 +58,7 @@ dependencies:
   country_code_picker: ^1.4.0
   interactive_webview: ^0.1.2
   intl: ^0.16.1
+  dynamic_theme: ^1.0.0
 
 
 dev_dependencies:

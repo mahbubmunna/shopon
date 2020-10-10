@@ -1,4 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:dynamic_theme/dynamic_theme.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sunbulahome/config/ui_icons.dart';
 import 'package:sunbulahome/generated/l10n.dart';
 import 'package:sunbulahome/src/configs/strings.dart';
@@ -15,6 +17,11 @@ class DrawerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
+    void setBrightness(Brightness brightness) async {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      brightness == Brightness.dark ? prefs.setBool("isDark", true) : prefs.setBool("isDark", false);
+    }
+
     return Drawer(
       child: ListView(
         children: <Widget>[
@@ -182,6 +189,28 @@ class DrawerWidget extends StatelessWidget {
               style: Theme.of(context).textTheme.subhead,
             ),
           ),
+          ListTile(
+            onTap: () {
+              if (Theme.of(context).brightness == Brightness.dark) {
+                setBrightness(Brightness.light);
+                DynamicTheme.of(context).setBrightness(Brightness.light);
+              } else {
+                setBrightness(Brightness.dark);
+                DynamicTheme.of(context).setBrightness(Brightness.dark);
+              }
+            },
+            leading: Icon(
+              Icons.brightness_6,
+              color: Theme.of(context).focusColor.withOpacity(1),
+            ),
+            title: Text(
+              Theme.of(context).brightness == Brightness.dark
+                  ? S.of(context).lightMode
+                  : S.of(context).darkMode,
+              style: Theme.of(context).textTheme.subhead,
+            ),
+          ),
+
           ListTile(
             onTap: () {
               Navigator.of(context).pushNamed('/Languages');

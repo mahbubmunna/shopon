@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:sunbulahome/config/ui_icons.dart';
+import 'package:sunbulahome/config/app_config.dart' as config;
 import 'package:flutter/material.dart';
 
 class ShoppingCartButtonWidget extends StatelessWidget {
@@ -28,7 +28,7 @@ class ShoppingCartButtonWidget extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 6),
             child: Icon(
               Icons.shopping_basket,
-              color: this.iconColor,
+              color: config.Colors().mainColor(1),
               size: 28,
             ),
           ),

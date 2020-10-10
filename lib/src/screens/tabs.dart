@@ -204,7 +204,6 @@ class _TabsWidgetState extends State<TabsWidget> {
         unselectedFontSize: 0,
         iconSize: 22,
         elevation: 8,
-        backgroundColor: Colors.white,
         selectedIconTheme: IconThemeData(size: 25),
         unselectedItemColor: Theme.of(context).hintColor.withOpacity(1),
         currentIndex: widget.selectedTab,

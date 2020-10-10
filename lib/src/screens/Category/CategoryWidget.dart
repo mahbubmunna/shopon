@@ -95,6 +95,8 @@ class _CategoryWidgetState extends State<CategoryWidget>
             Navigator.of(context).pop();
           },
         ),
+        title: Text(widget.product.name),
+        centerTitle: true,
         actions: [
           ShoppingCartButtonWidget()
         ],

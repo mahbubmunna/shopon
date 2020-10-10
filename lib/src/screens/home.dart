@@ -115,7 +115,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
     final flash_provider = Provider.of<FlashProvider>(context);
     final category_provider = Provider.of<CategoryProvider>(context);
 
-    scroll_operation(brand_provider, flash_provider, category_provider);
+   // scroll_operation(brand_provider, flash_provider, category_provider);
 
     print(" Home  Scrolll   ${CommonUtils.home_scroll_value}");
 

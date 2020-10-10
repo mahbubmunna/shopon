@@ -109,19 +109,14 @@ class ProductCardWidget extends StatelessWidget {
                       // The title of the product
                       Expanded(
                         child: Text(
-                          '${product.quantity == null ? "0" : product.quantity} ${S.of(context).available}',
+                          '${product.available == null ? "0" : product.available} ${S.of(context).available}',
                           style: Theme.of(context).textTheme.body1,
                           overflow: TextOverflow.fade,
                           softWrap: false,
                         ),
                       ),
-                      Icon(
-                        Icons.star,
-                        color: Colors.amber,
-                        size: 18,
-                      ),
                       Text(
-                        product.rate.toString(),
+                        '${S.of(context).sar} ${product.price.toString()}',
                         style: Theme.of(context).textTheme.body2,
                       )
                     ],
