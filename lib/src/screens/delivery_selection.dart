@@ -184,9 +184,17 @@ class _DeliverySelectState extends State<DeliverySelect> {
                     SizedBox(width: 10,),
                     Icon(Icons.location_on, color: config.Colors().mainColor(.7), size: 15,),
                     SizedBox(width: 5,),
-                    Flexible(child: Text(_completeAddress, textScaleFactor: 1.1,))
+                    Flexible(child: Text(_completeAddress, textScaleFactor: 1.1,)),
                   ],
-                )
+                ),
+                SizedBox(height: 30,),
+                Padding(
+                  padding: EdgeInsets.only(left: 20),
+                  child: Flexible(child:
+                    Text(S.of(context).toChangeLocationKeepHoldingPointerToAdjustToCorrect,
+                    textScaleFactor: 1.1, style: TextStyle(color: Theme.of(context).accentColor),)),
+                ),
+
               ],
             ),
           )

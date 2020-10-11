@@ -153,5 +153,6 @@
   "account": "الحساب",
   "total": "Total",
   "lightMode": "وضع الضوء",
-  "darkMode": "الوضع المظلم"
+  "darkMode": "الوضع المظلم",
+  "toChangeLocationKeepHoldingPointerToAdjustToCorrect": "To change location, keep holding pointer to adjust to correct location."
 }

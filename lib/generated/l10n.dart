@@ -1592,6 +1592,16 @@ class S {
       args: [],
     );
   }
+
+  /// `To change location, keep holding pointer to adjust to correct location.`
+  String get toChangeLocationKeepHoldingPointerToAdjustToCorrect {
+    return Intl.message(
+      'To change location, keep holding pointer to adjust to correct location.',
+      name: 'toChangeLocationKeepHoldingPointerToAdjustToCorrect',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

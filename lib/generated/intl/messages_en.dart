@@ -160,6 +160,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "taif" : MessageLookupByLibrary.simpleMessage("TAIF"),
     "theOrderIsRemovedFromWishList" : MessageLookupByLibrary.simpleMessage("The order is removed from wish list"),
     "title" : MessageLookupByLibrary.simpleMessage("Title"),
+    "toChangeLocationKeepHoldingPointerToAdjustToCorrect" : MessageLookupByLibrary.simpleMessage("To change location, keep holding pointer to adjust to correct location."),
     "topSelling" : MessageLookupByLibrary.simpleMessage("Top Selling"),
     "total" : MessageLookupByLibrary.simpleMessage("Total"),
     "typeYourEmailAddress" : MessageLookupByLibrary.simpleMessage("Type your email address"),

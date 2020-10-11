@@ -457,6 +457,14 @@ class _CheckoutWidgetState extends State<CheckoutWidget>
 //               ),
 //             ),
                 SizedBox(height: 40,),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Text(
+                    '${S.of(context).sar} ${(widget.orderPrice).toStringAsFixed(2)}',
+                    style: Theme.of(context).textTheme.display1.merge(TextStyle()),
+                  ),
+                ),
+                SizedBox(height: 5,),
                 Stack(
                   fit: StackFit.loose,
                   alignment: AlignmentDirectional.centerEnd,
@@ -511,19 +519,12 @@ class _CheckoutWidgetState extends State<CheckoutWidget>
                           padding: const EdgeInsets.symmetric(horizontal: 20),
                           child: Text(
                             S.of(context).confirmPayment,
-                            textAlign: TextAlign.start,
+                            textAlign: TextAlign.center,
                             style: TextStyle(color: Theme.of(context).primaryColor),
                           ),
                         ),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: Text(
-                        '${S.of(context).sar} ${(widget.orderPrice).toStringAsFixed(2)}',
-                        style: Theme.of(context).textTheme.display1.merge(TextStyle(color: Theme.of(context).primaryColor)),
-                      ),
-                    )
                   ],
                 ),
               ],

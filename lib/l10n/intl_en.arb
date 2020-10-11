@@ -154,5 +154,6 @@
   "account": "Account",
   "total": "Total",
   "lightMode": "Light Mode",
-  "darkMode": "Dark Mode"
+  "darkMode": "Dark Mode",
+  "toChangeLocationKeepHoldingPointerToAdjustToCorrect": "To change location, keep holding pointer to adjust to correct location."
 }
