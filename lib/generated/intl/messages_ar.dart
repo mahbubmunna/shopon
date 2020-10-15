@@ -30,6 +30,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "addNewAddress" : MessageLookupByLibrary.simpleMessage("أضف عنوان جديد"),
     "addToCart" : MessageLookupByLibrary.simpleMessage("أضف إلى السلة"),
     "address" : MessageLookupByLibrary.simpleMessage("عنوانك"),
+    "adjustLocation" : MessageLookupByLibrary.simpleMessage("اضبط الموقع"),
     "all" : MessageLookupByLibrary.simpleMessage("الكل"),
     "alreadyHaveAnAccount" : MessageLookupByLibrary.simpleMessage("هل لديك حساب؟"),
     "alreadyHaveAnAccountSignIn" : MessageLookupByLibrary.simpleMessage("هل لديك حساب؟ تسجيل الدخول"),

@@ -154,5 +154,6 @@
   "total": "Total",
   "lightMode": "وضع الضوء",
   "darkMode": "الوضع المظلم",
-  "toChangeLocationKeepHoldingPointerToAdjustToCorrect": "To change location, keep holding pointer to adjust to correct location."
+  "toChangeLocationKeepHoldingPointerToAdjustToCorrect": "To change location, keep holding pointer to adjust to correct location.",
+  "adjustLocation": "اضبط الموقع"
 }

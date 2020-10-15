@@ -1,14 +1,12 @@
 import 'dart:async';
 
 import 'package:awesome_dialog/awesome_dialog.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:sunbulahome/generated/l10n.dart';
-import 'package:sunbulahome/src/configs/strings.dart';
 import 'package:sunbulahome/src/repositories/user_repository.dart';
 import 'package:sunbulahome/src/screens/add_address.dart';
 import 'package:sunbulahome/src/screens/splash.dart';
@@ -116,11 +114,42 @@ class _DeliverySelectState extends State<DeliverySelect> {
     allAddressInOneLine();
   }
 
+  String _value = 'RI';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: MaterialButton(
         onPressed: () async{
+          await AwesomeDialog(
+            context: context,
+            dialogType: DialogType.INFO,
+            btnOkOnPress: () {},
+            body: Column(
+              children: [
+                Text('Select the store to shop'),
+                DropdownButton(
+                  value: _value,
+                  items: [
+                    DropdownMenuItem(
+                      child: Text('Riyadh'),
+                      value: 'RI',
+                    ),
+                    DropdownMenuItem(
+                      child: Text('Jeddah'),
+                      value: 'JE',
+                    )
+                  ], onChanged: (String value) {
+                  setState(() {
+                    _value = value;
+                    appUser.city = value;
+                  });
+
+                },
+                )
+              ],
+            )
+          ).show();
+
           try {
             await UserRepository.postUser(appUser.toMap()).then((response) {
               appUser = response.user;
@@ -128,11 +157,13 @@ class _DeliverySelectState extends State<DeliverySelect> {
           } catch (error){
             print(error);
           }
+
           AwesomeDialog(
               context: context,
               dialogType: DialogType.SUCCES,
               body: Text(S.of(context).locationSaved)
           ).show();
+
           await Future.delayed(Duration(seconds: 3), () {
             Navigator.of(context).pushNamedAndRemoveUntil(
                 '/Tabs', ModalRoute.withName('/'),
@@ -169,7 +200,7 @@ class _DeliverySelectState extends State<DeliverySelect> {
                       children: <Widget>[
                         Icon(Icons.add_location, color: Colors.white,),
                         SizedBox(width: 5,),
-                        Text(S.of(context).selectNewLocation, textScaleFactor: 1.1,style: TextStyle(color: Colors.white),)
+                        Text(S.of(context).adjustLocation, textScaleFactor: 1.1,style: TextStyle(color: Colors.white),)
                       ],
                     ),
                   ),

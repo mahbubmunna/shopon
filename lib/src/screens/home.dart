@@ -18,6 +18,7 @@ import 'package:sunbulahome/src/models/product.dart';
 import 'package:sunbulahome/src/models/route_argument.dart';
 import 'package:sunbulahome/src/providers/shared_pref_provider.dart';
 import 'package:sunbulahome/src/screens/product.dart';
+import 'package:sunbulahome/src/screens/splash.dart';
 import 'package:sunbulahome/src/utils/common_utils.dart';
 import 'package:sunbulahome/src/utils/helper.dart';
 import 'package:sunbulahome/src/widgets/BrandGridWidget.dart';
@@ -151,9 +152,16 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
 
   inStoreOffers() {
     List _cities = [S.of(context).jeddah, 
-      S.of(context).dammamNKhobar, S.of(context).riyadh, 
-      S.of(context).makkah, S.of(context).madinah, S.of(context).abha, 
+      S.of(context).riyadh, S.of(context).makkah,
+      S.of(context).dammamNKhobar,
+      S.of(context).madinah, S.of(context).abha,
       S.of(context).khamis, S.of(context).taif];
+
+    List _engCities = [
+      'JE', 'RI', 'Makkah', 'DammamNKhobar', 'Madinah', 'Abha', 'Khamis', 'Taif'
+    ];
+
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -171,19 +179,37 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
             scrollDirection: Axis.horizontal,
             children: [
               for (int index = 1; index <= 8; index++)
-                Container(
-                  height: 90,
-                  width: 200,
-                  child: Stack(
-                    children: [
-                      Image.asset('assets/img/city$index.png'),
-                      Center(
-                        child: Text(_cities[index -1], textScaleFactor: 1.7, style: TextStyle(color: Colors.white),
+                if (_engCities[index - 1] == appUser.country.toUpperCase())
+                  Container(
+                    height: 90,
+                    width: 200,
+                    child: Stack(
+                      children: [
+                        Image.asset('assets/img/city$index.png'),
+                        Center(
+                          child: Text(_cities[index -1], textScaleFactor: 1.7, style: TextStyle(color: Colors.white),
                             overflow: TextOverflow.fade,),
-                      )
-                    ],
-                  ),
-                )
+                        )
+                      ],
+                    ),
+                  )
+                else
+                  Opacity(
+                    opacity: 0.3,
+                    child: Container(
+                      height: 90,
+                      width: 200,
+                      child: Stack(
+                        children: [
+                          Image.asset('assets/img/city$index.png'),
+                          Center(
+                            child: Text(_cities[index -1], textScaleFactor: 1.7, style: TextStyle(color: Colors.white),
+                              overflow: TextOverflow.fade,),
+                          )
+                        ],
+                      ),
+                    ),
+                  )
             ],
           ),
         )

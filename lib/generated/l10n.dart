@@ -1602,6 +1602,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Adjust Location`
+  String get adjustLocation {
+    return Intl.message(
+      'Adjust Location',
+      name: 'adjustLocation',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

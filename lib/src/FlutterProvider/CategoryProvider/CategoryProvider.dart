@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 import 'package:sunbulahome/src/configs/strings.dart';
 import 'package:sunbulahome/src/models/product.dart';
+import 'package:sunbulahome/src/providers/shared_pref_provider.dart';
 
 class CategoryProvider extends ChangeNotifier {
   List<Product> _categoryProductsList = new List();
@@ -128,9 +129,18 @@ class CategoryProvider extends ChangeNotifier {
 
   Future<List<dynamic>> futureCategoryProducts(id, page_number) async {
     var data;
+    var token = await SharedPrefProvider.getString(token_key);
+
+    Map<String, String> header = {
+      "Content-Type": 'application/json',
+      'Accept': 'application/json',
+      "Authorization": "Bearer $token"
+    };
 
     await http
-        .get("${api_base_url}category/products/${id}?page=${page_number}")
+        .get(
+      "${api_base_url}category/products/${id}?page=${page_number}",
+        headers: header)
         .then((response) {
       print("Category Products  Response  ${response.body}");
 

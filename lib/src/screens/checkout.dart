@@ -496,10 +496,13 @@ class _CheckoutWidgetState extends State<CheckoutWidget>
                           PaymentCheckoutRepository.postPaymentCheckout(paymentCheckoutBody).then((value){
                             print('checkout_id');
                             print(value.paymentCheckout.results.checkoutId);
-                            SharedPrefProvider.clearKey(cart_list_key);
-                            CommonUtils.payment_cart_list.clear();
-                            CommonUtils.cart_list.clear();
+                            // SharedPrefProvider.clearKey(cart_list_key);
+                            // CommonUtils.payment_cart_list.clear();
+                            // CommonUtils.cart_list.clear();
                             if (_paymentMethod == 'cash') {
+                              SharedPrefProvider.clearKey(cart_list_key);
+                              CommonUtils.payment_cart_list.clear();
+                              CommonUtils.cart_list.clear();
                               Navigator.of(context).pushNamed('/CheckoutDone');
                             } else {
                               List _arguments = [value.paymentCheckout.results.checkoutId, value.paymentCheckout.results.orderId];
