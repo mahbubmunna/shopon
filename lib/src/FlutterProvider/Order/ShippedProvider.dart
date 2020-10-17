@@ -41,12 +41,13 @@ class ShippedProvider extends ChangeNotifier {
 
 
     var token = await SharedPrefProvider.getString(token_key);
+    print(token);
 
 
     Map<String, String> header = {"Authorization": "Bearer ${token}"};
 
     await http
-        .get("${api_base_url}orders/all", headers: header)
+        .get("${api_base_url}orders/pending", headers: header)
         .then((value) {
       if (value.statusCode == 200) {
         print("Shipped data   ${value.body}");

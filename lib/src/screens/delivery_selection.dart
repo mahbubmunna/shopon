@@ -120,60 +120,41 @@ class _DeliverySelectState extends State<DeliverySelect> {
     return Scaffold(
       floatingActionButton: MaterialButton(
         onPressed: () async{
-          await AwesomeDialog(
-            context: context,
-            dialogType: DialogType.INFO,
-            btnOkOnPress: () {},
-            body: Column(
-              children: [
-                Text('Select the store to shop'),
-                DropdownButton(
-                  value: _value,
-                  items: [
-                    DropdownMenuItem(
-                      child: Text('Riyadh'),
-                      value: 'RI',
-                    ),
-                    DropdownMenuItem(
-                      child: Text('Jeddah'),
-                      value: 'JE',
-                    )
-                  ], onChanged: (String value) {
-                  setState(() {
-                    _value = value;
-                    appUser.city = value;
-                  });
-
-                },
-                )
-              ],
-            )
-          ).show();
-
-          try {
-            await UserRepository.postUser(appUser.toMap()).then((response) {
-              appUser = response.user;
-            });
-          } catch (error){
-            print(error);
-          }
-
-          AwesomeDialog(
-              context: context,
-              dialogType: DialogType.SUCCES,
-              body: Text(S.of(context).locationSaved)
-          ).show();
-
-          await Future.delayed(Duration(seconds: 3), () {
-            Navigator.of(context).pushNamedAndRemoveUntil(
-                '/Tabs', ModalRoute.withName('/'),
-                arguments: 0);
-          });
+          // await AwesomeDialog(
+          //   context: context,
+          //   dialogType: DialogType.INFO,
+          //   btnOkOnPress: () {},
+          //   body: Column(
+          //     children: [
+          //       Text('Select the store to shop'),
+          //       DropdownButton(
+          //         value: _value,
+          //         items: [
+          //           DropdownMenuItem(
+          //             child: Text('Riyadh'),
+          //             value: 'RI',
+          //           ),
+          //           DropdownMenuItem(
+          //             child: Text('Jeddah'),
+          //             value: 'JE',
+          //           )
+          //         ], onChanged: (String value) {
+          //         setState(() {
+          //           _value = value;
+          //           appUser.city = value;
+          //         });
+          //
+          //       },
+          //       )
+          //     ],
+          //   )
+          // ).show();
+          goToAddAddressScreen();
           },
         shape: StadiumBorder(),
         color: Theme.of(context).accentColor,
         minWidth: 80,
-        child: Text(S.of(context).saveLocation, textScaleFactor: 1.5, style: TextStyle(color: Colors.white),),
+        child: Text(S.of(context).next, textScaleFactor: 1.5, style: TextStyle(color: Colors.white),),
       ),
       body: Column(
         children: <Widget>[
@@ -189,22 +170,22 @@ class _DeliverySelectState extends State<DeliverySelect> {
                 Center(child: Text(S.of(context).welcome + ' ${appUser.name}', textScaleFactor: 1.5, style: TextStyle(fontWeight: FontWeight.bold),)),
                 Center(child: Text(S.of(context).whereDoYouWantYourDelivery, textScaleFactor: 1.2,)),
                 SizedBox(height: 5,),
-                Padding(
-                  padding: const EdgeInsets.only(left: 10),
-                  child: MaterialButton(
-                    onPressed: (){goToAddAddressScreen();},
-                    color: config.Colors().mainColor(1),
-                    shape: StadiumBorder(),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: <Widget>[
-                        Icon(Icons.add_location, color: Colors.white,),
-                        SizedBox(width: 5,),
-                        Text(S.of(context).adjustLocation, textScaleFactor: 1.1,style: TextStyle(color: Colors.white),)
-                      ],
-                    ),
-                  ),
-                ),
+                // Padding(
+                //   padding: const EdgeInsets.only(left: 10),
+                //   child: MaterialButton(
+                //     onPressed: (){},
+                //     color: config.Colors().mainColor(1),
+                //     shape: StadiumBorder(),
+                //     child: Row(
+                //       mainAxisSize: MainAxisSize.min,
+                //       children: <Widget>[
+                //         Icon(Icons.add_location, color: Colors.white,),
+                //         SizedBox(width: 5,),
+                //         Text(S.of(context).adjustLocation, textScaleFactor: 1.1,style: TextStyle(color: Colors.white),)
+                //       ],
+                //     ),
+                //   ),
+                // ),
                 Padding(
                   padding: const EdgeInsets.only(left: 30, top: 15),
                   child: Text(S.of(context).home, textScaleFactor: 1.2, style: TextStyle(color: config.Colors().mainColor(1)),),

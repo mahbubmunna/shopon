@@ -1,11 +1,7 @@
-import 'dart:async';
+
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:geolocator/geolocator.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:interactive_webview/interactive_webview.dart';
 import 'package:sunbulahome/config/ui_icons.dart';
 import 'package:sunbulahome/generated/l10n.dart';
 import 'package:sunbulahome/src/configs/strings.dart';
@@ -54,29 +50,29 @@ class _CheckoutWidgetState extends State<CheckoutWidget>
 
   String _paymentMethod;
 
-  Completer<GoogleMapController> _controller = Completer();
-  Geolocator geoLocator = Geolocator()..forceAndroidLocationManager;
-  Position _position;
-  Widget _child;
-  String _completeAddress = 'Not added';
-
-  BitmapDescriptor _bitmapDescriptor;
+  // Completer<GoogleMapController> _controller = Completer();
+  // Geolocator geoLocator = Geolocator()..forceAndroidLocationManager;
+  // Position _position;
+  // Widget _child;
+  // String _completeAddress = 'Not added';
+  //
+  // BitmapDescriptor _bitmapDescriptor;
 
 
   //static const LatLng _center = const LatLng(45.521563, -122.677433);
 
-  void _onMapCreated(GoogleMapController controller) {
-    _controller.complete(controller);
-  }
+  // void _onMapCreated(GoogleMapController controller) {
+  //   _controller.complete(controller);
+  // }
 
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    _child = SpinKitDoubleBounce(color: Colors.black,);
-    getProperBitmap();
-    getCurrentLocation();
+    // _child = SpinKitDoubleBounce(color: Colors.black,);
+    // getProperBitmap();
+    // getCurrentLocation();
     animationOnlinePaymentController = AnimationController(duration: Duration(milliseconds: 350), vsync: this);
     CurvedAnimation curveOnlinePayment = CurvedAnimation(parent: animationOnlinePaymentController, curve: Curves.easeOut);
     animationOnlinePayment = Tween(begin: 0.0, end: 25.0).animate(curveOnlinePayment)
@@ -146,64 +142,64 @@ class _CheckoutWidgetState extends State<CheckoutWidget>
         setState(() {});
       });
   }
-  void getProperBitmap() async {
-    await BitmapDescriptor.fromAssetImage(ImageConfiguration(size: Size(128, 128)), 'assets/img/location.png')
-        .then((value) => _bitmapDescriptor = value);
-  }
-  void setCurrentPosition(Position _currentPosition) async {
-    try {
-      List<Placemark> p =  await geoLocator.placemarkFromCoordinates(
-          _currentPosition.latitude, _currentPosition.longitude);
-
-      Placemark place = p[0];
-
-      appUser.address = place.name;
-      appUser.city = place.administrativeArea;
-      appUser.postalCode = place.postalCode;
-      appUser.country = place.country;
-      appUser.area = place.locality;
-
-
-    } catch (e) {
-      print(e);
-    }
-  }
-
-  void getCurrentLocation() async{
-    Position res = await Geolocator().getCurrentPosition();
-
-    setState(() {
-      _position = res;
-      Marker _marker = Marker
-        (markerId: MarkerId('currentLocation'),
-          draggable: true,
-          icon: _bitmapDescriptor,
-          position: LatLng(_position.latitude, _position.longitude),
-          onDragEnd: (value) {
-            print(value.latitude);
-            print(value.longitude);
-            setState(() {
-              setCurrentPosition(Position(latitude: value.latitude, longitude: value.longitude));
-            });
-          },
-          infoWindow: InfoWindow(title: S.of(context).home,)
-      );
-
-      final Map<String, Marker> _markers = {};
-      _markers['currentLocation'] = _marker;
-
-      _child = GoogleMap(
-        onMapCreated: _onMapCreated,
-        initialCameraPosition: CameraPosition(
-            target:  LatLng(_position.latitude, _position.longitude),
-            zoom: 12
-        ),
-        markers: _markers.values.toSet(),
-      );
-      setCurrentPosition(_position);
-
-    });
-  }
+  // void getProperBitmap() async {
+  //   await BitmapDescriptor.fromAssetImage(ImageConfiguration(size: Size(128, 128)), 'assets/img/location.png')
+  //       .then((value) => _bitmapDescriptor = value);
+  // }
+  // void setCurrentPosition(Position _currentPosition) async {
+  //   try {
+  //     List<Placemark> p =  await geoLocator.placemarkFromCoordinates(
+  //         _currentPosition.latitude, _currentPosition.longitude);
+  //
+  //     Placemark place = p[0];
+  //
+  //     appUser.address = place.name;
+  //     appUser.city = place.administrativeArea;
+  //     appUser.postalCode = place.postalCode;
+  //     appUser.country = place.country;
+  //     appUser.area = place.locality;
+  //
+  //
+  //   } catch (e) {
+  //     print(e);
+  //   }
+  // }
+  //
+  // void getCurrentLocation() async{
+  //   Position res = await Geolocator().getCurrentPosition();
+  //
+  //   setState(() {
+  //     _position = res;
+  //     Marker _marker = Marker
+  //       (markerId: MarkerId('currentLocation'),
+  //         draggable: true,
+  //         icon: _bitmapDescriptor,
+  //         position: LatLng(_position.latitude, _position.longitude),
+  //         onDragEnd: (value) {
+  //           print(value.latitude);
+  //           print(value.longitude);
+  //           setState(() {
+  //             setCurrentPosition(Position(latitude: value.latitude, longitude: value.longitude));
+  //           });
+  //         },
+  //         infoWindow: InfoWindow(title: S.of(context).home,)
+  //     );
+  //
+  //     final Map<String, Marker> _markers = {};
+  //     _markers['currentLocation'] = _marker;
+  //
+  //     _child = GoogleMap(
+  //       onMapCreated: _onMapCreated,
+  //       initialCameraPosition: CameraPosition(
+  //           target:  LatLng(_position.latitude, _position.longitude),
+  //           zoom: 12
+  //       ),
+  //       markers: _markers.values.toSet(),
+  //     );
+  //     setCurrentPosition(_position);
+  //
+  //   });
+  // }
   @override
   Widget build(BuildContext context) {
     print('Checkout_test');
@@ -373,89 +369,89 @@ class _CheckoutWidgetState extends State<CheckoutWidget>
                     ),
                   ),
                 ),
-//             Container(
-//               margin: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-//               decoration: BoxDecoration(
-//                 color: Theme.of(context).primaryColor,
-//                 borderRadius: BorderRadius.circular(6),
-//                 boxShadow: [
-//                   BoxShadow(color: Theme.of(context).hintColor.withOpacity(0.15), offset: Offset(0, 3), blurRadius: 10)
-//                 ],
-//               ),
-//               child: ListView(
-//                 shrinkWrap: true,
-//                 primary: false,
-//                 children: <Widget>[
-// //                  ListTile(
-// //                    leading: Icon(UiIcons.placeholder),
-// //                    title: Text(
-// //                      'Shipping Adress',
-// //                      style: Theme.of(context).textTheme.body2,
-// //                    ),
-// //                    trailing: ButtonTheme(
-// //                      padding: EdgeInsets.all(0),
-// //                      minWidth: 50.0,
-// //                      height: 25.0,
-// //                      child: ShippingAddressDialog(
-// //                        user: appUser,
-// //                        onChanged: () {
-// //                          setState(() {});
-// //                        },
-// //                      ),
-// //                    ),
-// //                  ),
-//                   ListTile(
-//                     onTap: () {},
-//                     dense: true,
-//                     title: Text(
-//                       S.of(context).address,
-//                       style: Theme.of(context).textTheme.body1,
-//                     ),
-//                     trailing: Text(
-//                       appUser.address,
-//                       style: TextStyle(color: Theme.of(context).focusColor),
-//                     ),
-//                   ),
-//                   ListTile(
-//                     onTap: () {},
-//                     dense: true,
-//                     title: Text(
-//                       S.of(context).area,
-//                       style: Theme.of(context).textTheme.body1,
-//                     ),
-//                     trailing: Text(
-//                       appUser.area,
-//                       style: TextStyle(color: Theme.of(context).focusColor),
-//                     ),
-//                   ),
-//                   ListTile(
-//                     onTap: () {},
-//                     dense: true,
-//                     title: Text(
-//                       S.of(context).city,
-//                       style: Theme.of(context).textTheme.body1,
-//                     ),
-//                     trailing: Text(
-//                       appUser.country,
-//                       style: TextStyle(color: Theme.of(context).focusColor),
-//                     ),
-//                   ),
-//
-// //                ListTile(
-// //                  onTap: () {},
-// //                  dense: true,
-// //                  title: Text(
-// //                    'Birth Date',
-// //                    style: Theme.of(context).textTheme.body1,
-// //                  ),
-// //                  trailing: Text(
-// //                    appUser.getDateOfBirth(),
-// //                    style: TextStyle(color: Theme.of(context).focusColor),
-// //                  ),
-// //                ),
-//                 ],
-//               ),
-//             ),
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+              decoration: BoxDecoration(
+                color: Theme.of(context).primaryColor,
+                borderRadius: BorderRadius.circular(6),
+                boxShadow: [
+                  BoxShadow(color: Theme.of(context).hintColor.withOpacity(0.15), offset: Offset(0, 3), blurRadius: 10)
+                ],
+              ),
+              child: ListView(
+                shrinkWrap: true,
+                primary: false,
+                children: <Widget>[
+//                  ListTile(
+//                    leading: Icon(UiIcons.placeholder),
+//                    title: Text(
+//                      'Shipping Adress',
+//                      style: Theme.of(context).textTheme.body2,
+//                    ),
+//                    trailing: ButtonTheme(
+//                      padding: EdgeInsets.all(0),
+//                      minWidth: 50.0,
+//                      height: 25.0,
+//                      child: ShippingAddressDialog(
+//                        user: appUser,
+//                        onChanged: () {
+//                          setState(() {});
+//                        },
+//                      ),
+//                    ),
+//                  ),
+                  ListTile(
+                    onTap: () {},
+                    dense: true,
+                    title: Text(
+                      S.of(context).address,
+                      style: Theme.of(context).textTheme.body1,
+                    ),
+                    trailing: Text(
+                      appUser.address,
+                      style: TextStyle(color: Theme.of(context).focusColor),
+                    ),
+                  ),
+                  ListTile(
+                    onTap: () {},
+                    dense: true,
+                    title: Text(
+                      S.of(context).area,
+                      style: Theme.of(context).textTheme.body1,
+                    ),
+                    trailing: Text(
+                      appUser.area,
+                      style: TextStyle(color: Theme.of(context).focusColor),
+                    ),
+                  ),
+                  ListTile(
+                    onTap: () {},
+                    dense: true,
+                    title: Text(
+                      S.of(context).city,
+                      style: Theme.of(context).textTheme.body1,
+                    ),
+                    trailing: Text(
+                      appUser.country,
+                      style: TextStyle(color: Theme.of(context).focusColor),
+                    ),
+                  ),
+
+//                ListTile(
+//                  onTap: () {},
+//                  dense: true,
+//                  title: Text(
+//                    'Birth Date',
+//                    style: Theme.of(context).textTheme.body1,
+//                  ),
+//                  trailing: Text(
+//                    appUser.getDateOfBirth(),
+//                    style: TextStyle(color: Theme.of(context).focusColor),
+//                  ),
+//                ),
+                ],
+              ),
+            ),
                 SizedBox(height: 40,),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -532,11 +528,11 @@ class _CheckoutWidgetState extends State<CheckoutWidget>
                 ),
               ],
             ),
-            SizedBox(height: 40,),
-            SizedBox(
-              height: 200,
-              child: _child,
-            )
+            // SizedBox(height: 40,),
+            // SizedBox(
+            //   height: 200,
+            //   child: _child,
+            // )
           ],
         )
       ),

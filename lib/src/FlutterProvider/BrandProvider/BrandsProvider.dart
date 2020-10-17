@@ -7,6 +7,7 @@ import 'package:sunbulahome/src/configs/strings.dart';
 import 'package:sunbulahome/src/models/brand.dart';
 import 'package:http/http.dart' as http;
 import 'package:sunbulahome/src/models/product.dart';
+import 'package:sunbulahome/src/providers/shared_pref_provider.dart';
 
 class BrandsProvider extends ChangeNotifier {
   var _selectedBrandId;
@@ -153,9 +154,18 @@ class BrandsProvider extends ChangeNotifier {
     print("Get Barndd Product ");
 
     var data;
+    var token = await SharedPrefProvider.getString(token_key);
+
+    Map<String, String> header = {
+      "Content-Type": 'application/json',
+      'Accept': 'application/json',
+      "Authorization": "Bearer $token"
+    };
 
     await http
-        .get("${api_base_url}brand/products/${id}?page=${page}")
+        .get(
+        "${api_base_url}brand/products/${id}?page=${page}",
+        headers: header)
         .then((response) {
       if (response.statusCode == 200) {
         print("Response  ${response.body}");

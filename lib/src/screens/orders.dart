@@ -27,7 +27,7 @@ class _OrdersWidgetState extends State<OrdersWidget> {
   Widget build(BuildContext context) {
     return DefaultTabController(
         initialIndex: widget.currentTab ?? 0,
-        length: 5,
+        length: 4,
         child: Scaffold(
           key: _scaffoldKey,
           drawer: DrawerWidget(),
@@ -88,6 +88,19 @@ class _OrdersWidgetState extends State<OrdersWidget> {
                       ),
                     ),
                   ),
+                  // Tab(
+                  //   child: Container(
+                  //     padding: EdgeInsets.symmetric(horizontal: 20),
+                  //     decoration: BoxDecoration(
+                  //         borderRadius: BorderRadius.circular(50),
+                  //         border: Border.all(
+                  //             color: Theme.of(context).accentColor, width: 1)),
+                  //     child: Align(
+                  //       alignment: Alignment.center,
+                  //       child: Text(S.of(context).unpaid),
+                  //     ),
+                  //   ),
+                  // ),
                   Tab(
                     child: Container(
                       padding: EdgeInsets.symmetric(horizontal: 20),
@@ -97,7 +110,7 @@ class _OrdersWidgetState extends State<OrdersWidget> {
                               color: Theme.of(context).accentColor, width: 1)),
                       child: Align(
                         alignment: Alignment.center,
-                        child: Text(S.of(context).unpaid),
+                        child: Text(S.of(context).pending),
                       ),
                     ),
                   ),
@@ -127,19 +140,6 @@ class _OrdersWidgetState extends State<OrdersWidget> {
                       ),
                     ),
                   ),
-                  Tab(
-                    child: Container(
-                      padding: EdgeInsets.symmetric(horizontal: 20),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(50),
-                          border: Border.all(
-                              color: Theme.of(context).accentColor, width: 1)),
-                      child: Align(
-                        alignment: Alignment.center,
-                        child: Text(S.of(context).pending),
-                      ),
-                    ),
-                  ),
                 ]),
           ),
           body: Consumer5<OrderProvider, PaidProvider, UnpaidProvider,
@@ -160,8 +160,6 @@ class _OrdersWidgetState extends State<OrdersWidget> {
                       OrdersProductsWidget(ordersList: paidProvider.listData),
                       OrdersProductsWidget(
                           ordersList: shippedProvider.listData),
-                      OrdersProductsWidget(
-                          ordersList: pendingProvider.listData),
                     ]);
             },
           ),

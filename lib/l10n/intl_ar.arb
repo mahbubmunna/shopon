@@ -154,6 +154,8 @@
   "total": "Total",
   "lightMode": "وضع الضوء",
   "darkMode": "الوضع المظلم",
-  "toChangeLocationKeepHoldingPointerToAdjustToCorrect": "To change location, keep holding pointer to adjust to correct location.",
-  "adjustLocation": "اضبط الموقع"
+  "toChangeLocationKeepHoldingPointerToAdjustToCorrect": "لتغيير الموقع ، استمر في الضغط على المؤشر لضبط الموقع الصحيح.",
+  "adjustLocation": "اضبط الموقع",
+  "next": "التالى",
+  "yourStoreCity": "مدينة متجرك"
 }

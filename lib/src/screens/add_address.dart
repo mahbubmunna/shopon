@@ -1,5 +1,7 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:sunbulahome/generated/l10n.dart';
+import 'package:sunbulahome/src/repositories/user_repository.dart';
 import 'package:sunbulahome/src/screens/splash.dart';
 
 class AddAddress extends StatefulWidget {
@@ -11,8 +13,13 @@ class _AddAddressState extends State<AddAddress> {
   TextEditingController _addressTextController;
   TextEditingController _areaTextController;
   TextEditingController _postalCodeController;
-  var _cities = ['Jeddah'];
-  var _currentSelectedValue = "Jeddah";
+  var _cities = [ 'Riaydh', 'Jeddah', 'Makkah'];
+  Map _citiesMap = {
+    'Riaydh': 'RI',
+    'Jeddah': 'JE',
+    'Makkah': 'MA'
+  };
+  var _currentSelectedValue = "JE";
   String _completeAddress = '';
 
   @override
@@ -29,7 +36,7 @@ class _AddAddressState extends State<AddAddress> {
       appBar: AppBar(
         leading: IconButton(icon: Icon(Icons.keyboard_backspace), onPressed: () {Navigator.pop(context);},),
         centerTitle: true,
-        title: Text(S.of(context).addNewAddress),
+        title: Text('Add more info for delivery'),
       ),
       body: ListView(
         padding: EdgeInsets.symmetric(horizontal: 10),
@@ -38,7 +45,7 @@ class _AddAddressState extends State<AddAddress> {
           TextField(
             controller: _addressTextController,
             decoration: InputDecoration(
-              labelText: S.of(context).address,
+              labelText: 'Apartment, Building , Road Number',
               labelStyle: TextStyle(
                 color: Theme.of(context).accentColor
               ),
@@ -49,38 +56,6 @@ class _AddAddressState extends State<AddAddress> {
                 borderRadius: BorderRadius.all(Radius.circular(32)),
               )
             ),
-          ),
-          SizedBox(height: 10,),
-          FormField<String>(
-            builder: (FormFieldState<String> state) {
-              return InputDecorator(
-                decoration: InputDecoration(
-                    labelText: S.of(context).city,
-                    labelStyle: TextStyle(color: Theme.of(context).accentColor),
-                    errorStyle: TextStyle(color: Colors.redAccent, fontSize: 16.0),
-                    hintText: S.of(context).pleaseSelectCity,
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
-                isEmpty: _currentSelectedValue == '',
-                child: DropdownButtonHideUnderline(
-                  child: DropdownButton<String>(
-                    value: _currentSelectedValue,
-                    isDense: true,
-                    onChanged: (String newValue) {
-                      setState(() {
-                        _currentSelectedValue = newValue;
-                        state.didChange(newValue);
-                      });
-                    },
-                    items: _cities.map((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(value),
-                      );
-                    }).toList(),
-                  ),
-                ),
-              );
-            },
           ),
           SizedBox(height: 10,),
           TextField(
@@ -116,6 +91,38 @@ class _AddAddressState extends State<AddAddress> {
             ),
           ),
           SizedBox(height: 10,),
+          FormField<String>(
+            builder: (FormFieldState<String> state) {
+              return InputDecorator(
+                decoration: InputDecoration(
+                    labelText: S.of(context).yourStoreCity,
+                    labelStyle: TextStyle(color: Theme.of(context).accentColor),
+                    errorStyle: TextStyle(color: Colors.redAccent, fontSize: 16.0),
+                    hintText: S.of(context).pleaseSelectCity,
+                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
+                isEmpty: _currentSelectedValue == '',
+                child: DropdownButtonHideUnderline(
+                  child: DropdownButton<String>(
+                    value: _currentSelectedValue,
+                    isDense: true,
+                    onChanged: (String newValue) {
+                      setState(() {
+                        _currentSelectedValue = newValue;
+                        state.didChange(newValue);
+                      });
+                    },
+                    items: _cities.map((String value) {
+                      return DropdownMenuItem<String>(
+                        value: _citiesMap[value],
+                        child: Text(value),
+                      );
+                    }).toList(),
+                  ),
+                ),
+              );
+            },
+          ),
+          SizedBox(height: 10,),
           Center(
             child: Row(
               mainAxisSize: MainAxisSize.min,
@@ -124,9 +131,9 @@ class _AddAddressState extends State<AddAddress> {
                   color: Theme.of(context).accentColor,
                   minWidth: 120,
                   height: 40,
-                  child: Text(S.of(context).add, textScaleFactor: 1.5, style: TextStyle(color: Colors.white),),
+                  child: Text(S.of(context).saveLocation, textScaleFactor: 1.5, style: TextStyle(color: Colors.white),),
                   shape: StadiumBorder(),
-                  onPressed: () {
+                  onPressed: () async {
                     if (_areaTextController.text != null && _addressTextController.text != null) {
                       _completeAddress = _addressTextController.text+', '
                           +_currentSelectedValue+', '
@@ -141,7 +148,31 @@ class _AddAddressState extends State<AddAddress> {
 
                     }
                     print(_completeAddress);
-                    Navigator.pop(context);
+
+                    try {
+                      await UserRepository.postUser(appUser.toMap()).then((response) {
+                        appUser = response.user;
+                        print('Addresses to test');
+                        print(appUser.address);
+                        print(appUser.area);
+                        print(appUser.city);
+                        print(appUser.postalCode);
+                      });
+                    } catch (error){
+                      print(error);
+                    }
+
+                    AwesomeDialog(
+                        context: context,
+                        dialogType: DialogType.SUCCES,
+                        body: Text(S.of(context).locationSaved)
+                    ).show();
+
+                    await Future.delayed(Duration(seconds: 3), () {
+                      Navigator.of(context).pushNamedAndRemoveUntil(
+                          '/Tabs', ModalRoute.withName('/'),
+                          arguments: 0);
+                    });
                   },
                 )
               ],

@@ -97,6 +97,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "mobileNumber" : MessageLookupByLibrary.simpleMessage("Mobile Number"),
     "myOrders" : MessageLookupByLibrary.simpleMessage("My Orders"),
     "name" : MessageLookupByLibrary.simpleMessage("Name"),
+    "next" : MessageLookupByLibrary.simpleMessage("Next"),
     "noItemsInTheCart" : MessageLookupByLibrary.simpleMessage("No Items in the cart"),
     "noReview" : MessageLookupByLibrary.simpleMessage("No Review"),
     "notAValidEmail" : MessageLookupByLibrary.simpleMessage("Not a valid email"),
@@ -178,6 +179,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "whereDoYouWantYourDelivery" : MessageLookupByLibrary.simpleMessage("Where do you want your delivery?"),
     "wishList" : MessageLookupByLibrary.simpleMessage("Wish List"),
     "yourOrderHasBeenPlacedKindlyPayBySpanOn" : MessageLookupByLibrary.simpleMessage("Your order has been placed. Kindly pay by span on delivery"),
-    "yourOrders" : MessageLookupByLibrary.simpleMessage("Your Orders")
+    "yourOrders" : MessageLookupByLibrary.simpleMessage("Your Orders"),
+    "yourStoreCity" : MessageLookupByLibrary.simpleMessage("Your Store City")
   };
 }

@@ -158,7 +158,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
       S.of(context).khamis, S.of(context).taif];
 
     List _engCities = [
-      'JE', 'RI', 'Makkah', 'DammamNKhobar', 'Madinah', 'Abha', 'Khamis', 'Taif'
+      'JE', 'RI', 'MA', 'DammamNKhobar', 'Madinah', 'Abha', 'Khamis', 'Taif'
     ];
 
 

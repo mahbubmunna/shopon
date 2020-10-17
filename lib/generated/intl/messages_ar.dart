@@ -97,6 +97,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "mobileNumber" : MessageLookupByLibrary.simpleMessage("رقم الهاتف المحمول"),
     "myOrders" : MessageLookupByLibrary.simpleMessage("أوامر"),
     "name" : MessageLookupByLibrary.simpleMessage("اسم"),
+    "next" : MessageLookupByLibrary.simpleMessage("التالى"),
     "noItemsInTheCart" : MessageLookupByLibrary.simpleMessage("عربة التسوق فارغة"),
     "noReview" : MessageLookupByLibrary.simpleMessage("لا مراجعة"),
     "notAValidEmail" : MessageLookupByLibrary.simpleMessage("البريد الإلكتروني غير صالح"),
@@ -160,7 +161,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "taif" : MessageLookupByLibrary.simpleMessage("الطائف"),
     "theOrderIsRemovedFromWishList" : MessageLookupByLibrary.simpleMessage("تمت إزالة الطلب من قائمة الرغبات"),
     "title" : MessageLookupByLibrary.simpleMessage("عنوان"),
-    "toChangeLocationKeepHoldingPointerToAdjustToCorrect" : MessageLookupByLibrary.simpleMessage("To change location, keep holding pointer to adjust to correct location."),
+    "toChangeLocationKeepHoldingPointerToAdjustToCorrect" : MessageLookupByLibrary.simpleMessage("لتغيير الموقع ، استمر في الضغط على المؤشر لضبط الموقع الصحيح."),
     "topSelling" : MessageLookupByLibrary.simpleMessage("الأكثر مبيعا"),
     "total" : MessageLookupByLibrary.simpleMessage("Total"),
     "typeYourEmailAddress" : MessageLookupByLibrary.simpleMessage("اكتب البريد الالكتروني الخاص بك"),
@@ -177,6 +178,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "whereDoYouWantYourDelivery" : MessageLookupByLibrary.simpleMessage("أين تريد توصيلك؟"),
     "wishList" : MessageLookupByLibrary.simpleMessage("قائمتك المفضلة"),
     "yourOrderHasBeenPlacedKindlyPayBySpanOn" : MessageLookupByLibrary.simpleMessage("تم تقديم طلبك بنجاح"),
-    "yourOrders" : MessageLookupByLibrary.simpleMessage("طلباتك")
+    "yourOrders" : MessageLookupByLibrary.simpleMessage("طلباتك"),
+    "yourStoreCity" : MessageLookupByLibrary.simpleMessage("مدينة متجرك")
   };
 }

@@ -156,5 +156,7 @@
   "lightMode": "Light Mode",
   "darkMode": "Dark Mode",
   "toChangeLocationKeepHoldingPointerToAdjustToCorrect": "To change location, keep holding pointer to adjust to correct location.",
-  "adjustLocation": "Adjust Location"
+  "adjustLocation": "Adjust Location",
+  "next": "Next",
+  "yourStoreCity": "Your Store City"
 }
