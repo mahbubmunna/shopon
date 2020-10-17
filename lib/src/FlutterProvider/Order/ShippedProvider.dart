@@ -47,7 +47,7 @@ class ShippedProvider extends ChangeNotifier {
     Map<String, String> header = {"Authorization": "Bearer ${token}"};
 
     await http
-        .get("${api_base_url}orders/pending", headers: header)
+        .get("${api_base_url}orders/shipped", headers: header)
         .then((value) {
       if (value.statusCode == 200) {
         print("Shipped data   ${value.body}");

@@ -161,7 +161,8 @@ class BrandsProvider extends ChangeNotifier {
       'Accept': 'application/json',
       "Authorization": "Bearer $token"
     };
-
+    
+    print('page number: $page id number: $id');
     await http
         .get(
         "${api_base_url}brand/products/${id}?page=${page}",

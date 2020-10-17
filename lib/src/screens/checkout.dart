@@ -1,10 +1,13 @@
 
 import 'dart:convert';
 
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:sunbulahome/config/ui_icons.dart';
 import 'package:sunbulahome/generated/l10n.dart';
 import 'package:sunbulahome/src/configs/strings.dart';
+import 'package:sunbulahome/src/models/order_status.dart';
+import 'package:sunbulahome/src/models/payment.dart';
 import 'package:sunbulahome/src/models/route_argument.dart';
 import 'package:sunbulahome/src/providers/shared_pref_provider.dart';
 import 'package:sunbulahome/src/repositories/payment_repository.dart';
@@ -502,8 +505,13 @@ class _CheckoutWidgetState extends State<CheckoutWidget>
                               Navigator.of(context).pushNamed('/CheckoutDone');
                             } else {
                               List _arguments = [value.paymentCheckout.results.checkoutId, value.paymentCheckout.results.orderId];
+                              lastOrderId = value.paymentCheckout.results.orderId;
                               Navigator.of(context).pushNamed('/PaymentView',
                                   arguments: RouteArgument(argumentsList: _arguments)).then((value) {
+                                SharedPrefProvider.clearKey(cart_list_key);
+                                CommonUtils.payment_cart_list.clear();
+                                CommonUtils.cart_list.clear();
+                                    clearCartOrNot(value);
                                 Navigator.of(context).pushNamedAndRemoveUntil('/Tabs',  ModalRoute.withName('/'), arguments: 0);
                               });
                             }
@@ -547,4 +555,21 @@ class _CheckoutWidgetState extends State<CheckoutWidget>
     animationCashOnDeliveryController.dispose();
     animationStripeController.dispose();
   }
+
+  void clearCartOrNot(PaymentCheckout value) async {
+    print('Mahbub');
+    Dio _dio = Dio();
+    await _dio.post("$otp_base_url/checkout/status", data: {'order_id': lastOrderId}).then((value) {
+      print('check status $value');
+      OrderStatus orderStatus = OrderStatus.fromJson(value.data);
+      if (orderStatus.results.success == true) {
+        SharedPrefProvider.clearKey(cart_list_key);
+        CommonUtils.payment_cart_list.clear();
+        CommonUtils.cart_list.clear();
+      }
+    });
+  }
 }
+
+
+int lastOrderId;
