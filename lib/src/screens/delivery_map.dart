@@ -6,18 +6,17 @@ import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:sunbulahome/generated/l10n.dart';
-import 'package:sunbulahome/src/screens/add_address.dart';
 import 'package:sunbulahome/src/screens/splash.dart';
 import 'package:sunbulahome/config/app_config.dart' as config;
 
-class DeliverySelect extends StatefulWidget {
+import 'add_address.dart';
 
+class DeliveryMap extends StatefulWidget {
   @override
-  _DeliverySelectState createState() => _DeliverySelectState();
+  _DeliveryMapState createState() => _DeliveryMapState();
 }
 
-
-class _DeliverySelectState extends State<DeliverySelect> {
+class _DeliveryMapState extends State<DeliveryMap> {
   Completer<GoogleMapController> _controller = Completer();
   Geolocator geoLocator = Geolocator()..forceAndroidLocationManager;
   Position _position;
@@ -41,11 +40,11 @@ class _DeliverySelectState extends State<DeliverySelect> {
 
       Placemark place = p[0];
 
-        appUser.address = place.name;
-        appUser.city = place.administrativeArea;
-        appUser.postalCode = place.postalCode;
-        appUser.country = place.country;
-        appUser.area = place.locality;
+      appUser.address = place.name;
+      appUser.city = place.administrativeArea;
+      appUser.postalCode = place.postalCode;
+      appUser.country = place.country;
+      appUser.area = place.locality;
 
       allAddressInOneLine();
 
@@ -99,17 +98,16 @@ class _DeliverySelectState extends State<DeliverySelect> {
     getCurrentLocation();
     super.initState();
   }
-  
+
   void getProperBitmap() async {
     await BitmapDescriptor.fromAssetImage(ImageConfiguration(size: Size(128, 128)), 'assets/img/location.png')
-    .then((value) => _bitmapDescriptor = value);
+        .then((value) => _bitmapDescriptor = value);
   }
 
   void goToAddAddressScreen() async {
 //    String _manualValue = await Navigator.push(context, PageTransition(type: PageTransitionType.rightToLeft, child: AddAddress()));
 //    if (_manualValue != null) _result = _manualValue;
     await Navigator.push(context, PageTransition(type: PageTransitionType.rightToLeft, child: AddAddress()));
-    allAddressInOneLine();
   }
 
   String _value = 'RI';
@@ -125,44 +123,30 @@ class _DeliverySelectState extends State<DeliverySelect> {
         minWidth: 80,
         child: Text(S.of(context).next, textScaleFactor: 1.5, style: TextStyle(color: Colors.white),),
       ),
-      body: Column(
+      body: ListView(
         children: <Widget>[
           Container(
-            height: MediaQuery.of(context).size.height /2,
-            width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height /2,
+              width: MediaQuery.of(context).size.width,
               child: _child),
-          Column(
+          SizedBox(height: 20,),
+          Center(child: Text(S.of(context).welcome + ' ${appUser.name}', textScaleFactor: 1.5, style: TextStyle(fontWeight: FontWeight.bold),)),
+          Center(child: Text(S.of(context).whereDoYouWantYourDelivery, textScaleFactor: 1.2,)),
+          SizedBox(height: 5,),
+          Padding(
+            padding: const EdgeInsets.only(left: 30, top: 15),
+            child: Text(S.of(context).home, textScaleFactor: 1.2, style: TextStyle(color: config.Colors().mainColor(1)),),
+          ),
+          Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              SizedBox(height: 20,),
-              Center(child: Text(S.of(context).welcome + ' ${appUser.name}', textScaleFactor: 1.5, style: TextStyle(fontWeight: FontWeight.bold),)),
-              Center(child: Text(S.of(context).whereDoYouWantYourDelivery, textScaleFactor: 1.2,)),
-              SizedBox(height: 5,),
-              Padding(
-                padding: const EdgeInsets.only(left: 30, top: 15),
-                child: Text(S.of(context).home, textScaleFactor: 1.2, style: TextStyle(color: config.Colors().mainColor(1)),),
-              ),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  SizedBox(width: 10,),
-                  Icon(Icons.location_on, color: config.Colors().mainColor(.7), size: 15,),
-                  SizedBox(width: 5,),
-                  Flexible(child: Text(_completeAddress, textScaleFactor: 1.1,)),
-                ],
-              ),
-              SizedBox(height: 30,),
-              Padding(
-                padding: EdgeInsets.only(left: 20),
-                child: Flexible(child:
-                  Text(S.of(context).toChangeLocationKeepHoldingPointerToAdjustToCorrect,
-                  textScaleFactor: 1.1, style: TextStyle(color: Theme.of(context).accentColor),)),
-              ),
-              SizedBox(height: 20,),
-
-
+              SizedBox(width: 10,),
+              Icon(Icons.location_on, color: config.Colors().mainColor(.7), size: 15,),
+              SizedBox(width: 5,),
+              Flexible(child: Text(_completeAddress, textScaleFactor: 1.1,)),
             ],
           ),
+
         ],
       ),
     );

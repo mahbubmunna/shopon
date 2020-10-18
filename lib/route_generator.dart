@@ -10,6 +10,7 @@ import 'package:sunbulahome/src/screens/category.dart';
 import 'package:sunbulahome/src/screens/ShippingAddress.dart';
 import 'package:sunbulahome/src/screens/checkout.dart';
 import 'package:sunbulahome/src/screens/checkout_done.dart';
+import 'package:sunbulahome/src/screens/delivery_map.dart';
 import 'package:sunbulahome/src/screens/delivery_selection.dart';
 import 'package:sunbulahome/src/screens/forgot_password.dart';
 import 'package:sunbulahome/src/screens/help.dart';
@@ -36,8 +37,6 @@ class RouteGenerator {
       case '/Onboard':
        return MaterialPageRoute(builder: (_) => OnBoardingWidget());
         //return MaterialPageRoute(builder: (_) => DeliverySelect());
-      case '/DeliverySelection':
-        return MaterialPageRoute(builder: (_) => DeliverySelect());
       case '/ForgotPassword':
         return MaterialPageRoute(builder: (_) => ForgotPasswordWidget());
       case '/SignUp':
@@ -56,6 +55,9 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (context) => CheckoutDoneWidget());
       case '/PaymentView':
         return MaterialPageRoute(builder: (context) => PaymentPage(routeArgument: args as RouteArgument,));
+
+      case '/DeliveryMap':
+        return MaterialPageRoute(builder: (_) => DeliveryMap());
 
       case '/Brand':
         return MaterialPageRoute(

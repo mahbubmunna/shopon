@@ -169,7 +169,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
           contentPadding: EdgeInsets.only(left: 10),
           leading: Icon(Icons.store),
           title: Text(
-            S.of(context).selectStoreToPlaceOrder,
+            "You're ordering in",
             style: Theme.of(context).textTheme.display1,
           ),
         ),
@@ -232,8 +232,6 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                       ),
                     ),
                   ),
-
-
             ],
           ),
         )

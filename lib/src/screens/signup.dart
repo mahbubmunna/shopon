@@ -593,7 +593,8 @@ class _SignUpWidgetState extends State<SignUpWidget> {
 //            '/Tabs', ModalRoute.withName('/'),
 //            arguments: 2);
          Navigator.of(context).pushNamedAndRemoveUntil(
-             '/DeliverySelection', ModalRoute.withName('/'),);
+             '/DeliveryMap', ModalRoute.withName('/'),);
+
 
       });
       setState(() {
