@@ -1632,6 +1632,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Apartment, Building , Street Name`
+  String get apartmentBuildingStreetName {
+    return Intl.message(
+      'Apartment, Building , Street Name',
+      name: 'apartmentBuildingStreetName',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -1,13 +1,11 @@
 import 'dart:async';
 
-import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:sunbulahome/generated/l10n.dart';
-import 'package:sunbulahome/src/repositories/user_repository.dart';
 import 'package:sunbulahome/src/screens/add_address.dart';
 import 'package:sunbulahome/src/screens/splash.dart';
 import 'package:sunbulahome/config/app_config.dart' as config;
@@ -120,35 +118,6 @@ class _DeliverySelectState extends State<DeliverySelect> {
     return Scaffold(
       floatingActionButton: MaterialButton(
         onPressed: () async{
-          // await AwesomeDialog(
-          //   context: context,
-          //   dialogType: DialogType.INFO,
-          //   btnOkOnPress: () {},
-          //   body: Column(
-          //     children: [
-          //       Text('Select the store to shop'),
-          //       DropdownButton(
-          //         value: _value,
-          //         items: [
-          //           DropdownMenuItem(
-          //             child: Text('Riyadh'),
-          //             value: 'RI',
-          //           ),
-          //           DropdownMenuItem(
-          //             child: Text('Jeddah'),
-          //             value: 'JE',
-          //           )
-          //         ], onChanged: (String value) {
-          //         setState(() {
-          //           _value = value;
-          //           appUser.city = value;
-          //         });
-          //
-          //       },
-          //       )
-          //     ],
-          //   )
-          // ).show();
           goToAddAddressScreen();
           },
         shape: StadiumBorder(),
@@ -159,33 +128,15 @@ class _DeliverySelectState extends State<DeliverySelect> {
       body: Column(
         children: <Widget>[
           Expanded(
-            flex: 1,
             child: _child,
           ),
           Expanded(
-            flex: 1,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Center(child: Text(S.of(context).welcome + ' ${appUser.name}', textScaleFactor: 1.5, style: TextStyle(fontWeight: FontWeight.bold),)),
                 Center(child: Text(S.of(context).whereDoYouWantYourDelivery, textScaleFactor: 1.2,)),
                 SizedBox(height: 5,),
-                // Padding(
-                //   padding: const EdgeInsets.only(left: 10),
-                //   child: MaterialButton(
-                //     onPressed: (){},
-                //     color: config.Colors().mainColor(1),
-                //     shape: StadiumBorder(),
-                //     child: Row(
-                //       mainAxisSize: MainAxisSize.min,
-                //       children: <Widget>[
-                //         Icon(Icons.add_location, color: Colors.white,),
-                //         SizedBox(width: 5,),
-                //         Text(S.of(context).adjustLocation, textScaleFactor: 1.1,style: TextStyle(color: Colors.white),)
-                //       ],
-                //     ),
-                //   ),
-                // ),
                 Padding(
                   padding: const EdgeInsets.only(left: 30, top: 15),
                   child: Text(S.of(context).home, textScaleFactor: 1.2, style: TextStyle(color: config.Colors().mainColor(1)),),
@@ -221,6 +172,5 @@ class _DeliverySelectState extends State<DeliverySelect> {
 
     });
   }
-
 
 }

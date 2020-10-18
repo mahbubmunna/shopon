@@ -157,5 +157,6 @@
   "toChangeLocationKeepHoldingPointerToAdjustToCorrect": "لتغيير الموقع ، استمر في الضغط على المؤشر لضبط الموقع الصحيح.",
   "adjustLocation": "اضبط الموقع",
   "next": "التالى",
-  "yourStoreCity": "مدينة متجرك"
+  "yourStoreCity": "مدينة متجرك",
+  "apartmentBuildingStreetName": "Apartment, Building , Street Name"
 }

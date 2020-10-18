@@ -45,7 +45,7 @@ class _AddAddressState extends State<AddAddress> {
           TextField(
             controller: _addressTextController,
             decoration: InputDecoration(
-              labelText: 'Apartment, Building , Road Number',
+              labelText: S.of(context).apartmentBuildingStreetName,
               labelStyle: TextStyle(
                 color: Theme.of(context).accentColor
               ),
@@ -62,23 +62,6 @@ class _AddAddressState extends State<AddAddress> {
             controller: _areaTextController,
             decoration: InputDecoration(
               labelText: S.of(context).area,
-              labelStyle: TextStyle(
-                color: Theme.of(context).accentColor
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(32)),
-              ),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(32)),
-              )
-            ),
-          ),
-          SizedBox(height: 10,),
-          TextField(
-            controller: _postalCodeController,
-            keyboardType: TextInputType.number,
-            decoration: InputDecoration(
-              labelText: S.of(context).postalCode,
               labelStyle: TextStyle(
                 color: Theme.of(context).accentColor
               ),
@@ -138,13 +121,11 @@ class _AddAddressState extends State<AddAddress> {
                       _completeAddress = _addressTextController.text+', '
                           +_currentSelectedValue+', '
                           +_areaTextController.text+', '
-                          +_postalCodeController.text+', '
                           +S.of(context).saudiArabia;
 
                       appUser.address = _addressTextController.text;
                       appUser.area = _areaTextController.text;
                       appUser.city = _currentSelectedValue;
-                      appUser.postalCode = _postalCodeController.text;
 
                     }
                     print(_completeAddress);

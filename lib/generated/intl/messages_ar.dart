@@ -34,6 +34,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "all" : MessageLookupByLibrary.simpleMessage("الكل"),
     "alreadyHaveAnAccount" : MessageLookupByLibrary.simpleMessage("هل لديك حساب؟"),
     "alreadyHaveAnAccountSignIn" : MessageLookupByLibrary.simpleMessage("هل لديك حساب؟ تسجيل الدخول"),
+    "apartmentBuildingStreetName" : MessageLookupByLibrary.simpleMessage("Apartment, Building , Street Name"),
     "appLanguage" : MessageLookupByLibrary.simpleMessage("لغة التطبيق"),
     "applicationPreferences" : MessageLookupByLibrary.simpleMessage("تفضيلات التطبيق"),
     "area" : MessageLookupByLibrary.simpleMessage("منطقة"),

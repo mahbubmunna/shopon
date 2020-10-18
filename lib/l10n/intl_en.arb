@@ -158,5 +158,6 @@
   "toChangeLocationKeepHoldingPointerToAdjustToCorrect": "To change location, keep holding pointer to adjust to correct location.",
   "adjustLocation": "Adjust Location",
   "next": "Next",
-  "yourStoreCity": "Your Store City"
+  "yourStoreCity": "Your Store City",
+  "apartmentBuildingStreetName": "Apartment, Building , Street Name"
 }

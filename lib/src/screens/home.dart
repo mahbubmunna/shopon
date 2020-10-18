@@ -193,6 +193,28 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                       ],
                     ),
                   )
+                else if(index > 3)
+                  Container(
+                    height: 90,
+                    width: 200,
+                    child: Stack(
+                      children: [
+                        Opacity(
+                          opacity: .3,
+                            child: Image.asset('assets/img/city$index.png')),
+                        Padding(
+                          padding: EdgeInsets.only(top: 5, left: 15),
+                          child: Container(
+                            color: Colors.white,
+                              child: Text('Coming soon')),
+                        ),
+                        Center(
+                          child: Text(_cities[index -1], textScaleFactor: 1.7, style: TextStyle(color: Colors.white),
+                            overflow: TextOverflow.fade,),
+                        )
+                      ],
+                    ),
+                  )
                 else
                   Opacity(
                     opacity: 0.3,
@@ -209,7 +231,9 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                         ],
                       ),
                     ),
-                  )
+                  ),
+
+
             ],
           ),
         )
