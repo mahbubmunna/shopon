@@ -123,7 +123,8 @@ class _DeliveryMapState extends State<DeliveryMap> {
         minWidth: 80,
         child: Text(S.of(context).next, textScaleFactor: 1.5, style: TextStyle(color: Colors.white),),
       ),
-      body: ListView(
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Container(
               height: MediaQuery.of(context).size.height /2,

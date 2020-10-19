@@ -144,6 +144,8 @@ class _CheckoutWidgetState extends State<CheckoutWidget>
       ..addListener(() {
         setState(() {});
       });
+
+    animationOnlinePaymentController.forward();
   }
   // void getProperBitmap() async {
   //   await BitmapDescriptor.fromAssetImage(ImageConfiguration(size: Size(128, 128)), 'assets/img/location.png')

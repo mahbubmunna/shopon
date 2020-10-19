@@ -90,6 +90,8 @@ class _BrandWidgetState extends State<BrandWidget>
       key: _scaffoldKey,
       drawer: DrawerWidget(),
       appBar: AppBar(
+        title: Text(widget._brand.name),
+        centerTitle: true,
         leading: IconButton(
           icon: Icon(UiIcons.return_icon),
           onPressed: () { Navigator.of(context).pop(); },
@@ -166,25 +168,25 @@ class _BrandWidgetState extends State<BrandWidget>
                                     ),
                                   ),
                                 ),
-                          Positioned(
-                            top: 6,
-                            right: 10,
-                            child: Container(
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 10, vertical: 3),
-                              decoration: BoxDecoration(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(100)),
-                                  color: Theme.of(context).accentColor),
-                              alignment: AlignmentDirectional.topEnd,
-                              child: Text(
-                                '${provider.brands_product[index].discount} %',
-                                style: Theme.of(context).textTheme.body2.merge(
-                                    TextStyle(
-                                        color: Theme.of(context).primaryColor)),
-                              ),
-                            ),
-                          ),
+                          // Positioned(
+                          //   top: 6,
+                          //   right: 10,
+                          //   child: Container(
+                          //     padding: EdgeInsets.symmetric(
+                          //         horizontal: 10, vertical: 3),
+                          //     decoration: BoxDecoration(
+                          //         borderRadius:
+                          //             BorderRadius.all(Radius.circular(100)),
+                          //         color: Theme.of(context).accentColor),
+                          //     alignment: AlignmentDirectional.topEnd,
+                          //     child: Text(
+                          //       '${provider.brands_product[index].discount} %',
+                          //       style: Theme.of(context).textTheme.body2.merge(
+                          //           TextStyle(
+                          //               color: Theme.of(context).primaryColor)),
+                          //     ),
+                          //   ),
+                          // ),
                           Container(
                             margin: EdgeInsets.only(top: 170),
                             padding: EdgeInsets.symmetric(
@@ -217,22 +219,17 @@ class _BrandWidgetState extends State<BrandWidget>
                                     // The title of the product
                                     Expanded(
                                       child: Text(
-                                        '${provider.brands_product[index].sales==null?"0":provider.brands_product[index].available} Sales',
+                                        '${provider.brands_product[index].available==null?"0":provider.brands_product[index].available} ${S.of(context).available}',
                                         style:
                                             Theme.of(context).textTheme.body1,
                                         overflow: TextOverflow.fade,
                                         softWrap: false,
                                       ),
                                     ),
-                                    Icon(
-                                      Icons.star,
-                                      color: Colors.amber,
-                                      size: 18,
-                                    ),
-                                    Text(
-                                      provider.brands_product[index].rate
+                                    Text(S.of(context).sar + ' ' +
+                                      provider.brands_product[index].price
                                           .toString(),
-                                      style: Theme.of(context).textTheme.body2,
+
                                     )
                                   ],
                                   crossAxisAlignment: CrossAxisAlignment.center,
