@@ -55,7 +55,7 @@ class _ProductSliderWidgetState extends State<ProductSliderWidget> {
                     height: 360,
                     decoration: BoxDecoration(
                       image: DecorationImage(
-                          image: CachedNetworkImageProvider('$public_path_url${slide}'),
+                          image: CachedNetworkImageProvider('$public_path_url$slide'),
                           fit: BoxFit.cover),
                       borderRadius: BorderRadius.circular(6),
                       boxShadow: [

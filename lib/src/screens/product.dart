@@ -260,27 +260,6 @@ class _ProductWidgetState extends State<ProductWidget>
                             0.0
                           ])),
                     ),*/
-                  widget.product.discount != null
-                      ? Positioned(
-                          top: 80,
-                          right: 10,
-                          child: Container(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 10, vertical: 3),
-                            decoration: BoxDecoration(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(100)),
-                                color: Theme.of(context).accentColor),
-                            alignment: AlignmentDirectional.topEnd,
-                            child: Text(
-                              '${widget.product.discount} %',
-                              style: Theme.of(context).textTheme.body2.merge(
-                                  TextStyle(
-                                      color: Theme.of(context).primaryColor)),
-                            ),
-                          ),
-                        )
-                      : Container(),
                 ],
               ),
             ),

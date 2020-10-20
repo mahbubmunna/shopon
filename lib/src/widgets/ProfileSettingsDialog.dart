@@ -28,6 +28,14 @@ class _ProfileSettingsDialogState extends State<ProfileSettingsDialog> {
   final areaController = TextEditingController(text: appUser.area !=null ? appUser.area : '' );
   final cityController = TextEditingController(text: appUser.country !=null ? appUser.country : '');
 
+  var _cities = [ 'Riaydh', 'Jeddah', 'Makkah'];
+  Map _citiesMap = {
+    'Riaydh': 'RI',
+    'Jeddah': 'JE',
+    'Makkah': 'MA'
+  };
+  var _currentSelectedValue = "JE";
+
   @override
   Widget build(BuildContext context) {
     return FlatButton(
@@ -84,11 +92,38 @@ class _ProfileSettingsDialogState extends State<ProfileSettingsDialog> {
                           decoration: getInputDecoration(hintText: S.of(context).enterYourArea, labelText: S.of(context).area),
                           onSaved: (input) => widget.user.area = input,
                         ),
-                        new TextFormField(
-                          controller: cityController,
-                          style: TextStyle(color: Theme.of(context).hintColor),
-                          decoration: getInputDecoration(hintText: S.of(context).enterYourCity, labelText: S.of(context).city),
-                          onSaved: (input) => widget.user.city = input,
+                        new FormField<String>(
+                          builder: (FormFieldState<String> state) {
+                            return InputDecorator(
+                              decoration: InputDecoration(
+                                  labelText: S.of(context).city,
+                                  // labelStyle: TextStyle(color: Theme.of(context).accentColor),
+                                  errorStyle: TextStyle(color: Colors.redAccent, fontSize: 16.0),
+                                  hintText: S.of(context).pleaseSelectCity,
+                                enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Theme.of(context).hintColor.withOpacity(0.2))),
+                                focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Theme.of(context).hintColor)),
+                              ),
+                              isEmpty: _currentSelectedValue == '',
+                              child: DropdownButtonHideUnderline(
+                                child: DropdownButton<String>(
+                                  value: _currentSelectedValue,
+                                  isDense: true,
+                                  onChanged: (String newValue) {
+                                    setState(() {
+                                      _currentSelectedValue = newValue;
+                                      state.didChange(newValue);
+                                    });
+                                  },
+                                  items: _cities.map((String value) {
+                                    return DropdownMenuItem<String>(
+                                      value: _citiesMap[value],
+                                      child: Text(value),
+                                    );
+                                  }).toList(),
+                                ),
+                              ),
+                            );
+                          },
                         ),
 
 //                        FormField<String>(
@@ -189,7 +224,7 @@ class _ProfileSettingsDialogState extends State<ProfileSettingsDialog> {
         'email' : emailController.text,
         'address': addressController.text,
         'area' : areaController.text,
-        'country' : cityController.text
+        'country' : _currentSelectedValue
       };
       await UserRepository.postUser(updatedUserData).then((response) {
         appUser = response.user;

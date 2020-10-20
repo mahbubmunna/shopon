@@ -154,11 +154,13 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
     List _cities = [S.of(context).jeddah, 
       S.of(context).riyadh, S.of(context).makkah,
       S.of(context).dammamNKhobar,
-      S.of(context).madinah, S.of(context).abha,
-      S.of(context).khamis, S.of(context).taif];
+      // S.of(context).madinah, S.of(context).abha,
+      // S.of(context).khamis, S.of(context).taif
+    ];
 
     List _engCities = [
-      'JE', 'RI', 'MA', 'DammamNKhobar', 'Madinah', 'Abha', 'Khamis', 'Taif'
+      'JE', 'RI', 'MA', 'DammamNKhobar',
+      // 'Madinah', 'Abha', 'Khamis', 'Taif'
     ];
 
 
@@ -178,7 +180,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
           child: ListView(
             scrollDirection: Axis.horizontal,
             children: [
-              for (int index = 1; index <= 8; index++)
+              for (int index = 1; index <= 4; index++)
                 if (_engCities[index - 1] == appUser.country.toUpperCase())
                   Container(
                     height: 90,
