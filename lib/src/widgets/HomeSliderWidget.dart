@@ -13,7 +13,7 @@ class HomeSliderWidget extends StatefulWidget {
   _HomeSliderWidgetState createState() => _HomeSliderWidgetState();
 }
 
-class _HomeSliderWidgetState extends State<HomeSliderWidget> {
+class _HomeSliderWidgetState extends State<HomeSliderWidget> with AutomaticKeepAliveClientMixin{
   int _current = 0;
   SliderList _sliderList = new SliderList();
 
@@ -118,4 +118,8 @@ class _HomeSliderWidgetState extends State<HomeSliderWidget> {
       ],
     );
   }
+
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
 }
