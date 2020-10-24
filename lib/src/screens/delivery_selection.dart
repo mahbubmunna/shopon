@@ -127,42 +127,58 @@ class _DeliverySelectState extends State<DeliverySelect> {
       ),
       body: Column(
         children: <Widget>[
-          Container(
-            height: MediaQuery.of(context).size.height /2,
-            width: MediaQuery.of(context).size.width,
-              child: _child),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              SizedBox(height: 20,),
-              Center(child: Text(S.of(context).welcome + ' ${appUser.name}', textScaleFactor: 1.5, style: TextStyle(fontWeight: FontWeight.bold),)),
-              Center(child: Text(S.of(context).whereDoYouWantYourDelivery, textScaleFactor: 1.2,)),
-              SizedBox(height: 5,),
-              Padding(
-                padding: const EdgeInsets.only(left: 30, top: 15),
-                child: Text(S.of(context).home, textScaleFactor: 1.2, style: TextStyle(color: config.Colors().mainColor(1)),),
-              ),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  SizedBox(width: 10,),
-                  Icon(Icons.location_on, color: config.Colors().mainColor(.7), size: 15,),
-                  SizedBox(width: 5,),
-                  Flexible(child: Text(_completeAddress, textScaleFactor: 1.1,)),
-                ],
-              ),
-              SizedBox(height: 30,),
-              Padding(
-                padding: EdgeInsets.only(left: 20),
-                child: Flexible(child:
-                  Text(S.of(context).toChangeLocationKeepHoldingPointerToAdjustToCorrect,
-                  textScaleFactor: 1.1, style: TextStyle(color: Theme.of(context).accentColor),)),
-              ),
-              SizedBox(height: 20,),
-
-
-            ],
+          Expanded(
+            flex: 1,
+            child: _child,
           ),
+          Expanded(
+            flex: 1,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Center(child: Text(S.of(context).welcome + ' ${appUser.name}', textScaleFactor: 1.5, style: TextStyle(fontWeight: FontWeight.bold),)),
+                Center(child: Text(S.of(context).whereDoYouWantYourDelivery, textScaleFactor: 1.2,)),
+                SizedBox(height: 5,),
+                // Padding(
+                //   padding: const EdgeInsets.only(left: 10),
+                //   child: MaterialButton(
+                //     onPressed: (){goToAddAddressScreen();},
+                //     color: config.Colors().mainColor(1),
+                //     shape: StadiumBorder(),
+                //     child: Row(
+                //       mainAxisSize: MainAxisSize.min,
+                //       children: <Widget>[
+                //         Icon(Icons.add_location, color: Colors.white,),
+                //         SizedBox(width: 5,),
+                //         Text(S.of(context).adjustLocation, textScaleFactor: 1.1,style: TextStyle(color: Colors.white),)
+                //       ],
+                //     ),
+                //   ),
+                // ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 30, top: 15),
+                  child: Text(S.of(context).home, textScaleFactor: 1.2, style: TextStyle(color: config.Colors().mainColor(1)),),
+                ),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    SizedBox(width: 10,),
+                    Icon(Icons.location_on, color: config.Colors().mainColor(.7), size: 15,),
+                    SizedBox(width: 5,),
+                    Flexible(child: Text(_completeAddress, textScaleFactor: 1.1,)),
+                  ],
+                ),
+                SizedBox(height: 30,),
+                Padding(
+                  padding: EdgeInsets.only(left: 20),
+                  child: Flexible(child:
+                  Text(S.of(context).toChangeLocationKeepHoldingPointerToAdjustToCorrect,
+                    textScaleFactor: 1.1, style: TextStyle(color: Theme.of(context).accentColor),)),
+                ),
+
+              ],
+            ),
+          )
         ],
       ),
     );

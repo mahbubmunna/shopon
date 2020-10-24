@@ -57,7 +57,7 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (context) => PaymentPage(routeArgument: args as RouteArgument,));
 
       case '/DeliveryMap':
-        return MaterialPageRoute(builder: (_) => DeliveryMap());
+        return MaterialPageRoute(builder: (_) => DeliverySelect());
 
       case '/Brand':
         return MaterialPageRoute(
