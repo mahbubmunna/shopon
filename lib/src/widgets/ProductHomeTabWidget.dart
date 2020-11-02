@@ -40,10 +40,12 @@ class ProductHomeTabWidget extends StatefulWidget {
 }
 
 class productHomeTabWidgetState extends State<ProductHomeTabWidget> {
+  var fullHeart = true;
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<RelatedProductProvider>(context);
     final message_provider = Provider.of<MessageProvider>(context);
+
 
     print("Product Page");
 
@@ -87,15 +89,16 @@ class productHomeTabWidgetState extends State<ProductHomeTabWidget> {
                   onPressed: () {
                     setState(() {
                       addProductToFavorites();
+                      fullHeart = false;
                     });
                   },
                   padding: EdgeInsets.symmetric(vertical: 14),
                   color: Theme.of(context).accentColor,
                   shape: StadiumBorder(),
-                  child: Icon(
+                  child: fullHeart ? Icon(
                     UiIcons.heart,
                     color: Theme.of(context).primaryColor,
-                  )),
+                  ): Icon(Icons.assignment_turned_in_outlined,  color: Theme.of(context).primaryColor),),
             ],
           ),
         ),
